@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Title -->
+	<title>Title</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="Description" content="Trova dettaglio">
+	<meta name="author" content="Lorenzo Mugnai">
+	<meta name="Keywords" content="Gioco Trova dettaglio in opera">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0">
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<!-- SCRIPT -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+					integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+					crossorigin="anonymous"></script>
+	<script type="text/javascript">
+      $(document).ready(function () {
+          $(".toggle-menu").on("click", function () {
+              $(this).toggleClass("on");
+              $(".menu-bar").toggleClass("menu-mobile");
+              return false;
+          });
+      });
+	</script>
+</head>
+<body>
+<nav class="navbar">
+	<div class="container-nav-bar">
+		<ul id="menu-primary">
+			<img src="image/logo.png" class="image">
+		</ul>
+		<ul id="menu-secondary">
+			<li><a href="./#" title="About">Home</a></li>
+			<li><a href="./#" title="Service">Regole</a></li>
+		</ul>
+		<a href="./#" class="toggle-menu"><span></span></a>
+	</div>
+</nav>
+<div class="main">
+	Regole
+</div>
+</body>

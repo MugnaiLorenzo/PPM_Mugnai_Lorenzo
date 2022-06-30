@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin');
+@import url('nav-bar-style.css');
+@import url('index.css');
+@import url('gioca.css');
+@import url('appoggio.css');
+
+:root {
+  /* COLOR */
+  --white: #ffffff;
+  --black: #000000;
+  --blue-light: #63A0D4;
+  --blue: #337AB7;
+  --blue-dark: #172a52;
+  --gray: #F0F0F0;
+  --dark-gray: #777777;
+  --darkest-gray: #2A2A2A;
+
+  /* FONT */
+  --font-family-franklin: 'Libre Franklin', Helvetica, sans-serif;
+  --font-family-georgia: Georgia, 'Times New Roman', serif;
+  --font-family-fiorina: Fiorina;
+
+  /* FONT SIZE*/
+  --font-size-xxxxs: 0.75rem;
+  --font-size-xxxs: 0.875rem;
+  --font-size-xxs: 1rem;
+  --font-size-xs: 1.125rem;
+  --font-size-small: 1.125rem;
+  --font-size-medium: 1.25rem;
+  --font-size-medium-variant: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 2.5rem;
+  --font-size-xxxl: 2.75rem;
+  --font-size-xxxxl: 3rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.4em;
+  background-color: var(--white);
+  font-family: var(--font-family-franklin);
+}

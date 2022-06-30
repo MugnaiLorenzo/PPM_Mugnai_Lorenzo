@@ -1,0 +1,56 @@
+.main {
+  min-width: 1350px;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding-top: 120px;
+}
+
+.title {
+  text-align: center;
+  font-size: var(--font-size-xxl);
+  font-weight: 800;
+  font-family: var(--font-family-franklin);
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.subtitle {
+  padding-top: 20px;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  font-family: var(--font-family-franklin);
+  color: var(--dark-gray);
+}
+
+.accesso {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.accesso input.label {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: 50px;
+  padding-left: 2%;
+  border: solid 2px #ccc;
+  border-radius: 90px;
+  font-size: var(--font-size-medium);
+}
+
+.accesso input.button {
+  display: block;
+  margin: 20px auto 20px auto;
+  width: 42%;
+  height: 50px;
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: var(--font-size-medium);
+  border-radius: 90px;
+}
+
+.accesso input.button:disabled {
+  background-color: var(--blue-light);
+}

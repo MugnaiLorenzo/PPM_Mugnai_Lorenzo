@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Title -->
+	<title>Title</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="Description" content="Trova dettaglio">
+	<meta name="author" content="Lorenzo Mugnai">
+	<meta name="Keywords" content="Gioco Trova dettaglio in opera">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0">
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<!-- SCRIPT -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+					integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+					crossorigin="anonymous"></script>
+	<script type="text/javascript">
+      $(document).ready(function () {
+          $(".toggle-menu").on("click", function () {
+              $(this).toggleClass("on");
+              $(".menu-bar").toggleClass("menu-mobile");
+              return false;
+          });
+      });
+	</script>
+</head>
+<body onload="start()">
+<nav class="navbar">
+	<div class="container-nav-bar">
+		<ul id="menu-primary">
+			<img src="image/logo.png" class="image">
+		</ul>
+		<ul id="menu-secondary">
+			<li><a href="./#" title="About">Home</a></li>
+			<li><a href="./#" title="Service">Regole</a></li>
+		</ul>
+		<a href="./#" class="toggle-menu"><span></span></a>
+	</div>
+</nav>
+<div class="main">
+	<div class="title">Inizia subito a giocare</div>
+	<hr class="line">
+	<div id="title_cod"></div>
+	<div class="gioca">
+		<div class="gioco">
+			<div class="rps-wrapper">
+				<ul id="events"></ul>
+				<div class="controls">
+					<div class="button-wrapper">
+						<button id="rock" class="turn">Rock</button>
+						<button id="paper" class="turn">Paper</button>
+						<button id="scissors" class="turn">Scissors</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="punteggio">
+			<div class="title_pun">Punteggio</div>
+			<div class="user">
+				<div id="name1" class="name"></div>
+				<div id="punt1" class="punt">0</div>
+			</div>
+			<div class="user">
+				<div id="name2" class="name"></div>
+				<div id="punt2" class="punt">0</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="javascript/gioca.js"></script>
+</body>
