@@ -46,7 +46,7 @@ const addStartListeners = () => {
             document.getElementById("output").appendChild(out1)
             canvasCtx1 = out1.getContext('2d');
             writeTurn();
-            onFrame1("image/opere/" + src[i_turno]);
+            onFrame1("./image/opere/" + src[i_turno]);
             i_turno++;
         }
     });
