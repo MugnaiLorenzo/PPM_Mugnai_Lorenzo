@@ -134,6 +134,7 @@ function getCursorPosition(canvas, event, x, y, w, h) {
 
 async function onFrame1(src) {
     img1.src = src
+    console.log(img1)
     try {
         await faceDetection.send({image: img1});
     } catch (error) {
