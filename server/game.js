@@ -1,22 +1,19 @@
 class RpsGame {
-
     constructor(p1, p2, u1, u2) {
         this._players = [p1, p2];
         this.punt = [0, 0];
         this._players[0].emit('user', u2);
         this._players[1].emit('user', u1);
-        this._turns = [null, null];
-        this._sendToPlayers('Rock Paper Scissors Starts!');
-
-        this._players.forEach((player, idx) => {
-            player.on('turn', (turn) => {
-                this._onTurn(idx, turn);
-            });
+        this._players[0].emit('start');
+        this._players[1].emit('start');
+        this.turn = 0;
+        this._sendToPlayers('Game Starts!');
+        this._players[0].on('point', () => {
+            this._getGameResult(0)
         });
-    }
-
-    _sendToPlayer(playerIndex, msg) {
-        this._players[playerIndex].emit('message', msg);
+        this._players[1].on('point', () => {
+            this._getGameResult(1)
+        });
     }
 
     _sendToPlayers(msg) {
@@ -25,49 +22,36 @@ class RpsGame {
         });
     }
 
-    _onTurn(playerIndex, turn) {
-        this._turns[playerIndex] = turn;
-        this._sendToPlayer(playerIndex, `You selected ${turn}`);
-
-        this._checkGameOver();
-    }
-
-    _checkGameOver() {
-        const turns = this._turns;
-
-        if (turns[0] && turns[1]) {
-            this._sendToPlayers('Game over ' + turns.join(' : '));
-            this._getGameResult();
-            this._turns = [null, null];
-            this._sendToPlayers('Next Round!!!!');
-        }
-    }
-
-    _getGameResult() {
-
-        const p0 = this._decodeTurn(this._turns[0]);
-        const p1 = this._decodeTurn(this._turns[1]);
-
-        const distance = (p1 - p0 + 3) % 3;
-
-        switch (distance) {
+    _getGameResult(winner) {
+        this.turn = this.turn + 1;
+        this._players[0].emit('start');
+        this._players[1].emit('start');
+        switch (winner) {
             case 0:
-                this._sendToPlayers('Draw!');
-                break;
-
-            case 1:
                 this.punt[0] = this.punt[0] + 1;
                 this._players[0].emit("punt", this.punt[0], this.punt[1]);
                 this._players[1].emit("punt", this.punt[1], this.punt[0]);
                 this._sendWinMessage(this._players[0], this._players[1]);
                 break;
 
-            case 2:
+            case 1:
                 this.punt[1] = this.punt[1] + 1;
                 this._players[0].emit("punt", this.punt[0], this.punt[1]);
                 this._players[1].emit("punt", this.punt[1], this.punt[0]);
                 this._sendWinMessage(this._players[1], this._players[0]);
                 break;
+        }
+        if (this.turn === 7) {
+            if (this.punt[0] > this.punt[1]) {
+                this._players[0].emit("win", "Hai vinto");
+                this._players[1].emit("win", "Hai perso");
+            } else if (this.punt[0] === this.punt[1]) {
+                this._players[0].emit("win", "Avete Pareggiato");
+                this._players[1].emit("win", "Avete Pareggiato");
+            } else {
+                this._players[1].emit("win", "Hai vinto");
+                this._players[0].emit("win", "Hai perso");
+            }
         }
     }
 
@@ -75,21 +59,6 @@ class RpsGame {
         winner.emit('message', 'You won!');
         loser.emit('message', 'You lost.');
     }
-
-    _decodeTurn(turn) {
-        switch (turn) {
-            case 'rock':
-                return 0;
-            case 'scissors':
-                return 1;
-            case 'paper':
-                return 2;
-            default:
-                throw new Error(`Could not decode turn ${turn}`);
-        }
-    }
-
-
 }
 
 module.exports = RpsGame;

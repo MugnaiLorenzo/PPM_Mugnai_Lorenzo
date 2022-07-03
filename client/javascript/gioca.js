@@ -1,7 +1,15 @@
 let user
 let cod
 let sock
+let img1 = new Image()
+let out1
+let old_out
+let canvasCtx1
+const src = ["f1.jpeg", "f2.jpg", "f3.jpg", "f4.jpg", "f5.jpeg", "f6.jpg", "f7.jpg"];
+let i_turno = 0;
+let turno_label = document.getElementById("turno");
 
+let faceDetection
 const writeEvent = (text) => {
     const parent = document.querySelector('#events');
     const el = document.createElement('li');
@@ -9,14 +17,40 @@ const writeEvent = (text) => {
     parent.appendChild(el);
 };
 
-const addButtonListeners = () => {
-    ['rock', 'paper', 'scissors'].forEach((id) => {
-        const button = document.getElementById(id);
-        button.addEventListener('click', () => {
-            sock.emit('turn', id);
-        });
+const addWinListeners = () => {
+    sock.on('win', (message) => {
+        alert(message);
+        window.location.href = '../index.html'
     });
-};
+}
+
+const addStartListeners = () => {
+    sock.on('start', () => {
+        if (i_turno < 7) {
+            faceDetection = new FaceDetection({
+                locateFile: (file) => {
+                    return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/${file}`;
+                }
+            });
+            faceDetection.setOptions({
+                modelSelection: 0,
+                minDetectionConfidence: 0.5
+            });
+            faceDetection.onResults(onResultsFace);
+            console.log(old_out)
+            if (old_out !== undefined) {
+                document.getElementById("output").removeChild(old_out)
+            }
+            out1 = document.createElement("canvas");
+            old_out = out1
+            document.getElementById("output").appendChild(out1)
+            canvasCtx1 = out1.getContext('2d');
+            writeTurn();
+            onFrame1("image/opere/" + src[i_turno]);
+            i_turno++;
+        }
+    });
+}
 
 const addUserListeners = () => {
     sock.on('user', (name) => {
@@ -46,21 +80,67 @@ function start() {
 }
 
 function conPublic() {
-    writeEvent('Welcome to RPS');
     sock = io();
     sock.emit('public', user);
     sock.on('message', writeEvent);
     addUserListeners();
+    addStartListeners();
     addPuntListeners();
-    addButtonListeners();
+    addWinListeners();
 }
 
 function conPrivate() {
-    writeEvent('Welcome to RPS');
     sock = io();
     sock.emit('private', cod, user);
     sock.on('message', writeEvent);
     addUserListeners();
+    addStartListeners();
     addPuntListeners();
-    addButtonListeners();
+    addWinListeners();
+}
+
+function onResultsFace(results) {
+    document.body.classList.add('loaded');
+    canvasCtx1.save();
+    canvasCtx1.clearRect(0, 0, out1.width, out1.height);
+    canvasCtx1.drawImage(results.image, 0, 0, out1.width, out1.height);
+    for (let i = 0; i < results.detections.length; i++) {
+        if (results.detections.length > 0) {
+            let cX = results.detections[i].boundingBox.xCenter * out1.width;
+            let cY = results.detections[i].boundingBox.yCenter * out1.height;
+            let w = results.detections[i].boundingBox.width * out1.width;
+            let h = results.detections[i].boundingBox.height * out1.height;
+            let x = cX - w / 2;
+            let y = cY - h / 2;
+            canvasCtx1.strokeRect(x, y, w, h);
+            out1.addEventListener("click", function (e) {
+                getCursorPosition(out1, e, x, y, w, h)
+            })
+        }
+
+    }
+    canvasCtx1.restore();
+}
+
+function getCursorPosition(canvas, event, x, y, w, h) {
+    const rect = canvas.getBoundingClientRect();
+    const x_c = event.clientX - rect.left;
+    const y_c = event.clientY - rect.top;
+    if (x_c > x && x_c < (w + x) && y_c > y && y_c < (h + y)) {
+        sock.emit('point')
+        console.log("True");
+    }
+}
+
+async function onFrame1(src) {
+    img1.src = src
+    try {
+        await faceDetection.send({image: img1});
+    } catch (error) {
+        onFrame1();
+    }
+}
+
+function writeTurn() {
+    turno_label.innerHTML = "Turno: " + i_turno;
 }

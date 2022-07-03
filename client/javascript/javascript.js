@@ -1,21 +1,19 @@
-function start(){
+function start() {
     document.getElementById("gioca").disabled = true;
     document.getElementById("giocaPrivato").disabled = true;
 }
 
-
-
-function control(){
+function control() {
     let user = document.getElementById("username").value;
     let cod = document.getElementById("cod").value;
-    if (user !== ""){
+    if (user !== "") {
         document.getElementById("gioca").disabled = false;
-        if (cod !== ""){
+        if (cod !== "") {
             document.getElementById("giocaPrivato").disabled = false;
-        }else{
+        } else {
             document.getElementById("giocaPrivato").disabled = true;
         }
-    }else{
+    } else {
         document.getElementById("gioca").disabled = true;
         document.getElementById("giocaPrivato").disabled = true;
     }
@@ -24,16 +22,16 @@ function control(){
 
 function starPublic() {
     let user = document.getElementById("username").value;
-    sessionStorage.setItem("user",user)
-    sessionStorage.setItem("cod","")
-    window.location.href='./gioca.html'
+    sessionStorage.setItem("user", user)
+    sessionStorage.setItem("cod", "");
+    window.location.href = './gioca.html'
 }
 
-function starPrivate(){
+function starPrivate() {
     let user = document.getElementById("username").value;
     let cod = document.getElementById("cod").value;
-    sessionStorage.setItem("user",user)
-    sessionStorage.setItem("cod",cod)
-    window.location.href='./gioca.html'
+    sessionStorage.setItem("user", user)
+    sessionStorage.setItem("cod", cod)
+    window.location.href = './gioca.html'
 }
 

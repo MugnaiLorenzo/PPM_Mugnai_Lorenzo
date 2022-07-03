@@ -13,6 +13,14 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<!-- SCRIPT -->
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js"
+					crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js"
+					crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.1/drawing_utils.js"
+					crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/face_detection.js"
+					crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 					integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 					crossorigin="anonymous"></script>
@@ -27,6 +35,7 @@
 	</script>
 </head>
 <body onload="start()">
+<div id="add"></div>
 <nav class="navbar">
 	<div class="container-nav-bar">
 		<ul id="menu-primary">
@@ -43,17 +52,12 @@
 	<div class="title">Inizia subito a giocare</div>
 	<hr class="line">
 	<div id="title_cod"></div>
+	<div class="subtitle" id="turno" style="margin-bottom: 20px;"></div>
 	<div class="gioca">
 		<div class="gioco">
-			<div class="rps-wrapper">
+			<div id="output"></div>
+			<div class="chat">
 				<ul id="events"></ul>
-				<div class="controls">
-					<div class="button-wrapper">
-						<button id="rock" class="turn">Rock</button>
-						<button id="paper" class="turn">Paper</button>
-						<button id="scissors" class="turn">Scissors</button>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div class="punteggio">

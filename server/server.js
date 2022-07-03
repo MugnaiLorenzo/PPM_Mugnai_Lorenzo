@@ -1,33 +1,25 @@
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
-
 const game = require('./game');
-
 const app = express();
 const clientPath = `${__dirname}/../client`;
-console.log(`Serving static from ${clientPath}`);
-
 app.use(express.static(clientPath));
 let PORT = process.env.PORT || 3000;
-
-
 const server = http.createServer(app)
-
 const io = socketio(server);
-
 let waitingPlayerPrivate = {};
 let userNamePrivate = {};
 let waitingPlayerPublic = null;
 let userNamePublic = null;
 
 io.on('connection', (sock) => {
-    sock.on('private',(cod, name) => {
-        if (waitingPlayerPrivate[cod] != null){
+    sock.on('private', (cod, name) => {
+        if (waitingPlayerPrivate[cod] != null) {
             new game(waitingPlayerPrivate[cod], sock, userNamePrivate[cod], name);
             waitingPlayerPrivate[cod] = null;
             userNamePrivate[cod] = null;
-        }else {
+        } else {
             waitingPlayerPrivate[cod] = sock;
             userNamePrivate[cod] = name;
             waitingPlayerPrivate[cod].emit('message', 'Waiting for an opponent');
@@ -35,7 +27,7 @@ io.on('connection', (sock) => {
     });
 
     sock.on('public', (name) => {
-        if (waitingPlayerPublic != null) {
+        if (waitingPlayerPublic != null && waitingPlayerPublic !== sock) {
             new game(waitingPlayerPublic, sock, userNamePublic, name);
             waitingPlayerPublic = null;
             userNamePublic = null;
@@ -49,6 +41,19 @@ io.on('connection', (sock) => {
     sock.on('message', (text) => {
         io.emit('message', text);
     });
+
+    sock.on("disconnect", () => {
+        if (sock === waitingPlayerPublic) {
+            waitingPlayerPublic = null;
+        }
+        if (Object.keys(waitingPlayerPrivate).length > 0) {
+            for (const [key, value] of Object.entries(waitingPlayerPrivate)) {
+                if (value === sock) {
+                    waitingPlayerPrivate[key] = null
+                }
+            }
+        }
+    });
 });
 
 server.on('error', (err) => {
@@ -56,5 +61,5 @@ server.on('error', (err) => {
 });
 
 server.listen(PORT, () => {
-    console.log('RPS started on port '+PORT);
+    console.log('RPS started on port ' + PORT);
 });

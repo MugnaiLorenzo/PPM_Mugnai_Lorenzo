@@ -43,6 +43,6 @@
   font-family: var(--font-family-franklin);
 }
 
-#menu-secondary a:first-child{
+#menu-secondary a:first-child {
   padding-right: 50px;
 }

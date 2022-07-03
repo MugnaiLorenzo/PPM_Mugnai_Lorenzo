@@ -1,29 +1,29 @@
-.line{
+.line {
   width: 140%;
   margin-left: -20%;
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.gioca{
+.gioca {
   text-align: center;
   display: flex;
   flex-wrap: wrap;
 }
 
-.gioco{
-  width: 60%;
-  padding-left: 20%;
+.gioco {
+  width: 70%;
+  padding-left: 15%;
 }
 
-.punteggio{
+.punteggio {
   max-height: 130px;
-  width: 19%;
+  width: 14%;
   border: 1px solid var(--black);
   border-radius: 90px;
 }
 
-#title_cod{
+#title_cod {
   text-align: center;
   font-size: var(--font-size-xl);
   font-weight: 700;
@@ -33,7 +33,7 @@
   margin-bottom: 30px;
 }
 
-.title_pun{
+.title_pun {
   text-align: center;
   font-size: var(--font-size-medium);
   font-weight: 700;
@@ -42,19 +42,43 @@
   color: var(--black);
 }
 
-.user{
+.user {
   display: flex;
   flex-wrap: wrap;
   padding-top: 10px;
 }
 
-.name{
+.name {
   padding-left: 10%;
   width: 70%;
   text-align: left;
 }
 
-.punt{
+.punt {
   width: 20%;
   text-align: left;
+}
+
+.chat {
+  background-color: rgb(255, 255, 255);
+  width: 400px;
+  height: 300px;
+  max-height: 300px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+}
+
+#events {
+  flex-grow: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid lightgrey;
+  overflow-y: scroll;
+}
+
+#events li {
+  padding: 10px 10px 10px 10px;
 }
