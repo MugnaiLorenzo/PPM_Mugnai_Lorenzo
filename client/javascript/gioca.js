@@ -113,6 +113,7 @@ function getCursorPosition(canvas, event, x, y, w, h) {
 
 async function onFrame1(src) {
     img1 = new Image();
+    img1.src = src;
     faceDetection = new FaceDetection({
         locateFile: (file) => {
             return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/${file}`;
@@ -131,7 +132,7 @@ async function onFrame1(src) {
     old_out = out1;
     document.getElementById("output").appendChild(out1);
     writeTurn();
-    img1.src = src;
+    console.log(img1, out1);
     try {
         await faceDetection.send({image: img1});
         i_turno++;
