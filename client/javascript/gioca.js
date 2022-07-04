@@ -133,6 +133,7 @@ async function onFrame1(src) {
     canvasCtx1 = out1.getContext('2d');
     writeTurn();
     img1.src = src;
+    console.log(img1, out1)
     try {
         await faceDetection.send({image: img1});
         i_turno++;
