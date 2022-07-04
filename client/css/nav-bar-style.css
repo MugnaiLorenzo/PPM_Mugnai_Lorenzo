@@ -46,3 +46,9 @@
 #menu-secondary a:first-child {
   padding-right: 50px;
 }
+
+@media only screen and (max-width: 600px) {
+  #menu-secondary {
+    padding-left: 20%;
+  }
+}

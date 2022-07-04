@@ -54,3 +54,40 @@
 .accesso input.button:disabled {
   background-color: var(--blue-light);
 }
+
+@media only screen and (max-width: 715px) {
+  .title {
+    font-size: var(--font-size-xl);
+  }
+  .subtitle {
+    font-size: var(--font-size-medium-variant);
+  }
+  .accesso input.label {
+    width: 60%;
+    font-size: var(--font-size-medium);
+  }
+
+  .accesso input.button {
+    width: 62%;
+    height: 50px;
+    font-size: var(--font-size-medium);
+  }
+}
+
+@media only screen and (max-width: 535px) {
+  .title {
+    font-size: var(--font-size-medium-variant);
+  }
+  .subtitle {
+    font-size: var(--font-size-medium);
+  }
+}
+
+@media only screen and (max-width: 335px) {
+  .title {
+    font-size: var(--font-size-medium);
+  }
+  .subtitle {
+    font-size: var(--font-size-small);
+  }
+}

@@ -36,7 +36,7 @@
 </head>
 <body onload="start()">
 <div id="add"></div>
-<nav class="navbar">
+<div class="navbar">
 	<div class="container-nav-bar">
 		<ul id="menu-primary">
 			<img src="image/logo.png" class="image">
@@ -47,28 +47,34 @@
 		</ul>
 		<a href="./#" class="toggle-menu"><span></span></a>
 	</div>
-</nav>
+</div>
 <div class="main">
 	<div class="title">Inizia subito a giocare</div>
 	<hr class="line">
-	<div id="title_cod"></div>
-	<div class="subtitle" id="turno" style="margin-bottom: 20px;"></div>
+	<div class="info-container">
+		<div class="">
+			<div class="title" id="title_cod"></div>
+			<div class="subtitle" id="turno" style="margin-bottom: 20px;"></div>
+		</div>
+		<div class="punteggio-container">
+			<div class="punteggio">
+				<div class="title_pun">Punteggio</div>
+				<div class="user">
+					<div id="name1" class="name"></div>
+					<div id="punt1" class="punt">0</div>
+				</div>
+				<div class="user">
+					<div id="name2" class="name"></div>
+					<div id="punt2" class="punt">0</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="gioca">
 		<div class="gioco">
 			<div id="output"></div>
 			<div class="chat">
 				<ul id="events"></ul>
-			</div>
-		</div>
-		<div class="punteggio">
-			<div class="title_pun">Punteggio</div>
-			<div class="user">
-				<div id="name1" class="name"></div>
-				<div id="punt1" class="punt">0</div>
-			</div>
-			<div class="user">
-				<div id="name2" class="name"></div>
-				<div id="punt2" class="punt">0</div>
 			</div>
 		</div>
 	</div>

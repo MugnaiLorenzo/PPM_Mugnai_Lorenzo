@@ -129,9 +129,15 @@ async function onFrame1(src) {
         document.getElementById("output").removeChild(old_out)
     }
     out1 = document.createElement("canvas");
+    out1.classList.add("can-img");
     canvasCtx1 = out1.getContext('2d');
     old_out = out1;
     document.getElementById("output").appendChild(out1);
+    out1.width = parseInt(getComputedStyle(out1).width);
+    out1.height = parseInt(getComputedStyle(out1).height);
+    // out1.width = 900;
+    // out1.height = 450;
+    console.log(out1.width, parseInt(getComputedStyle(out1).width));
     writeTurn();
     console.log(img1, out1);
     try {
