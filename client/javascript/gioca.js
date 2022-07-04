@@ -99,6 +99,7 @@ function onResultsFace(results) {
             })
         }
     }
+    img1 = null;
     canvasCtx1.restore();
 }
 
