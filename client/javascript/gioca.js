@@ -138,7 +138,7 @@ async function onFrame1(src) {
         await faceDetection.send({image: img1});
         i_turno++;
     } catch (error) {
-        onFrame1();
+        onFrame1("./image/opere/" + src[i_turno]);
     }
 }
 
