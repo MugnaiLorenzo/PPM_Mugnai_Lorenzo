@@ -98,8 +98,6 @@ function onResultsFace(results) {
                 getCursorPosition(out1, e, x, y, w, h)
             })
         }
-        old_out = out1;
-        document.getElementById("output").appendChild(out1);
     }
     canvasCtx1.restore();
 }
@@ -130,9 +128,10 @@ async function onFrame1(src) {
     }
     out1 = document.createElement("canvas");
     canvasCtx1 = out1.getContext('2d');
+    old_out = out1;
+    document.getElementById("output").appendChild(out1);
     writeTurn();
     img1.src = src;
-    console.log(img1, out1)
     try {
         await faceDetection.send({image: img1});
         i_turno++;
