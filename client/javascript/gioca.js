@@ -24,30 +24,11 @@ const addWinListeners = () => {
     });
 }
 
+// onFrame1("./image/opere/" + src[i_turno]);
 const addStartListeners = () => {
     sock.on('start', () => {
         if (i_turno < 7) {
-            faceDetection = new FaceDetection({
-                locateFile: (file) => {
-                    return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/${file}`;
-                }
-            });
-            faceDetection.setOptions({
-                modelSelection: 0,
-                minDetectionConfidence: 0.5
-            });
-            faceDetection.onResults(onResultsFace);
-            console.log(old_out)
-            if (old_out !== undefined) {
-                document.getElementById("output").removeChild(old_out)
-            }
-            out1 = document.createElement("canvas");
-            old_out = out1
-            document.getElementById("output").appendChild(out1)
-            canvasCtx1 = out1.getContext('2d');
-            writeTurn();
             onFrame1("./image/opere/" + src[i_turno]);
-            i_turno++;
         }
     });
 }
@@ -128,15 +109,33 @@ function getCursorPosition(canvas, event, x, y, w, h) {
     const y_c = event.clientY - rect.top;
     if (x_c > x && x_c < (w + x) && y_c > y && y_c < (h + y)) {
         sock.emit('point')
-        console.log("True");
     }
 }
 
 async function onFrame1(src) {
-    img1.src = src
-    console.log(img1)
+    img1 = new Image();
+    faceDetection = new FaceDetection({
+        locateFile: (file) => {
+            return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/${file}`;
+        }
+    });
+    faceDetection.setOptions({
+        modelSelection: 0,
+        minDetectionConfidence: 0.5
+    });
+    faceDetection.onResults(onResultsFace);
+    if (old_out !== undefined) {
+        document.getElementById("output").removeChild(old_out)
+    }
+    out1 = document.createElement("canvas");
+    old_out = out1
+    document.getElementById("output").appendChild(out1)
+    canvasCtx1 = out1.getContext('2d');
+    writeTurn();
+    img1.src = src;
     try {
         await faceDetection.send({image: img1});
+        i_turno++;
     } catch (error) {
         onFrame1();
     }
