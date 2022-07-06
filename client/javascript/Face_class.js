@@ -51,14 +51,13 @@ export class Face_class {
         }
     }
 
-    // onFrame(src, old) {
-    onFrame(src) {
+    onFrame(src, old) {
         this.img = new Image();
         this.img.src = src;
-        // this.old_canvas = old;
+        this.old_canvas = old;
         this.faceDetection = new FaceDetection({
             locateFile: (file) => {
-                return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/${file}`;
+                return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.3/${file}`;
             }
         });
         this.faceDetection.setOptions({
@@ -79,10 +78,9 @@ export class Face_class {
         try {
             console.log(this.img, this.canvasElement, this.canvasCtx)
             this.faceDetection.send({image: this.img});
-            // return this.old_canvas
+            return this.old_canvas
         } catch (error) {
-            // return this.onFrame(src);
-            this.onFrame(src);
+            return this.onFrame(src);
         }
     }
 }
