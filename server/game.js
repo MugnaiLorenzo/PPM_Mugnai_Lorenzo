@@ -1,5 +1,6 @@
 class RpsGame {
-    constructor(p1, p2, u1, u2) {
+    constructor(p1, p2, u1, u2, length) {
+        this.length = length;
         this._players = [p1, p2];
         this.punt = [0, 0];
         this._players[0].emit('user', u2);
@@ -41,7 +42,7 @@ class RpsGame {
                 this._sendWinMessage(this._players[1], this._players[0]);
                 break;
         }
-        if (this.turn === 7) {
+        if (this.turn === this.length) {
             if (this.punt[0] > this.punt[1]) {
                 this._players[0].emit("win", "Hai vinto");
                 this._players[1].emit("win", "Hai perso");

@@ -14,9 +14,9 @@ let waitingPlayerPublic = null;
 let userNamePublic = null;
 
 io.on('connection', (sock) => {
-    sock.on('private', (cod, name) => {
+    sock.on('private', (cod, name, length) => {
         if (waitingPlayerPrivate[cod] != null) {
-            new game(waitingPlayerPrivate[cod], sock, userNamePrivate[cod], name);
+            new game(waitingPlayerPrivate[cod], sock, userNamePrivate[cod], name, length);
             waitingPlayerPrivate[cod] = null;
             userNamePrivate[cod] = null;
         } else {
@@ -26,9 +26,9 @@ io.on('connection', (sock) => {
         }
     });
 
-    sock.on('public', (name) => {
+    sock.on('public', (name, length) => {
         if (waitingPlayerPublic != null && waitingPlayerPublic !== sock) {
-            new game(waitingPlayerPublic, sock, userNamePublic, name);
+            new game(waitingPlayerPublic, sock, userNamePublic, name, length);
             waitingPlayerPublic = null;
             userNamePublic = null;
         } else {

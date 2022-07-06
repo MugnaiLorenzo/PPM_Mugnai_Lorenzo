@@ -24,6 +24,11 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 					integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 					crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils_3d/control_utils_3d.js"
+					crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/objectron/objectron.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
       $(document).ready(function () {
           $(".toggle-menu").on("click", function () {
@@ -32,9 +37,16 @@
               return false;
           });
       });
+      const module = {};
+	</script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="module">
+      import {start} from "./javascript/gioca.js";
+
+      module.start = start;
 	</script>
 </head>
-<body onload="start()">
+<body onload="module.start()">
 <div id="add"></div>
 <div class="navbar">
 	<div class="container-nav-bar">
@@ -79,6 +91,4 @@
 		</div>
 	</div>
 </div>
-<script src="/socket.io/socket.io.js"></script>
-<script src="javascript/gioca.js"></script>
 </body>

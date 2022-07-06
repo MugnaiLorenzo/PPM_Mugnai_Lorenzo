@@ -1,15 +1,29 @@
-let user
-let cod
-let sock
-let img1 = new Image()
-let out1
-let old_out
-let canvasCtx1
-const src = ["f1.jpeg", "f2.jpg", "f3.jpg", "f4.jpg", "f5.jpeg", "f6.jpg", "f7.jpg"];
-let i_turno = 0;
-let turno_label = document.getElementById("turno");
+import {Obj_class} from "./Obj_class.js";
+import {Face_class} from "./Face_class.js";
 
-let faceDetection
+export function start() {
+    user = sessionStorage.getItem("user");
+    cod = sessionStorage.getItem("cod");
+    document.getElementById("name1").innerHTML = user;
+    if (cod === "") {
+        document.getElementById("title_cod").innerHTML = "Partita Publica ";
+        conPublic();
+    } else {
+        document.getElementById("title_cod").innerHTML = "Codice: " + cod;
+        conPrivate();
+    }
+}
+
+let user;
+let cod;
+let sock = io();
+let turno = 0;
+let turno_label = document.getElementById("turno");
+let old_canavas = null;
+const src = [["f1.jpeg", "face"], ["f2.jpg", "face"], ["f3.jpg", "Chair"], ["f4.jpg", "face"], ["f5.jpeg", "face"], ["f6.jpg", "face"], ["f7.jpg", "face"], ["f8.jpg", "face"]];
+const obj_class = new Obj_class(3, "Chair", sock);
+const face_class = new Face_class(sock);
+
 const writeEvent = (text) => {
     const parent = document.querySelector('#events');
     const el = document.createElement('li');
@@ -24,11 +38,20 @@ const addWinListeners = () => {
     });
 }
 
-// onFrame1("./image/opere/" + src[i_turno]);
 const addStartListeners = () => {
     sock.on('start', () => {
-        if (i_turno < 7) {
-            onFrame1("./image/opere/" + src[i_turno]);
+        if (turno < src.length) {
+            if (src[turno][1] === "face") {
+                old_canavas = face_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
+                console.log(old_canavas)
+                turno = turno + 1;
+                writeTurn();
+            } else {
+                old_canavas = obj_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
+                console.log(old_canavas)
+                turno = turno + 1;
+                writeTurn();
+            }
         }
     });
 }
@@ -47,22 +70,12 @@ const addPuntListeners = () => {
     });
 }
 
-function start() {
-    user = sessionStorage.getItem("user");
-    cod = sessionStorage.getItem("cod");
-    document.getElementById("name1").innerHTML = user;
-    if (cod === "") {
-        title_cod = document.getElementById("title_cod").innerHTML = "Partita Publica "
-        conPublic()
-    } else {
-        document.getElementById("title_cod").innerHTML = "Codice: " + cod
-        conPrivate()
-    }
+function writeTurn() {
+    turno_label.innerHTML = "Turno: " + turno;
 }
 
 function conPublic() {
-    sock = io();
-    sock.emit('public', user);
+    sock.emit('public', user, src.length);
     sock.on('message', writeEvent);
     addUserListeners();
     addStartListeners();
@@ -71,83 +84,10 @@ function conPublic() {
 }
 
 function conPrivate() {
-    sock = io();
-    sock.emit('private', cod, user);
+    sock.emit('private', cod, user, src.length);
     sock.on('message', writeEvent);
     addUserListeners();
     addStartListeners();
     addPuntListeners();
     addWinListeners();
-}
-
-function onResultsFace(results) {
-    document.body.classList.add('loaded');
-    canvasCtx1.save();
-    canvasCtx1.clearRect(0, 0, out1.width, out1.height);
-    canvasCtx1.drawImage(results.image, 0, 0, out1.width, out1.height);
-    for (let i = 0; i < results.detections.length; i++) {
-        if (results.detections.length > 0) {
-            let cX = results.detections[i].boundingBox.xCenter * out1.width;
-            let cY = results.detections[i].boundingBox.yCenter * out1.height;
-            let w = results.detections[i].boundingBox.width * out1.width;
-            let h = results.detections[i].boundingBox.height * out1.height;
-            let x = cX - w / 2;
-            let y = cY - h / 2;
-            canvasCtx1.strokeRect(x, y, w, h);
-            out1.addEventListener("click", function (e) {
-                getCursorPosition(out1, e, x, y, w, h)
-            })
-        }
-    }
-    img1 = null;
-    canvasCtx1.restore();
-}
-
-function getCursorPosition(canvas, event, x, y, w, h) {
-    const rect = canvas.getBoundingClientRect();
-    const x_c = event.clientX - rect.left;
-    const y_c = event.clientY - rect.top;
-    if (x_c > x && x_c < (w + x) && y_c > y && y_c < (h + y)) {
-        sock.emit('point')
-    }
-}
-
-async function onFrame1(src) {
-    img1 = new Image();
-    img1.src = src;
-    faceDetection = new FaceDetection({
-        locateFile: (file) => {
-            return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/${file}`;
-        }
-    });
-    faceDetection.setOptions({
-        modelSelection: 0,
-        minDetectionConfidence: 0.5
-    });
-    faceDetection.onResults(onResultsFace);
-    if (old_out !== undefined) {
-        document.getElementById("output").removeChild(old_out)
-    }
-    out1 = document.createElement("canvas");
-    out1.classList.add("can-img");
-    canvasCtx1 = out1.getContext('2d');
-    old_out = out1;
-    document.getElementById("output").appendChild(out1);
-    out1.width = parseInt(getComputedStyle(out1).width);
-    out1.height = parseInt(getComputedStyle(out1).height);
-    // out1.width = 900;
-    // out1.height = 450;
-    console.log(out1.width, parseInt(getComputedStyle(out1).width));
-    writeTurn();
-    console.log(img1, out1);
-    try {
-        await faceDetection.send({image: img1});
-        i_turno++;
-    } catch (error) {
-        onFrame1(src);
-    }
-}
-
-function writeTurn() {
-    turno_label.innerHTML = "Turno: " + i_turno;
 }
