@@ -21,8 +21,6 @@ let turno = 0;
 let turno_label = document.getElementById("turno");
 let old_canavas = null;
 const src = [["f1.jpeg", "face"], ["f2.jpg", "face"], ["f3.jpg", "Chair"], ["f4.jpg", "face"], ["f5.jpeg", "face"], ["f6.jpg", "face"], ["f7.jpg", "face"], ["f8.jpg", "face"]];
-const obj_class = new Obj_class(3, "Chair", sock);
-const face_class = new Face_class(sock);
 
 const writeEvent = (text) => {
     const parent = document.querySelector('#events');
@@ -42,11 +40,13 @@ const addStartListeners = () => {
     sock.on('start', () => {
         if (turno < src.length) {
             if (src[turno][1] === "face") {
+                let face_class = new Face_class(sock);
                 old_canavas = face_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
                 console.log(old_canavas)
                 turno = turno + 1;
                 writeTurn();
             } else {
+                let obj_class = new Obj_class(3, "Chair", sock);
                 old_canavas = obj_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
                 console.log(old_canavas)
                 turno = turno + 1;
