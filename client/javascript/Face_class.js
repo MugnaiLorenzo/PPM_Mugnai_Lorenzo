@@ -51,6 +51,7 @@ export class Face_class {
     }
 
     onFrame(src, old) {
+        this.img = null;
         this.img = new Image();
         this.img.src = src;
         this.old_canvas = old;
