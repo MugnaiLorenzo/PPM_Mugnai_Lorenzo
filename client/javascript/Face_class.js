@@ -20,6 +20,7 @@ export class Face_class {
     }
 
     onResultsFace(results) {
+        console.log(results);
         this.canvasCtx.save();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
         this.canvasCtx.drawImage(results.image, 0, 0, this.canvasElement.width, this.canvasElement.height);
