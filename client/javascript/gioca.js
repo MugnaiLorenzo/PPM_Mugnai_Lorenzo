@@ -19,6 +19,8 @@ let cod;
 let sock = io();
 let turno = 0;
 let old_canavas;
+let face_class = new Face_class(sock);
+let obj_class = new Obj_class(3, "Chair", sock);
 let turno_label = document.getElementById("turno");
 const src = [["f1.jpeg", "face"], ["f2.jpg", "face"], ["f3.jpg", "Chair"], ["f4.jpg", "face"], ["f5.jpeg", "face"], ["f6.jpg", "face"], ["f7.jpg", "face"], ["f8.jpg", "face"]];
 
@@ -40,7 +42,6 @@ const addStartListeners = () => {
     sock.on('start', () => {
         if (turno < src.length) {
             if (src[turno][1] === "face") {
-                let face_class = new Face_class(sock);
                 if (document.getElementsByClassName("can-img")[0] === undefined) {
                     old_canavas = null;
                     console.log("old canvas undefined", old_canavas)
@@ -48,17 +49,16 @@ const addStartListeners = () => {
                     old_canavas = document.getElementsByClassName("can-img")[0]
                     console.log("old canvas not undefined", old_canavas)
                 }
-                face_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
+                face_class.onFrame("./image/opere/" + src[turno][0]);
                 turno = turno + 1;
                 writeTurn();
             } else {
-                let obj_class = new Obj_class(3, "Chair", sock);
                 if (document.getElementsByClassName("can-img")[0] === undefined) {
                     old_canavas = null;
                 } else {
                     old_canavas = document.getElementsByClassName("can-img")[0]
                 }
-                obj_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
+                obj_class.onFrame("./image/opere/" + src[turno][0]);
                 turno = turno + 1;
                 writeTurn();
             }

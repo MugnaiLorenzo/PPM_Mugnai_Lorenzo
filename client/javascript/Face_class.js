@@ -49,8 +49,7 @@ export class Face_class {
         }
     }
 
-    async onFrame(src, old_canavas) {
-        console.log(old_canavas)
+    async onFrame(src) {
         this.img = new Image();
         this.img.src = src;
         this.faceDetection = new FaceDetection({
@@ -63,13 +62,16 @@ export class Face_class {
             minDetectionConfidence: 0.5
         });
         this.faceDetection.onResults(this.onResultsFace.bind(this));
-        if (old_canavas !== null) {
-            document.getElementById("output").removeChild(old_canavas)
-        }
-        this.canvasElement = document.createElement("canvas");
-        this.canvasElement.classList.add("can-img");
+        // if (old_canavas !== null) {
+        //     document.getElementById("output").removeChild(old_canavas)
+        // }
+        this.canvasElement = document.getElementById("can_out")
+        // console.log(this.canvasElement)
+        // this.canvasElement.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
+        //     document.createElement("canvas");
+        // this.canvasElement.classList.add("can-img");
         this.canvasCtx = this.canvasElement.getContext('2d');
-        document.getElementById("output").appendChild(this.canvasElement);
+        // document.getElementById("output").appendChild(this.canvasElement);
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         try {

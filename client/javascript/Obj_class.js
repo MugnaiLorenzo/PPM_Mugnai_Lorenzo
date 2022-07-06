@@ -120,7 +120,7 @@ export class Obj_class {
         this.canvasCtx.stroke();
     }
 
-    onFrame(src, old_canavas) {
+    onFrame(src) {
         this.objectron = new Objectron({
             locateFile: (file) => {
                 return `https://cdn.jsdelivr.net/npm/@mediapipe/objectron@0.4/${file}`;
@@ -133,12 +133,11 @@ export class Obj_class {
         this.objectron.onResults(this.onResults.bind(this));
         this.img = new Image();
         this.img.src = src;
-        this.canvasElement = document.createElement("canvas");
-        this.canvasElement.classList.add("can-img");
-        if (old_canavas !== null) {
-            document.getElementById("output").removeChild(old_canavas)
-        }
-        document.getElementById("output").appendChild(this.canvasElement);
+        this.canvasElement = document.getElementById("can_out")
+        // if (old_canavas !== null) {
+        //     document.getElementById("output").removeChild(old_canavas)
+        // }
+        // document.getElementById("output").appendChild(this.canvasElement);
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         this.canvasCtx = this.canvasElement.getContext('2d');
