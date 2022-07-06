@@ -6,7 +6,6 @@ export class Face_class {
         this.canvasElement = document.createElement("canvas");
         this.canvasElement.classList.add("can-img");
         this.canvasCtx = this.canvasElement.getContext('2d');
-        this.old_canvas = null;
         this.faceDetection = new FaceDetection({
             locateFile: (file) => {
                 return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.3/${file}`;
@@ -20,7 +19,6 @@ export class Face_class {
     }
 
     onResultsFace(results) {
-        console.log(results);
         this.canvasCtx.save();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
         this.canvasCtx.drawImage(results.image, 0, 0, this.canvasElement.width, this.canvasElement.height);
@@ -51,10 +49,9 @@ export class Face_class {
         }
     }
 
-    async onFrame(src, old) {
+    async onFrame(src, old_canavas) {
         this.img = new Image();
         this.img.src = src;
-        this.old_canvas = old;
         this.faceDetection = new FaceDetection({
             locateFile: (file) => {
                 return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.3/${file}`;
@@ -65,23 +62,19 @@ export class Face_class {
             minDetectionConfidence: 0.5
         });
         this.faceDetection.onResults(this.onResultsFace.bind(this));
-        console.log(this.old_canvas)
-        if (this.old_canvas !== null) {
-            document.getElementById("output").removeChild(this.old_canvas)
+        if (old_canavas !== null) {
+            document.getElementById("output").removeChild(old_canavas)
         }
         this.canvasElement = document.createElement("canvas");
         this.canvasElement.classList.add("can-img");
         this.canvasCtx = this.canvasElement.getContext('2d');
-        this.old_canvas = this.canvasElement;
         document.getElementById("output").appendChild(this.canvasElement);
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         try {
             await this.faceDetection.send({image: this.img});
-            console.log("AA", this.canvasElement)
-            return this.old_canvas
         } catch (error) {
-            return this.onFrame(src);
+            this.onFrame(src);
         }
     }
 }

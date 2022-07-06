@@ -2,7 +2,6 @@ export class Obj_class {
     constructor(max, modelName, sock) {
         this.modelName = modelName
         this.sock = sock;
-        this.old_canvas = null;
         this.img = new Image();
         this.img.src = "";
         this.canvasElement = document.createElement("canvas");
@@ -122,7 +121,6 @@ export class Obj_class {
     }
 
     onFrame(src, old_canavas) {
-        this.old_canvas = old_canavas;
         this.objectron = new Objectron({
             locateFile: (file) => {
                 return `https://cdn.jsdelivr.net/npm/@mediapipe/objectron@0.4/${file}`;
@@ -137,19 +135,17 @@ export class Obj_class {
         this.img.src = src;
         this.canvasElement = document.createElement("canvas");
         this.canvasElement.classList.add("can-img");
-        if (this.old_canvas !== null) {
-            document.getElementById("output").removeChild(this.old_canvas)
+        if (old_canavas !== null) {
+            document.getElementById("output").removeChild(old_canavas)
         }
-        this.old_canvas = this.canvasElement;
         document.getElementById("output").appendChild(this.canvasElement);
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         this.canvasCtx = this.canvasElement.getContext('2d');
         try {
             this.objectron.send({image: this.img});
-            return this.old_canvas;
         } catch (error) {
-            return this.onFrame(src);
+            this.onFrame(src);
         }
     }
 }
