@@ -25,8 +25,8 @@ class RpsGame {
 
     _getGameResult(winner) {
         this.turn = this.turn + 1;
-        this._players[0].emit('start');
-        this._players[1].emit('start');
+        this._players[0].emit('finishTurn');
+        this._players[1].emit('finishTurn');
         switch (winner) {
             case 0:
                 this.punt[0] = this.punt[0] + 1;

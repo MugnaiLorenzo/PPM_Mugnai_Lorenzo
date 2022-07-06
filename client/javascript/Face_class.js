@@ -1,5 +1,6 @@
 export class Face_class {
-    constructor(sock) {
+    constructor(sock, point) {
+        this.point = point;
         this.sock = sock;
         this.img = new Image();
         this.img.src = "";
@@ -45,6 +46,7 @@ export class Face_class {
         const x_c = event.clientX - rect.left;
         const y_c = event.clientY - rect.top;
         if (x_c > x && x_c < (w + x) && y_c > y && y_c < (h + y)) {
+            this.canvasElement.removeEventListener("click", event);
             this.sock.emit('point');
         }
     }
@@ -62,16 +64,8 @@ export class Face_class {
             minDetectionConfidence: 0.5
         });
         this.faceDetection.onResults(this.onResultsFace.bind(this));
-        // if (old_canavas !== null) {
-        //     document.getElementById("output").removeChild(old_canavas)
-        // }
-        this.canvasElement = document.getElementById("can_out")
-        // console.log(this.canvasElement)
-        // this.canvasElement.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
-        //     document.createElement("canvas");
-        // this.canvasElement.classList.add("can-img");
+        this.canvasElement = document.getElementById("can_out");
         this.canvasCtx = this.canvasElement.getContext('2d');
-        // document.getElementById("output").appendChild(this.canvasElement);
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         try {

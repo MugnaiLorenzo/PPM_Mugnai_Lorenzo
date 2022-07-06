@@ -1,5 +1,6 @@
 import {Obj_class} from "./Obj_class.js";
 import {Face_class} from "./Face_class.js";
+import {Point} from "./point.js";
 
 export function start() {
     user = sessionStorage.getItem("user");
@@ -17,12 +18,10 @@ export function start() {
 let user;
 let cod;
 let sock = io();
-let turno = 0;
-let old_canavas;
-let face_class = new Face_class(sock);
-let obj_class = new Obj_class(3, "Chair", sock);
+let point = new Point()
 let turno_label = document.getElementById("turno");
-const src = [["f1.jpeg", "face"], ["f2.jpg", "face"], ["f3.jpg", "Chair"], ["f4.jpg", "face"], ["f5.jpeg", "face"], ["f6.jpg", "face"], ["f7.jpg", "face"], ["f8.jpg", "face"]];
+let element;
+writeTurn()
 
 const writeEvent = (text) => {
     const parent = document.querySelector('#events');
@@ -38,31 +37,37 @@ const addWinListeners = () => {
     });
 }
 
+const addFinishTurnListeners = () => {
+    sock.on('finishTurn', () => {
+        document.getElementById("output").removeChild(element);
+        point.setPoint();
+        writeTurn();
+        excute();
+    })
+}
+
+function excute() {
+    element = document.createElement("canvas");
+    element.classList.add("can-img");
+    element.id = "can_out";
+    console.log(element)
+    document.getElementById("output").appendChild(element);
+    if (point.turno < point.length) {
+        if (point.src[point.turno][1] === "face") {
+            let face_class = new Face_class(sock, point);
+            writeTurn();
+            face_class.onFrame("./image/opere/" + point.src[point.turno][0]);
+        } else {
+            let obj_class = new Obj_class(3, "Chair", sock, point);
+            writeTurn();
+            obj_class.onFrame("./image/opere/" + point.src[point.turno][0]);
+        }
+    }
+}
+
 const addStartListeners = () => {
     sock.on('start', () => {
-        if (turno < src.length) {
-            if (src[turno][1] === "face") {
-                if (document.getElementsByClassName("can-img")[0] === undefined) {
-                    old_canavas = null;
-                    console.log("old canvas undefined", old_canavas)
-                } else {
-                    old_canavas = document.getElementsByClassName("can-img")[0]
-                    console.log("old canvas not undefined", old_canavas)
-                }
-                face_class.onFrame("./image/opere/" + src[turno][0]);
-                turno = turno + 1;
-                writeTurn();
-            } else {
-                if (document.getElementsByClassName("can-img")[0] === undefined) {
-                    old_canavas = null;
-                } else {
-                    old_canavas = document.getElementsByClassName("can-img")[0]
-                }
-                obj_class.onFrame("./image/opere/" + src[turno][0]);
-                turno = turno + 1;
-                writeTurn();
-            }
-        }
+        excute();
     });
 }
 
@@ -81,23 +86,25 @@ const addPuntListeners = () => {
 }
 
 function writeTurn() {
-    turno_label.innerHTML = "Turno: " + turno;
+    turno_label.innerHTML = "Turno: " + point.turno;
 }
 
 function conPublic() {
-    sock.emit('public', user, src.length);
+    sock.emit('public', user, point.length);
     sock.on('message', writeEvent);
     addUserListeners();
     addStartListeners();
     addPuntListeners();
     addWinListeners();
+    addFinishTurnListeners();
 }
 
 function conPrivate() {
-    sock.emit('private', cod, user, src.length);
+    sock.emit('private', cod, user, point.length);
     sock.on('message', writeEvent);
     addUserListeners();
     addStartListeners();
     addPuntListeners();
     addWinListeners();
+    addFinishTurnListeners();
 }

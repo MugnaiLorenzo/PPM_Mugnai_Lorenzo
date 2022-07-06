@@ -1,5 +1,6 @@
 export class Obj_class {
-    constructor(max, modelName, sock) {
+    constructor(max, modelName, sock, point) {
+        this.point = point;
         this.modelName = modelName
         this.sock = sock;
         this.img = new Image();
@@ -134,10 +135,6 @@ export class Obj_class {
         this.img = new Image();
         this.img.src = src;
         this.canvasElement = document.getElementById("can_out")
-        // if (old_canavas !== null) {
-        //     document.getElementById("output").removeChild(old_canavas)
-        // }
-        // document.getElementById("output").appendChild(this.canvasElement);
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         this.canvasCtx = this.canvasElement.getContext('2d');
