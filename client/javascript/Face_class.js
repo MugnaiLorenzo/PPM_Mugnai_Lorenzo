@@ -81,7 +81,7 @@ export class Face_class {
             console.log("AA", this.canvasElement)
             return this.old_canvas
         } catch (error) {
-            return this.sendResult(src);
+            return this.onFrame(src);
         }
     }
 }
