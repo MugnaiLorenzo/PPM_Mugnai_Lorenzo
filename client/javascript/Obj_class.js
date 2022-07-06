@@ -121,8 +121,9 @@ export class Obj_class {
         this.canvasCtx.stroke();
     }
 
-    onFrame(src, old_canavas) {
-        this.old_canvas = old_canavas;
+    // onFrame(src, old_canavas) {
+    onFrame(src) {
+        // this.old_canvas = old_canavas;
         this.objectron = new Objectron({
             locateFile: (file) => {
                 return `https://cdn.jsdelivr.net/npm/@mediapipe/objectron/${file}`;
@@ -147,9 +148,10 @@ export class Obj_class {
         this.canvasCtx = this.canvasElement.getContext('2d');
         try {
             this.objectron.send({image: this.img});
-            return this.old_canvas;
+            // return this.old_canvas;
         } catch (error) {
-            return this.onFrame(src);
+            // return this.onFrame(src);
+            this.onFrame(src);
         }
     }
 }

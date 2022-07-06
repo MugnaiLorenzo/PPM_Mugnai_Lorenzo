@@ -41,13 +41,15 @@ const addStartListeners = () => {
         if (turno < src.length) {
             if (src[turno][1] === "face") {
                 let face_class = new Face_class(sock);
-                old_canavas = face_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
+                // old_canavas = face_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
+                old_canavas = face_class.onFrame("./image/opere/" + src[turno][0]);
                 console.log(old_canavas)
                 turno = turno + 1;
                 writeTurn();
             } else {
                 let obj_class = new Obj_class(3, "Chair", sock);
-                old_canavas = obj_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
+                old_canavas = obj_class.onFrame("./image/opere/" + src[turno][0]);
+                // old_canavas = obj_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
                 console.log(old_canavas)
                 turno = turno + 1;
                 writeTurn();
