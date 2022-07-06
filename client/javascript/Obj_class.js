@@ -145,7 +145,7 @@ export class Obj_class {
         try {
             this.objectron.send({image: this.img});
         } catch (error) {
-            this.onFrame(src);
+            this.onFrame(src, null);
         }
     }
 }

@@ -75,7 +75,7 @@ export class Face_class {
         try {
             await this.faceDetection.send({image: this.img});
         } catch (error) {
-            this.onFrame(src);
+            this.onFrame(src, null);
         }
     }
 }
