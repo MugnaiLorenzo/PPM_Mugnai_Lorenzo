@@ -63,6 +63,7 @@ export class Obj_class {
                 index++
             }
         }
+        this.img = null;
         this.canvasCtx.restore();
     }
 
@@ -121,7 +122,6 @@ export class Obj_class {
     }
 
     onFrame(src, old_canavas) {
-        this.img = null;
         this.old_canvas = old_canavas;
         this.objectron = new Objectron({
             locateFile: (file) => {

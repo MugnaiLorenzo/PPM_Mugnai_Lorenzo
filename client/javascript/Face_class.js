@@ -36,8 +36,8 @@ export class Face_class {
                     this.getCursorPosition(this.canvasElement, event, x, y, w, h);
                 })
             }
-
         }
+        this.img = null;
         this.canvasCtx.restore();
     }
 
@@ -51,7 +51,6 @@ export class Face_class {
     }
 
     onFrame(src, old) {
-        this.img = null;
         this.img = new Image();
         this.img.src = src;
         this.old_canvas = old;
