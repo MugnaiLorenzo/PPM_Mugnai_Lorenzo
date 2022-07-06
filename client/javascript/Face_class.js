@@ -75,6 +75,7 @@ export class Face_class {
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         try {
+            console.log(this.img, this.canvasElement, this.canvasCtx)
             this.faceDetection.send({image: this.img});
             return this.old_canvas
         } catch (error) {
