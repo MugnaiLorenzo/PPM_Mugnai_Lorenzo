@@ -51,7 +51,7 @@ export class Face_class {
         }
     }
 
-    onFrame(src, old) {
+    async onFrame(src, old) {
         this.img = new Image();
         this.img.src = src;
         this.old_canvas = old;
@@ -65,6 +65,7 @@ export class Face_class {
             minDetectionConfidence: 0.5
         });
         this.faceDetection.onResults(this.onResultsFace.bind(this));
+        console.log(this.old_canvas)
         if (this.old_canvas !== null) {
             document.getElementById("output").removeChild(this.old_canvas)
         }
@@ -76,11 +77,11 @@ export class Face_class {
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         try {
-            console.log(this.img, this.canvasElement, this.canvasCtx)
-            this.faceDetection.send({image: this.img});
+            await this.faceDetection.send({image: this.img});
+            console.log("AA", this.canvasElement)
             return this.old_canvas
         } catch (error) {
-            return this.onFrame(src);
+            return this.sendResult(src);
         }
     }
 }
