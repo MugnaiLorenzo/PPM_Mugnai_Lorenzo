@@ -20,7 +20,7 @@ export class Obj_class {
         }
         this.objectron = new Objectron({
             locateFile: (file) => {
-                return `https://cdn.jsdelivr.net/npm/@mediapipe/objectron/${file}`;
+                return `https://cdn.jsdelivr.net/npm/@mediapipe/objectron@0.4/${file}`;
             }
         });
         this.objectron.setOptions({

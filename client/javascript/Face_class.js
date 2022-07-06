@@ -9,7 +9,7 @@ export class Face_class {
         this.old_canvas = null;
         this.faceDetection = new FaceDetection({
             locateFile: (file) => {
-                return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/${file}`;
+                return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.3/${file}`;
             }
         });
         this.faceDetection.setOptions({
