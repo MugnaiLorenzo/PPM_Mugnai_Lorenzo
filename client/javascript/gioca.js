@@ -43,8 +43,10 @@ const addStartListeners = () => {
                 let face_class = new Face_class(sock);
                 if (document.getElementsByClassName("can-img")[0] === undefined) {
                     old_canavas = null;
+                    console.log("old canvas undefined", old_canavas)
                 } else {
                     old_canavas = document.getElementsByClassName("can-img")[0]
+                    console.log("old canvas not undefined", old_canavas)
                 }
                 face_class.onFrame("./image/opere/" + src[turno][0], old_canavas);
                 turno = turno + 1;
