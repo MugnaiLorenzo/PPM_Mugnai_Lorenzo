@@ -50,6 +50,7 @@ export class Face_class {
     }
 
     async onFrame(src, old_canavas) {
+        console.log(old_canavas)
         this.img = new Image();
         this.img.src = src;
         this.faceDetection = new FaceDetection({
