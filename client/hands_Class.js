@@ -8,6 +8,7 @@ export class Hands_Class {
         this.canvasCtx = null;
         this.hands = null;
         this.camera = null;
+        this.num_solution = 0;
     }
 
     onResults(results) {
@@ -30,7 +31,10 @@ export class Hands_Class {
                 this.canvasCtx.arc(x, y, 5, 0, 2 * Math.PI);
                 this.canvasCtx.fill();
                 if (x > x_c && x < (x_c + w) && y > y_c && y < (y_c + h)) {
-                    this.sock.emit('point');
+                    if (this.num_solution === 0) {
+                        this.num_solution++;
+                        this.sock.emit('point');
+                    }
                 }
             }
         }
