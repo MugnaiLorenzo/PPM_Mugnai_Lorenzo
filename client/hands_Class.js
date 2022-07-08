@@ -38,6 +38,8 @@ export class Hands_Class {
         this.img.src = src;
         this.canvasElement = document.getElementById("can_out");
         this.canvasCtx = this.canvasElement.getContext('2d');
+        this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
+        this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         this.hands = new Hands({
             locateFile: (file) => {
                 return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
@@ -54,8 +56,8 @@ export class Hands_Class {
             onFrame: async () => {
                 await this.hands.send({image: this.videoElement});
             },
-            width: 1280,
-            height: 720
+            width: parseInt(getComputedStyle(this.canvasElement).width),
+            height: parseInt(getComputedStyle(this.canvasElement).height)
         });
         this.camera.start();
 
