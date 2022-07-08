@@ -1,7 +1,7 @@
 export class Hands_Class {
     constructor(sock) {
         this.sock = sock;
-        this.videoElement = null;
+        this.videoElement = document.createElement('video');
         this.img = null;
         this.point = null;
         this.canvasElement = null;
@@ -42,7 +42,6 @@ export class Hands_Class {
 
     start(img) {
         this.point = img;
-        this.videoElement = document.createElement('video');
         this.img = new Image();
         this.img.src = "./image/opere/" + this.point.src;
         this.canvasElement = document.getElementById("can_out");
