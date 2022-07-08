@@ -15,8 +15,8 @@ export class Hands_Class {
         this.canvasCtx.save();
         this.canvasCtx.beginPath();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
-        this.canvasCtx.drawImage(
-            this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
+        // this.canvasCtx.drawImage(
+        //     this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
         let x_c = this.point.x;
         let y_c = this.point.y;
         let w = this.point.width * this.canvasElement.width / 950;
@@ -74,7 +74,7 @@ export class Hands_Class {
             width: parseInt(getComputedStyle(this.canvasElement).width),
             height: parseInt(getComputedStyle(this.canvasElement).height)
         });
-        this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
+        // this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
         this.camera.start();
     }
 

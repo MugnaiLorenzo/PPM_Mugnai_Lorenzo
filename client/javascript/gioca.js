@@ -64,7 +64,7 @@ function excute() {
         img.onload = function(){
             canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
         }
-        // hands.start(point.src[point.turno]);
+        hands.start(point.src[point.turno]);
         // if (point.src[point.turno][1] === "face") {
         //     let face_class = new Face_class(sock, point);
         //     writeTurn();
