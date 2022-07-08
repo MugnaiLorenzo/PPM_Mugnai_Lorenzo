@@ -12,8 +12,6 @@ export class Hands_Class {
     onResults(results) {
         this.canvasCtx.save();
         this.canvasCtx.beginPath();
-        this.canvasCtx.translate(this.canvasElement.width, 0);
-        this.canvasCtx.scale(-1, 1);
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
         this.canvasCtx.drawImage(
             this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
