@@ -55,6 +55,15 @@ function excute() {
     document.getElementById("output").appendChild(element);
     if (point.turno < point.length) {
         let hands = new Hands_Class(sock);
+        let canvasElement = document.getElementById("can_out");
+        let canvasCtx = canvasElement.getContext('2d');
+        let img = new Image();
+        img.src = "./image/opere/" + point.src;
+        canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
+        canvasElement.height = parseInt(getComputedStyle(canvasElement).height);
+        img.onload = function(){
+            canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
+        }
         hands.start(point.src[point.turno]);
         // if (point.src[point.turno][1] === "face") {
         //     let face_class = new Face_class(sock, point);
