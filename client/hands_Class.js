@@ -19,10 +19,10 @@ export class Hands_Class {
         this.canvasCtx.save();
         this.canvasCtx.beginPath();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
-        // this.canvasCtx.drawImage(
-        //     this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
+        this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
 
         // results.image, 0, 0, canvasElement.width, canvasElement.height);
+        this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
         if (results.multiHandLandmarks) {
             for (const landmarks of results.multiHandLandmarks) {
                 let x = landmarks[8].x * this.canvasElement.width;
@@ -30,8 +30,8 @@ export class Hands_Class {
                 this.canvasCtx.arc(x, y, 5, 0, 2 * Math.PI);
                 this.canvasCtx.fill();
                 if (x > this.x_c && x < (this.x_c + this.w) && y > this.y_c && y < (this.y_c + this.h)) {
-                    if(this.num_solution === 0){
-                        this.num_solution ++;
+                    if (this.num_solution === 0) {
+                        this.num_solution++;
                         this.sock.emit('point');
                     }
                 }
@@ -78,7 +78,6 @@ export class Hands_Class {
             height: parseInt(getComputedStyle(this.canvasElement).height)
         });
         // this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
-        this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
         this.camera.start();
     }
 
