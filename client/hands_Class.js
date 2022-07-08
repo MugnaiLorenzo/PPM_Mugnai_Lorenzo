@@ -1,5 +1,6 @@
 export class Hands_Class {
-    constructor() {
+    constructor(sock) {
+        this.sock = sock;
         this.videoElement = null;
         this.img = null;
         this.point = null;
@@ -15,7 +16,11 @@ export class Hands_Class {
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
         this.canvasCtx.drawImage(
             this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
-        this.canvasCtx.strokeRect(this.point.x, this.point.y, this.point.width * this.canvasElement.width / 950, this.point.height * this.canvasElement.width / 950);
+        let x_c = this.point.x;
+        let y_c = this.point.y;
+        let w = this.point.width * this.canvasElement.width / 950;
+        let h = this.point.height * this.canvasElement.width / 950;
+        this.canvasCtx.strokeRect(x_c, y_c, w, h);
 
         // results.image, 0, 0, canvasElement.width, canvasElement.height);
         if (results.multiHandLandmarks) {
@@ -24,10 +29,9 @@ export class Hands_Class {
                 let y = landmarks[8].y * this.canvasElement.height;
                 this.canvasCtx.arc(x, y, 5, 0, 2 * Math.PI);
                 this.canvasCtx.fill();
-                // console.log(landmarks)
-                // drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS,
-                //     {color: '#00FF00', lineWidth: 5});
-                // drawLandmarks(canvasCtx, landmarks, {color: '#FF0000', lineWidth: 2});
+                if (x > x_c && x < (x_c + w) && y > y_c && y < (y_c + h)) {
+                    this.sock.emit('point');
+                }
             }
         }
         this.canvasCtx.restore()

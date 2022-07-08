@@ -23,7 +23,7 @@ let point = new Point()
 let turno_label = document.getElementById("turno");
 let element;
 writeTurn();
-let hands = new Hands_Class();
+let hands = new Hands_Class(sock);
 
 const writeEvent = (text) => {
     const parent = document.querySelector('#events');
