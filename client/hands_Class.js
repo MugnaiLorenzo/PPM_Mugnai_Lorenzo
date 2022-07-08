@@ -61,6 +61,7 @@ export class Hands_Class {
     }
 
     start(img) {
+        this.num_solution = 0;
         this.point = img;
         this.img = new Image();
         this.img.src = "./image/opere/" + this.point.src;
