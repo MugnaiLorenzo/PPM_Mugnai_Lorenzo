@@ -36,7 +36,7 @@ export class Hands_Class {
         this.videoElement = document.createElement('video');
         this.img = new Image();
         this.img.src = src;
-        this.canvasElement = document.getElementsByClassName('output_canvas')[0];
+        this.canvasElement = document.getElementById("can_out");
         this.canvasCtx = this.canvasElement.getContext('2d');
         this.hands = new Hands({
             locateFile: (file) => {
