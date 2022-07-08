@@ -66,7 +66,8 @@ export class Hands_Class {
             width: parseInt(getComputedStyle(this.canvasElement).width),
             height: parseInt(getComputedStyle(this.canvasElement).height)
         });
-        this.img.onloadeddata = this.loadImg(this.canvasCtx, this.canvasElement, this.img);
+        this.img_load = false;
+        this.img_load = this.loadImg(this.canvasCtx, this.canvasElement, this.img);
         this.load(this.canvasCtx, this.canvasElement, this.point, this.camera);
         //     function (this.canvasCtx) {
         //     this.canvasCtx.drawImage(
@@ -79,6 +80,7 @@ export class Hands_Class {
 
     loadImg(canvasCtx, canvasElement, img) {
         canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
+        return true;
     }
 
     load(canvasCtx, canvasElement, point, camera) {
