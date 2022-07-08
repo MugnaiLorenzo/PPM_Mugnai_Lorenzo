@@ -37,7 +37,7 @@ export class Hands_Class {
         this.point = img;
         this.videoElement = document.createElement('video');
         this.img = new Image();
-        this.img.src = this.point.src;
+        this.img.src = "./image/opere/" +this.point.src;
         this.canvasElement = document.getElementById("can_out");
         this.canvasCtx = this.canvasElement.getContext('2d');
         this.canvasCtx.strokeRect(this.point.x, this.point.y, this.point.width, this.point.height);
