@@ -15,7 +15,10 @@ export class Hands_Class {
         this.canvasCtx.translate(this.canvasElement.width, 0);
         this.canvasCtx.scale(-1, 1);
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
-        this.canvasCtx.strokeRect(this.point.x, this.point.y, this.point.width, this.point.height);
+        this.canvasCtx.drawImage(
+            this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
+        this.canvasCtx.strokeRect(this.point.x, this.point.y, this.point.width * this.canvasElement.width / 950, this.point.height * this.canvasElement.width / 950);
+
         // results.image, 0, 0, canvasElement.width, canvasElement.height);
         if (results.multiHandLandmarks) {
             for (const landmarks of results.multiHandLandmarks) {
@@ -41,6 +44,11 @@ export class Hands_Class {
         this.canvasCtx = this.canvasElement.getContext('2d');
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
+        this.canvasCtx.save();
+        this.canvasCtx.beginPath();
+        this.canvasCtx.translate(this.canvasElement.width, 0);
+        this.canvasCtx.scale(-1, 1);
+        this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
         this.canvasCtx.drawImage(
             this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
         this.canvasCtx.strokeRect(this.point.x, this.point.y, this.point.width * this.canvasElement.width / 950, this.point.height * this.canvasElement.width / 950);
