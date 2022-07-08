@@ -13,6 +13,26 @@ export class Hands_Class {
         this.y_c = null;
         this.w = null;
         this.h = null;
+        this.hands = new Hands({
+            locateFile: (file) => {
+                return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+            }
+        });
+        this.hands.setOptions({
+            maxNumHands: 2,
+            modelComplexity: 1,
+            minDetectionConfidence: 0.5,
+            minTrackingConfidence: 0.5
+        });
+        this.hands.onResults(this.onResults.bind(this));
+        this.camera = new Camera(this.videoElement, {
+            onFrame: async () => {
+                await this.hands.send({image: this.videoElement});
+            },
+            width: parseInt(getComputedStyle(this.canvasElement).width),
+            height: parseInt(getComputedStyle(this.canvasElement).height)
+        });
+        this.camera.start();
     }
 
     onResults(results) {
@@ -57,27 +77,6 @@ export class Hands_Class {
         this.y_c = this.point.y;
         this.w = this.point.width * this.canvasElement.width / 950;
         this.h = this.point.height * this.canvasElement.width / 950;
-        this.hands = new Hands({
-            locateFile: (file) => {
-                return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
-            }
-        });
-        this.hands.setOptions({
-            maxNumHands: 2,
-            modelComplexity: 1,
-            minDetectionConfidence: 0.5,
-            minTrackingConfidence: 0.5
-        });
-        this.hands.onResults(this.onResults.bind(this));
-        this.camera = new Camera(this.videoElement, {
-            onFrame: async () => {
-                await this.hands.send({image: this.videoElement});
-            },
-            width: parseInt(getComputedStyle(this.canvasElement).width),
-            height: parseInt(getComputedStyle(this.canvasElement).height)
-        });
-        // this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
-        this.camera.start();
     }
 
 }

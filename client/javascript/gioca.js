@@ -22,6 +22,7 @@ let sock = io();
 let point = new Point()
 let turno_label = document.getElementById("turno");
 let element;
+let hands = new Hands_Class(sock);
 writeTurn();
 
 const writeEvent = (text) => {
@@ -54,7 +55,6 @@ function excute() {
     console.log(element)
     document.getElementById("output").appendChild(element);
     if (point.turno < point.length) {
-        let hands = new Hands_Class(sock);
         let canvasElement = document.getElementById("can_out");
         let canvasCtx = canvasElement.getContext('2d');
         let img = new Image();
