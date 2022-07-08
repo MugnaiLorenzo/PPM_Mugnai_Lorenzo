@@ -77,8 +77,10 @@ export class Hands_Class {
     }
 
     readyImg(canvasCtx, canvasElement, point, camera, img) {
+        console.log("avviato")
         canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
         canvasCtx.strokeRect(point.x, point.y, point.width * canvasElement.width / 950, point.height * canvasElement.width / 950);
+        camera.start();
     }
 
 
