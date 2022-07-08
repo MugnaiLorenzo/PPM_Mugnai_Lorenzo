@@ -23,7 +23,6 @@ let point = new Point()
 let turno_label = document.getElementById("turno");
 let element;
 writeTurn();
-let hands = new Hands_Class(sock);
 
 const writeEvent = (text) => {
     const parent = document.querySelector('#events');
@@ -55,6 +54,7 @@ function excute() {
     console.log(element)
     document.getElementById("output").appendChild(element);
     if (point.turno < point.length) {
+        let hands = new Hands_Class(sock);
         hands.start(point.src[point.turno]);
         // if (point.src[point.turno][1] === "face") {
         //     let face_class = new Face_class(sock, point);
