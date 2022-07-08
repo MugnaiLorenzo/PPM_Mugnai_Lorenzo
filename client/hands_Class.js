@@ -2,6 +2,7 @@ export class Hands_Class {
     constructor() {
         this.videoElement = null;
         this.img = null;
+        this.point = null;
         this.canvasElement = null;
         this.canvasCtx = null;
         this.hands = null;
@@ -32,12 +33,14 @@ export class Hands_Class {
         this.canvasCtx.restore()
     }
 
-    start(src) {
+    start(img) {
+        this.point = img;
         this.videoElement = document.createElement('video');
         this.img = new Image();
-        this.img.src = src;
+        this.img.src = this.point.src;
         this.canvasElement = document.getElementById("can_out");
         this.canvasCtx = this.canvasElement.getContext('2d');
+        this.canvasCtx.strokeRect(this.point.x, this.point.y, this.point.width, this.point.height);
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         this.hands = new Hands({

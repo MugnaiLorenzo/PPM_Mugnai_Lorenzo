@@ -55,7 +55,7 @@ function excute() {
     console.log(element)
     document.getElementById("output").appendChild(element);
     if (point.turno < point.length) {
-        hands.start("./image/opere/" + point.src[point.turno][0]);
+        hands.start(point.src[point.turno]);
         // if (point.src[point.turno][1] === "face") {
         //     let face_class = new Face_class(sock, point);
         //     writeTurn();
