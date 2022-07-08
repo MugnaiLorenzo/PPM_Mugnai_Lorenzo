@@ -66,7 +66,8 @@ export class Hands_Class {
             width: parseInt(getComputedStyle(this.canvasElement).width),
             height: parseInt(getComputedStyle(this.canvasElement).height)
         });
-        this.img.onloadeddata = this.readyImg(this.canvasCtx, this.canvasElement, this.point, this.camera, this.img);
+        this.img.onloadeddata = this.loadImg(this.canvasCtx, this.canvasElement, this.img);
+        this.load(this.canvasCtx, this.canvasElement, this.point, this.camera);
         //     function (this.canvasCtx) {
         //     this.canvasCtx.drawImage(
         //         this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
@@ -76,11 +77,13 @@ export class Hands_Class {
 
     }
 
-    readyImg(canvasCtx, canvasElement, point, camera, img) {
+    loadImg(canvasCtx, canvasElement, img) {
         canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
+    }
+
+    load(canvasCtx, canvasElement, point, camera) {
         canvasCtx.strokeRect(point.x, point.y, point.width * canvasElement.width / 950, point.height * canvasElement.width / 950);
         camera.start();
     }
-
 
 }
