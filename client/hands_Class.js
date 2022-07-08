@@ -39,6 +39,7 @@ export class Hands_Class {
     }
 
     onResults(results) {
+        console.log(this.ready);
         if(this.ready === true){
             this.canvasCtx.save();
             this.canvasCtx.beginPath();
@@ -54,11 +55,8 @@ export class Hands_Class {
                     this.canvasCtx.arc(x, y, 5, 0, 2 * Math.PI);
                     this.canvasCtx.fill();
                     if (x > this.x_c && x < (this.x_c + this.w) && y > this.y_c && y < (this.y_c + this.h)) {
-                        if (this.num_solution === 0) {
-                            this.num_solution++;
-                            this.ready = false;
-                            this.sock.emit('point');
-                        }
+                        this.ready = false;
+                        this.sock.emit('point');
                     }
                 }
             }
