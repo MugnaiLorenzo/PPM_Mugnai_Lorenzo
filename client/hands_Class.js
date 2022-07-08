@@ -15,8 +15,7 @@ export class Hands_Class {
         this.canvasCtx.translate(this.canvasElement.width, 0);
         this.canvasCtx.scale(-1, 1);
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
-        this.canvasCtx.drawImage(
-            this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
+        this.canvasCtx.strokeRect(this.point.x, this.point.y, this.point.width, this.point.height);
         // results.image, 0, 0, canvasElement.width, canvasElement.height);
         if (results.multiHandLandmarks) {
             for (const landmarks of results.multiHandLandmarks) {
@@ -37,12 +36,14 @@ export class Hands_Class {
         this.point = img;
         this.videoElement = document.createElement('video');
         this.img = new Image();
-        this.img.src = "./image/opere/" +this.point.src;
+        this.img.src = "./image/opere/" + this.point.src;
         this.canvasElement = document.getElementById("can_out");
         this.canvasCtx = this.canvasElement.getContext('2d');
-        this.canvasCtx.strokeRect(this.point.x, this.point.y, this.point.width, this.point.height);
         this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
         this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
+        this.canvasCtx.drawImage(
+            this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
+        this.canvasCtx.strokeRect(this.point.x, this.point.y, this.point.width * this.canvasElement.width / 950, this.point.height * this.canvasElement.width / 950);
         this.hands = new Hands({
             locateFile: (file) => {
                 return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
