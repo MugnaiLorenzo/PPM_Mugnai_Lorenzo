@@ -24,13 +24,15 @@ export class Hands_Class {
             minDetectionConfidence: 0.5,
             minTrackingConfidence: 0.5
         });
+        let e = document.createElement("canvas");
+        e.classList.add("can-img");
         this.hands.onResults(this.onResults.bind(this));
         this.camera = new Camera(this.videoElement, {
             onFrame: async () => {
                 await this.hands.send({image: this.videoElement});
             },
-            width: parseInt(getComputedStyle(this.canvasElement).width),
-            height: parseInt(getComputedStyle(this.canvasElement).height)
+            width: parseInt(getComputedStyle(e).width),
+            height: parseInt(getComputedStyle(e).height)
         });
         this.camera.start();
     }
