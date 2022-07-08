@@ -3,6 +3,13 @@ export class Point {
         this.turno = 0;
         this.src = []
         this.src.push(new img("f1.jpeg",0,0,200,200));
+        this.src.push(new img("f2.jpeg",0,0,200,200));
+        this.src.push(new img("f3.jpeg",0,0,200,200));
+        this.src.push(new img("f4.jpeg",0,0,200,200));
+        this.src.push(new img("f5.jpeg",0,0,200,200));
+        this.src.push(new img("f6.jpeg",0,0,200,200));
+        this.src.push(new img("f7.jpeg",0,0,200,200));
+        this.src.push(new img("f8.jpeg",0,0,200,200));
         // this.src = [["f1.jpeg", "face"], ["f2.jpg", "face"], ["f3.jpg", "Chair"], ["f4.jpg", "face"], ["f5.jpeg", "face"], ["f6.jpg", "face"], ["f7.jpg", "face"], ["f8.jpg", "face"]];
         this.length = this.src.length
     }
