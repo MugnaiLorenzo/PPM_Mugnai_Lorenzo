@@ -56,8 +56,8 @@ export class Hands_Class {
                     if (x > this.x_c && x < (this.x_c + this.w) && y > this.y_c && y < (this.y_c + this.h)) {
                         if (this.num_solution === 0) {
                             this.num_solution++;
-                            this.sock.emit('point');
                             this.ready = false;
+                            this.sock.emit('point');
                         }
                     }
                 }
