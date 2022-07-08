@@ -1,6 +1,7 @@
-import {Obj_class} from "./Obj_class.js";
-import {Face_class} from "./Face_class.js";
+// import {Obj_class} from "./Obj_class.js";
+// import {Face_class} from "./Face_class.js";
 import {Point} from "./point.js";
+import {Hands_Class} from "../hands_Class.js";
 
 export function start() {
     user = sessionStorage.getItem("user");
@@ -21,7 +22,8 @@ let sock = io();
 let point = new Point()
 let turno_label = document.getElementById("turno");
 let element;
-writeTurn()
+writeTurn();
+let hands = new Hands_Class();
 
 const writeEvent = (text) => {
     const parent = document.querySelector('#events');
@@ -53,15 +55,16 @@ function excute() {
     console.log(element)
     document.getElementById("output").appendChild(element);
     if (point.turno < point.length) {
-        if (point.src[point.turno][1] === "face") {
-            let face_class = new Face_class(sock, point);
-            writeTurn();
-            face_class.onFrame("./image/opere/" + point.src[point.turno][0]);
-        } else {
-            let obj_class = new Obj_class(3, "Chair", sock, point);
-            writeTurn();
-            obj_class.onFrame("./image/opere/" + point.src[point.turno][0]);
-        }
+        hands.start("./image/opere/" + point.src[point.turno][0]);
+        // if (point.src[point.turno][1] === "face") {
+        //     let face_class = new Face_class(sock, point);
+        //     writeTurn();
+        //     face_class.onFrame("./image/opere/" + point.src[point.turno][0]);
+        // } else {
+        //     let obj_class = new Obj_class(3, "Chair", sock, point);
+        //     writeTurn();
+        //     obj_class.onFrame("./image/opere/" + point.src[point.turno][0]);
+        // }
     }
 }
 
