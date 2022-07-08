@@ -64,8 +64,10 @@ export class Hands_Class {
         this.point = img;
         this.img = new Image();
         this.img.src = "./image/opere/" + this.point.src;
-        this.img.onloadeddata = this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
         this.canvasCtx.save();
+        this.canvasCtx.beginPath();
+        this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
+        this.img.onloadeddata = this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
         this.hands.onResults(this.onResults.bind(this));
     }
 
