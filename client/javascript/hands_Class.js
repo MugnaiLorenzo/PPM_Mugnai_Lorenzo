@@ -74,8 +74,8 @@ export class Hands_Class {
         this.canvasCtx.save();
         this.canvasCtx.beginPath();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
-        this.x_c = this.point.x;
-        this.y_c = this.point.y;
+        this.x_c = this.point.x * this.canvasElement.width / this.point.width;
+        this.y_c = this.point.y * this.canvasElement.height / this.point.height;
         this.w = this.point.w * this.canvasElement.width / this.point.width;
         this.h = this.point.h * this.canvasElement.height / this.point.height;
         this.ready = true;
