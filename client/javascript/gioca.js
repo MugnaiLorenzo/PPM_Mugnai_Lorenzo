@@ -65,7 +65,7 @@ function excute() {
         canvasElement.height = parseInt(getComputedStyle(canvasElement).height);
         canvasCtx.save();
         canvasCtx.beginPath();
-        canvasCtx.translate(this.canvasElement.width, 0);
+        canvasCtx.translate(canvasElement.width, 0);
         canvasCtx.scale(-1, 1);
         img.onload = function(){
             canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
