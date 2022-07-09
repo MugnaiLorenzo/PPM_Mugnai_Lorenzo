@@ -61,11 +61,17 @@ function excute() {
         img.src = "./image/opere/" + point.src[point.turno].src;
         canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
         canvasElement.height = parseInt(getComputedStyle(canvasElement).height);
+        canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
+        canvasElement.height = parseInt(getComputedStyle(canvasElement).height);
+        canvasCtx.save();
+        canvasCtx.beginPath();
+        canvasCtx.translate(this.canvasElement.width, 0);
+        canvasCtx.scale(-1, 1);
         img.onload = function(){
             canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
         }
         setTimeout(function(){
-            hands.start(point.src[point.turno]);
+            hands.start(point.src[point.turno], canvasElement, canvasCtx);
         }, 2000);
         // if (point.src[point.turno][1] === "face") {
         //     let face_class = new Face_class(sock, point);

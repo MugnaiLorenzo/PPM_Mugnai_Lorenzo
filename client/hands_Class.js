@@ -40,7 +40,7 @@ export class Hands_Class {
 
     onResults(results) {
         console.log(this.ready);
-        if(this.ready === true){
+        if (this.ready === true) {
             this.canvasCtx.save();
             this.canvasCtx.beginPath();
             this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
@@ -64,20 +64,14 @@ export class Hands_Class {
         }
     }
 
-    start(img) {
+    start(img, canvas, ctx) {
+        this.canvasElement = canvas;
+        this.canvasCtx = ctx;
         this.ready = false;
         this.num_solution = 0;
         this.point = img;
-        this.img = new Image();
-        this.img.src = "./image/opere/" + this.point.src;
-        this.canvasElement = document.getElementById("can_out");
-        this.canvasCtx = this.canvasElement.getContext('2d');
-        this.canvasElement.width = parseInt(getComputedStyle(this.canvasElement).width);
-        this.canvasElement.height = parseInt(getComputedStyle(this.canvasElement).height);
         this.canvasCtx.save();
         this.canvasCtx.beginPath();
-        this.canvasCtx.translate(this.canvasElement.width, 0);
-        this.canvasCtx.scale(-1, 1);
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
         this.x_c = this.point.x;
         this.y_c = this.point.y;
