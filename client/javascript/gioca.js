@@ -61,6 +61,7 @@ function excute() {
         img.src = "./image/opere/" + point.src[point.turno].src;
         canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
         canvasElement.height = (parseInt(getComputedStyle(canvasElement).width) / point.src[point.turno].width) * point.src[point.turno].height;
+        console.log(canvasElement.height);
         canvasCtx.save();
         canvasCtx.beginPath();
         canvasCtx.translate(canvasElement.width, 0);
