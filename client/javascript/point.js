@@ -7,9 +7,8 @@ export class Point {
         this.src.push(new img("f3.jpg", 945, 1000, 0, 0, 200, 200));
         this.src.push(new img("f4.jpg", 1000, 842, 0, 0, 200, 200));
         this.src.push(new img("f5.jpg", 1500, 1147, 0, 0, 200, 200));
-        this.src.push(new img("f6.jpg", 900, 450, 0, 0, 200, 200));
-        this.src.push(new img("f7.jpg", 900, 450, 0, 0, 200, 200));
-        // this.src = [["f1.jpeg", "face"], ["f2.jpg", "face"], ["f3.jpg", "Chair"], ["f4.jpg", "face"], ["f5.jpeg", "face"], ["f6.jpg", "face"], ["f7.jpg", "face"], ["f8.jpg", "face"]];
+        this.src.push(new img("f6.jpg", 1094, 749, 0, 0, 200, 200));
+        this.src.push(new img("f6.jpg", 1209, 556, 0, 0, 200, 200));
         this.length = this.src.length
     }
 
