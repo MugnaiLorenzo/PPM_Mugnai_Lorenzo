@@ -2,7 +2,7 @@ export class Point {
     constructor() {
         this.turno = 0;
         this.src = []
-        this.src.push(new img("f1.jpg", 1000, 802, 311, 57, 235, 560));
+        this.src.push(new img("f1.jpg", 1000, 802, 311, 27, 235, 544));
         this.src.push(new img("f2.jpg", 1587, 1057, 0, 0, 200, 200));
         this.src.push(new img("f3.jpg", 945, 1000, 0, 0, 200, 200));
         this.src.push(new img("f4.jpg", 1000, 842, 0, 0, 200, 200));
