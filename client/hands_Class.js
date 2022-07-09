@@ -70,6 +70,8 @@ export class Hands_Class {
         this.ready = false;
         this.num_solution = 0;
         this.point = img;
+        this.img = new Image();
+        this.img.src = this.point.src;
         this.canvasCtx.save();
         this.canvasCtx.beginPath();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
