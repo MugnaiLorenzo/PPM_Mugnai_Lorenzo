@@ -60,15 +60,15 @@ function excute() {
         let img = new Image();
         img.src = "./image/opere/" + point.src[point.turno].src;
         canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
-        canvasElement.height = 800;
+        canvasElement.height = (parseInt(getComputedStyle(canvasElement).width) / point.src[point.turno].width) * point.src[point.turno].height;
         canvasCtx.save();
         canvasCtx.beginPath();
         canvasCtx.translate(canvasElement.width, 0);
         canvasCtx.scale(-1, 1);
-        img.onload = function(){
+        img.onload = function () {
             canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
         }
-        setTimeout(function(){
+        setTimeout(function () {
             hands.start(point.src[point.turno], canvasElement, canvasCtx);
         }, 2000);
         // if (point.src[point.turno][1] === "face") {
