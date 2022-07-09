@@ -20,7 +20,7 @@ export class Point {
 }
 
 class img {
-    constructor(src, width, height, y, w, h) {
+    constructor(src, width, height, x, y, w, h) {
         this.src = src;
         this.width = width;
         this.height = height;
