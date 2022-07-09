@@ -47,6 +47,9 @@ export class Hands_Class {
 
             // results.image, 0, 0, canvasElement.width, canvasElement.height);
             this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
+            this.canvasCtx.strokeRect(200, 200, 5, 5);
+            this.canvasCtx.strokeRect(300, 300, 5, 5);
+            this.canvasCtx.strokeRect(300, 300, 5, 5);
             if (results.multiHandLandmarks) {
                 for (const landmarks of results.multiHandLandmarks) {
                     let x = landmarks[8].x * this.canvasElement.width;
