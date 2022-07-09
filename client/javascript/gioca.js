@@ -52,7 +52,6 @@ function excute() {
     element = document.createElement("canvas");
     element.classList.add("can-img");
     element.id = "can_out";
-    console.log(element)
     document.getElementById("output").appendChild(element);
     if (point.turno < point.length) {
         let canvasElement = document.getElementById("can_out");
@@ -61,7 +60,6 @@ function excute() {
         img.src = "./image/opere/" + point.src[point.turno].src;
         canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
         canvasElement.height = (parseInt(getComputedStyle(canvasElement).width) / point.src[point.turno].width) * point.src[point.turno].height;
-        console.log(parseInt(getComputedStyle(canvasElement).width), point.src[point.turno].width, canvasElement.height);
         canvasCtx.save();
         canvasCtx.beginPath();
         canvasCtx.translate(canvasElement.width, 0);
@@ -72,15 +70,6 @@ function excute() {
         setTimeout(function () {
             hands.start(point.src[point.turno], canvasElement, canvasCtx);
         }, 2000);
-        // if (point.src[point.turno][1] === "face") {
-        //     let face_class = new Face_class(sock, point);
-        //     writeTurn();
-        //     face_class.onFrame("./image/opere/" + point.src[point.turno][0]);
-        // } else {
-        //     let obj_class = new Obj_class(3, "Chair", sock, point);
-        //     writeTurn();
-        //     obj_class.onFrame("./image/opere/" + point.src[point.turno][0]);
-        // }
     }
 }
 

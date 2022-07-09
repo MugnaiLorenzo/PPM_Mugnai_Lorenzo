@@ -39,7 +39,6 @@ export class Hands_Class {
     }
 
     onResults(results) {
-        console.log(this.ready);
         if (this.ready === true) {
             this.canvasCtx.save();
             this.canvasCtx.beginPath();
