@@ -1,7 +1,7 @@
 // import {Obj_class} from "./Obj_class.js";
 // import {Face_class} from "./Face_class.js";
 import {Point} from "./point.js";
-import {Hands_Class} from "../hands_Class.js";
+import {Hands_Class} from "./hands_Class.js";
 
 export function start() {
     user = sessionStorage.getItem("user");
