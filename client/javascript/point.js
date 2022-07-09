@@ -26,7 +26,7 @@ class img {
         this.height = height;
         this.x = x;
         this.y = y;
-        this.width = w;
-        this.height = h;
+        this.w = w;
+        this.h = h;
     }
 }
