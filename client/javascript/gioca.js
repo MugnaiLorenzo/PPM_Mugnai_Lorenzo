@@ -50,8 +50,6 @@ const addFinishTurnListeners = () => {
 }
 
 function excute() {
-    m.style.display = "none"
-    mess.style.display = "none"
     element = document.createElement("canvas");
     element.classList.add("can-img");
     element.id = "can_out";
@@ -71,6 +69,8 @@ function excute() {
             canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
         }
         setTimeout(function () {
+            m.style.display = "none";
+            mess.style.display = "none";
             hands.start(point.src[point.turno], canvasElement, canvasCtx);
         }, 2000);
     }
