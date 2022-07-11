@@ -8,7 +8,6 @@ class RpsGame {
         this._players[0].emit('start');
         this._players[1].emit('start');
         this.turn = 0;
-        this._sendToPlayers('Game Starts!');
         this._players[0].on('point', () => {
             this._getGameResult(0)
         });

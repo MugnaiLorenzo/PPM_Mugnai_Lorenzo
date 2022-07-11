@@ -10,9 +10,12 @@
   --blue-light: #63A0D4;
   --blue: #337AB7;
   --blue-dark: #172a52;
+  --gray-light: #F0F0F0;
   --gray: #F0F0F0;
   --dark-gray: #777777;
   --darkest-gray: #2A2A2A;
+  --red-board: red;
+  --blue-board: blue;
 
   /* FONT */
   --font-family-franklin: 'Libre Franklin', Helvetica, sans-serif;

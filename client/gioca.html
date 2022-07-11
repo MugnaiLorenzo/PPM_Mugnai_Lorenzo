@@ -17,22 +17,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
-<!--	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js"-->
-<!--					crossorigin="anonymous"></script>-->
-<!--	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js"-->
-<!--					crossorigin="anonymous"></script>-->
-<!--	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.1/drawing_utils.js"-->
-<!--					crossorigin="anonymous"></script>-->
-<!--	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/face_detection.js"-->
-<!--					crossorigin="anonymous"></script>-->
-<!--	<script src="https://code.jquery.com/jquery-3.2.1.min.js"-->
-<!--					integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="-->
-<!--					crossorigin="anonymous"></script>-->
-<!--	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>-->
-<!--	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils_3d/control_utils_3d.js"-->
-<!--					crossorigin="anonymous"></script>-->
-<!--	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>-->
-<!--	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/objectron/objectron.js" crossorigin="anonymous"></script>-->
 	<script type="text/javascript">
       const module = {};
 	</script>
@@ -44,7 +28,9 @@
 	</script>
 </head>
 <body onload="module.start()">
-<div id="add"></div>
+<div id="mess1" class="message">
+</div>
+<div id="mess"></div>
 <div class="navbar">
 	<div class="container-nav-bar">
 		<ul id="menu-primary">
@@ -58,34 +44,19 @@
 	</div>
 </div>
 <div class="main">
-	<div class="title">Inizia subito a giocare</div>
-	<hr class="line">
 	<div class="info-container">
-		<div class="">
-			<div class="title" id="title_cod"></div>
-			<div class="subtitle" id="turno" style="margin-bottom: 20px;"></div>
-		</div>
-		<div class="punteggio-container">
-			<div class="punteggio">
-				<div class="title_pun">Punteggio</div>
-				<div class="user">
-					<div id="name1" class="name"></div>
-					<div id="punt1" class="punt">0</div>
-				</div>
-				<div class="user">
-					<div id="name2" class="name"></div>
-					<div id="punt2" class="punt">0</div>
-				</div>
-			</div>
-		</div>
+		<div class="title" id="title_cod"></div>
+	</div>
+	<div class="scoreboard">
+		<div id="punt1" class="punti">0</div>
+		<div id="name1" class="name-board"></div>
+		<div id="turno" class="turno-board"></div>
+		<div id="name2" class="name-board"></div>
+		<div id="punt2" class="punti">0</div>
 	</div>
 	<div class="gioca">
 		<div class="gioco">
 			<div id="output">
-<!--				<canvas class="can-img" id="can_out"></canvas>-->
-			</div>
-			<div class="chat">
-				<ul id="events"></ul>
 			</div>
 		</div>
 	</div>

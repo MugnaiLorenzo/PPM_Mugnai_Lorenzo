@@ -16,6 +16,8 @@ export function start() {
     }
 }
 
+let m = document.getElementById("mess1");
+let mess = document.getElementById("mess");
 let user;
 let cod;
 let sock = io();
@@ -26,10 +28,9 @@ let hands = new Hands_Class(sock);
 writeTurn();
 
 const writeEvent = (text) => {
-    const parent = document.querySelector('#events');
-    const el = document.createElement('li');
-    el.innerHTML = text;
-    parent.appendChild(el);
+    m.style.display = "flex"
+    mess.style.display = "flex"
+    mess.innerHTML = text;
 };
 
 const addWinListeners = () => {
@@ -49,6 +50,8 @@ const addFinishTurnListeners = () => {
 }
 
 function excute() {
+    m.style.display = "none"
+    mess.style.display = "none"
     element = document.createElement("canvas");
     element.classList.add("can-img");
     element.id = "can_out";
