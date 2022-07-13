@@ -47,16 +47,17 @@ export class Hands_Class {
             for (let i = 0; i < this.point.ret.length; i++) {
                 this.canvasCtx.strokeRect(this.x_c[i], this.y_c[i], this.w[i], this.h[i]);
             }
-            // results.image, 0, 0, canvasElement.width, canvasElement.height);
             if (results.multiHandLandmarks) {
                 for (const landmarks of results.multiHandLandmarks) {
                     let x = landmarks[8].x * this.canvasElement.width;
                     let y = landmarks[8].y * this.canvasElement.height;
                     this.canvasCtx.arc(x, y, 5, 0, 2 * Math.PI);
                     this.canvasCtx.fill();
-                    if (x > this.x_c && x < (this.x_c + this.w) && y > this.y_c && y < (this.y_c + this.h)) {
-                        this.ready = false;
-                        this.sock.emit('point');
+                    for (let i = 0; i < this.point.ret.length; i++) {
+                        if (x > this.x_c[i] && x < (this.x_c[i] + this.w[i]) && y > this.y_c[i] && y < (this.y_c[i] + this.h[i])) {
+                            this.ready = false;
+                            this.sock.emit('point');
+                        }
                     }
                 }
             }
