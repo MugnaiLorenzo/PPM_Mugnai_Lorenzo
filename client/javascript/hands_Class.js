@@ -56,6 +56,10 @@ export class Hands_Class {
                     for (let i = 0; i < this.point.ret.length; i++) {
                         if (x > this.x_c[i] && x < (this.x_c[i] + this.w[i]) && y > this.y_c[i] && y < (this.y_c[i] + this.h[i])) {
                             this.ready = false;
+                            this.x_c = [];
+                            this.y_c = [];
+                            this.w = [];
+                            this.h = [];
                             this.sock.emit('point');
                         }
                     }
