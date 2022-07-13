@@ -4,7 +4,7 @@ export class Point {
         this.src = [];
         let rect = [];
         let descr = ''
-        rect.push(new Rect(481, 27, 235, 544));
+        rect.push(new Rect(277, 490, 248, 104));
         descr = 'Può essere un contadino o un lavoratore che cerca di farsi spazio tra le macerie per raggiungere, quasi ipnotizzato, la protagonista.'
         this.src.push(new img("f1.jpg", 1000, 802, rect, descr));
         rect = [];
