@@ -23,6 +23,7 @@ let cod;
 let sock = io();
 let point = new Point()
 let turno_label = document.getElementById("turno");
+let descr_label = document.getElementById("descrizione");
 let element;
 let hands = new Hands_Class(sock);
 writeTurn();
@@ -68,6 +69,7 @@ function excute() {
         img.onload = function () {
             canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
         }
+        descr_label.innerHTML = point.src[point.turno].descrizione;
         setTimeout(function () {
             m.style.display = "none";
             mess.style.display = "none";

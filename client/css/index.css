@@ -14,6 +14,13 @@
   color: var(--black);
 }
 
+.testo {
+  padding-top: 20px;
+  text-align: center;
+  font-size: var(--font-size-medium-variant);
+  font-family: var(--font-family-franklin);
+}
+
 .subtitle {
   padding-top: 20px;
   text-align: center;
@@ -59,9 +66,15 @@
   .title {
     font-size: var(--font-size-xl);
   }
+
   .subtitle {
     font-size: var(--font-size-medium-variant);
   }
+
+  .testo{
+    font-size: var(--font-size-medium);
+  }
+
   .accesso input.label {
     width: 60%;
     font-size: var(--font-size-medium);
@@ -78,8 +91,13 @@
   .title {
     font-size: var(--font-size-medium-variant);
   }
+
   .subtitle {
     font-size: var(--font-size-medium);
+  }
+
+  .testo{
+    font-size: var(--font-size-small);
   }
 }
 
@@ -87,7 +105,12 @@
   .title {
     font-size: var(--font-size-medium);
   }
+
   .subtitle {
     font-size: var(--font-size-small);
+  }
+
+  .testo{
+    font-size: var(--font-size-xs);
   }
 }
