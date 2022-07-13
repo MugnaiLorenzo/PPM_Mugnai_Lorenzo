@@ -9,10 +9,10 @@ export class Hands_Class {
         this.hands = null;
         this.camera = null;
         this.num_solution = 0;
-        this.x_c = null;
-        this.y_c = null;
-        this.w = null;
-        this.h = null;
+        this.x_c = [];
+        this.y_c = [];
+        this.w = [];
+        this.h = [];
         this.ready = false;
         this.hands = new Hands({
             locateFile: (file) => {
@@ -44,9 +44,10 @@ export class Hands_Class {
             this.canvasCtx.beginPath();
             this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
             this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
-
+            for (let i = 0; i < this.point.ret.length; i++) {
+                this.canvasCtx.strokeRect(this.x_c[i], this.y_c[i], this.w[i], this.h[i]);
+            }
             // results.image, 0, 0, canvasElement.width, canvasElement.height);
-            this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
             if (results.multiHandLandmarks) {
                 for (const landmarks of results.multiHandLandmarks) {
                     let x = landmarks[8].x * this.canvasElement.width;
@@ -74,10 +75,12 @@ export class Hands_Class {
         this.canvasCtx.save();
         this.canvasCtx.beginPath();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
-        this.x_c = this.point.x * this.canvasElement.width / this.point.width;
-        this.y_c = this.point.y * this.canvasElement.height / this.point.height;
-        this.w = this.point.w * this.canvasElement.width / this.point.width;
-        this.h = this.point.h * this.canvasElement.height / this.point.height;
+        for (let i = 0; i < this.point.ret.length; i++) {
+            this.x_c.push(this.point.ret[i].x * this.canvasElement.width / this.point.width);
+            this.y_c.push(this.point.ret[i].y * this.canvasElement.height / this.point.height);
+            this.w.push(this.point.ret[i].w * this.canvasElement.width / this.point.width);
+            this.h.push(this.point.ret[i].h * this.canvasElement.height / this.point.height);
+        }
         this.ready = true;
     }
 
