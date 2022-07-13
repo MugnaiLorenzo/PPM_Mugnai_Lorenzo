@@ -31,10 +31,16 @@ export class Point {
 
         rect = [];
         rect.push(new Rect(580, 444, 72, 72));
+        descr = 'Si sta preparando per difendere il castello di Pontremoli.' + '\n' + 'Come puoi vedere già indossa l’armatura ed è armato di spada, pronto a guidare l’esercito nella battaglia.\n' +
+            '\n' +
+            'Ma c’è dell’altro che devo dirti su di lui.\n' +
+            '\n' +
+            'Guarda attentamente i suoi movimenti.' + '\n' + 'Tra le mani stringe la lettera del Doge.'
         this.src.push(new img("f4.jpg", 1000, 842, rect, descr));
 
         rect = [];
         rect.push(new Rect(0, 728, 69, 404));
+        descr = "L'uomo con la barba sinistra potrebbe essere Tommaso Rangone" + '\n' + 'Si tratta di un grande e famoso mecenate del ‘500.'
         this.src.push(new img("f5.jpg", 1500, 1147, rect, descr));
 
         rect = [];
