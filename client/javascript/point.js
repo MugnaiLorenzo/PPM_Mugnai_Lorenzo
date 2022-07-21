@@ -40,16 +40,21 @@ export class Point {
 
         rect = [];
         rect.push(new Rect(0, 728, 69, 404));
-        descr = "L'uomo con la barba sinistra potrebbe essere Tommaso Rangone" + '\n' + 'Si tratta di un grande e famoso mecenate del ‘500.'
+        descr = "L'uomo con la barba a destra potrebbe essere Tommaso Rangone" + '\n' + 'Si tratta di un grande e famoso mecenate del ‘500.'
         this.src.push(new img("f5.jpg", 1500, 1147, rect, descr));
 
         rect = [];
-        rect.push(new Rect(150, 238, 827, 200));
+        rect.push(new Rect(13, 499, 96, 208));
+        descr = "Sai chi è l’uomo a cui viene offerto il vino?\n" +
+            "È lo sposo. Accanto a lui c’è sua moglie.";
         this.src.push(new img("f6.jpg", 1094, 749, rect, descr));
 
         rect = [];
-        rect.push(new Rect(325, 200, 134, 369));
-        this.src.push(new img("f7.jpg", 1209, 556, rect, '7'));
+        rect.push(new Rect(320, 202, 145, 331));
+        descr = "Esattamente come tutti gli altri funerali a Ornans (e quelli cristiani, in generale), c’è un prete " +
+            "che sta celebrando il rito." + '\n' + "sta indossando un abito scuro per questo rito funebre e sta " +
+            "leggendo alcune frasi tratte dal suo breviario.";
+        this.src.push(new img("f7.jpg", 1209, 556, rect, descr));
         this.length = this.src.length
     }
 
