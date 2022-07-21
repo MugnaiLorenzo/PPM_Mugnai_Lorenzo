@@ -41,7 +41,7 @@
   top: 80px;
 }
 
-#title_cod{
+#title_cod {
   margin-bottom: 30px;
 }
 
@@ -56,6 +56,17 @@
 .descr-container {
   padding-top: 0px;
   padding-bottom: 20px;
+}
+
+.title-descr {
+  font-size: var(--font-size-xl) !important;
+  margin-top: 35px !important;
+  line-height: 1.4;
+}
+
+.testo-descr {
+  width: 830px;
+  margin: 0 auto;
 }
 
 /*PUNTEGGIO*/
@@ -150,6 +161,10 @@
     height: auto;
   }
 
+  .testo-descr {
+    width: 580px;
+  }
+
   .scoreboard {
     width: 530px;
   }
@@ -173,6 +188,10 @@
     height: auto;
   }
 
+  .testo-descr {
+    width: 445px;
+  }
+
   .scoreboard {
     width: 395px;
   }
@@ -188,6 +207,10 @@
 
 @media only screen and (max-width: 415px) {
   .can-img {
+    width: 100%;
+  }
+
+  .testo-descr {
     width: 100%;
   }
 

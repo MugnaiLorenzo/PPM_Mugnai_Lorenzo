@@ -22,6 +22,7 @@ let sock = io();
 let point = new Point()
 let turno_label = document.getElementById("turno");
 let descr_label = document.getElementById("descrizione");
+let title_label = document.getElementById("tit");
 let element;
 let hands = new Hands_Class(sock);
 writeTurn();
@@ -69,6 +70,7 @@ function excute() {
             canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
         }
         descr_label.innerHTML = point.src[point.turno].descrizione;
+        title_label.innerHTML = "<span>" + point.src[point.turno].title + "</span>";
         setTimeout(function () {
             m.style.display = "none";
             mess.style.display = "none";
