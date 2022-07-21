@@ -1,7 +1,6 @@
 export class Hands_Class {
     constructor(sock, camera) {
         this.sock = sock;
-        this.videoElement = document.createElement('video');
         this.img = null;
         this.point = null;
         this.canvasElement = null;
