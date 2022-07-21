@@ -23,7 +23,14 @@ let point = new Point()
 let turno_label = document.getElementById("turno");
 let descr_label = document.getElementById("descrizione");
 let element;
-let hands = new Hands_Class(sock);
+let camera = new Camera(this.videoElement, {
+    onFrame: async () => {
+        await this.hands.send({image: this.videoElement});
+    },
+    width: parseInt(getComputedStyle(e).width),
+    height: parseInt(getComputedStyle(e).height)
+});
+let hands = new Hands_Class(sock, camera);
 writeTurn();
 
 const writeEvent = (text) => {
