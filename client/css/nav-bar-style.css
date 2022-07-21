@@ -2,7 +2,7 @@
   width: 100%;
   position: fixed;
   z-index: 10;
-  background-color: var(--black);
+  background-color: var(--white);
   font-family: var(--font-family-franklin);
   font-size: var(--font-size-xxxs);
   height: 80px;
@@ -37,7 +37,7 @@
 }
 
 #menu-secondary a {
-  color: var(--white);
+  color: var(--black);
   text-decoration: none;
   font-size: var(--font-size-medium);
   font-family: var(--font-family-franklin);
@@ -47,8 +47,16 @@
   padding-right: 50px;
 }
 
+#logo {
+  content: url("../image/logo3.png");
+}
+
 @media only screen and (max-width: 600px) {
   #menu-secondary {
     padding-left: 20%;
+  }
+
+  #logo {
+    content: url("../image/logo2.png");
   }
 }

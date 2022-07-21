@@ -12,6 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0">
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link href="fontawesome/css/all.css" rel="stylesheet">
 	<!-- SCRIPT -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 					integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -27,10 +28,18 @@
 	</script>
 </head>
 <body onload="start()">
+<div id="mess3" class="message">
+</div>
+<div id="mess2">
+	<input class="label input_label" onchange="control2()" id="cod" autocomplete="off" title="codice"
+				 placeholder="Codice partita"/>
+	<input class="button input_button" type="button" onclick="starPrivate()" id="giocaPrivato_1"
+				 value="Unisciti"/>
+</div>
 <nav class="navbar">
 	<div class="container-nav-bar">
 		<ul id="menu-primary">
-			<img src="image/logo.png" class="image">
+			<img id="logo" class="image">
 		</ul>
 		<ul id="menu-secondary">
 			<li><a href="./index.html" title="About">Home</a></li>
@@ -40,24 +49,43 @@
 	</div>
 </nav>
 <div class="main">
-	<div class="title">Inizia subito a giocare</div>
-	<div class="subtitle">Effettua l'accesso e potrai iniziare a giocare</div>
-	<div class="accesso">
-		<form id="form-accesso">
-			<input class="label" onchange="control()" id="username" autocomplete="off" title="username"
-						 placeholder="Nome Utente"/>
-			<input class="button" type="button" onclick="starPublic()"
-						 value="Gioca" id="gioca"/>
-			<input class="label" onchange="control()" id="cod" autocomplete="off" title="username"
-						 placeholder="Codice partita"/>
-			<input class="button" type="button" onclick="starPrivate()" id="giocaPrivato" value="Unisciti"/>
-		</form>
+	<div class="contenuto">
+		<div class="title">Inizia <span>subito</span> a <span>giocare</span></div>
+		<div class="subtitle">Effettua l'accesso e potrai iniziare a giocare</div>
+		<div class="accesso">
+			<form id="form-accesso">
+				<div class="button-container">
+					<div class="info-icon"></div>
+					<input class="label input_label" onchange="control()" id="username" autocomplete="off" title="username"
+								 placeholder="Nome Utente"/>
+					<div class="info-icon">
+					</div>
+				</div>
+				<div class="button-container">
+					<div class="info-icon"></div>
+					<input class="button input_button" type="button" onclick="starPublic()"
+								 value="Unisciti ad una partita pubblica" id="gioca"/>
+					<div class="info-icon" id="info1">
+						<div class="fa-solid fa-circle-info tooltip">
+							<span
+									class="tooltiptext">Sarà l'applicazione ha trovarti l'avversario</span>
+						</div>
+					</div>
+				</div>
+				<div class="button-container">
+					<div class="info-icon"></div>
+					<input class="button input_button" type="button" onclick="controlPrivate()" id="giocaPrivato"
+								 value="Unisciti ad una partita privata"/>
+					<div class="info-icon">
+						<div class="fa-solid fa-circle-info tooltip" id="info2">
+							<span class="tooltiptext">Crea un codice personalizzato per giocare con i tuoi amici</span>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<script src="javascript/javascript.js"></script>
 	</div>
-	<script src="javascript/javascript.js"></script>
-	<!--	<button onclick="starPublic()">Play</button>-->
-	<!--	<br>-->
-	<!--	<input id="codice" autocomplete="off"/>-->
-	<!--	<button onclick="starPrivate()">Play</button>-->
 </div>
 </body>
 </html>

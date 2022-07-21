@@ -1,5 +1,3 @@
-// import {Obj_class} from "./Obj_class.js";
-// import {Face_class} from "./Face_class.js";
 import {Point} from "./point.js";
 import {Hands_Class} from "./hands_Class.js";
 
@@ -8,7 +6,7 @@ export function start() {
     cod = sessionStorage.getItem("cod");
     document.getElementById("name1").innerHTML = user;
     if (cod === "") {
-        document.getElementById("title_cod").innerHTML = "Partita Publica ";
+        document.getElementById("title_cod").innerHTML = "Partita <span>Publica</span>";
         conPublic();
     } else {
         document.getElementById("title_cod").innerHTML = "Codice: " + cod;

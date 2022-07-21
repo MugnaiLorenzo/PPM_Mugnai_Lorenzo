@@ -14,8 +14,10 @@
   --gray: #F0F0F0;
   --dark-gray: #777777;
   --darkest-gray: #2A2A2A;
-  --red-board: red;
-  --blue-board: blue;
+  --red-background: #f06a63;
+  --red-background-dis: #c81c12 ;
+  --red-board: #f06a63;
+  --blue-board: #63e9f0;
 
   /* FONT */
   --font-family-franklin: 'Libre Franklin', Helvetica, sans-serif;

@@ -31,6 +31,20 @@
   font-family: var(--font-family-franklin);
 }
 
+.main-gioca {
+  min-width: 95%;
+  max-width: 95%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+  top: 80px;
+}
+
+#title_cod{
+  margin-bottom: 30px;
+}
+
 /* TITLE */
 .info-container {
   display: flex;
@@ -39,8 +53,8 @@
 }
 
 /*DESCRIZIONE*/
-.descr-container{
-  padding-top: 20px;
+.descr-container {
+  padding-top: 0px;
   padding-bottom: 20px;
 }
 
@@ -62,7 +76,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--gray-light);
+  background-color: var(--white);
   font-size: var(--font-size-medium-variant);
 }
 
@@ -88,7 +102,7 @@
 
 .name-board:nth-child(2) {
   margin-left: -7.5%;
-  background-color: var(--red-board);
+  background-color: var(--blue-board);
   padding-right: 5%;
   z-index: 4;
 }
@@ -96,7 +110,7 @@
 .name-board:nth-child(4) {
   margin-left: -7.5%;
   padding-left: 5%;
-  background-color: var(--blue-board);
+  background-color: var(--red-board);
   z-index: 4;
 }
 
@@ -111,7 +125,7 @@
   justify-content: center;
   font-size: var(--font-size-medium);
   margin-left: -7.5%;
-  background-color: var(--gray-light);
+  background-color: var(--white);
 }
 
 /*GIOCA*/
