@@ -43,9 +43,9 @@ export class Hands_Class {
             this.canvasCtx.beginPath();
             this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
             this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
-            for (let i = 0; i < this.point.ret.length; i++) {
-                this.canvasCtx.strokeRect(this.x_c[i], this.y_c[i], this.w[i], this.h[i]);
-            }
+            // for (let i = 0; i < this.point.ret.length; i++) {
+            //     this.canvasCtx.strokeRect(this.x_c[i], this.y_c[i], this.w[i], this.h[i]);
+            // }
             if (results.multiHandLandmarks) {
                 for (const landmarks of results.multiHandLandmarks) {
                     let x = landmarks[8].x * this.canvasElement.width;
