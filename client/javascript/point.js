@@ -14,7 +14,7 @@ export class Point {
 
         rect = [];
         rect.push(new Rect(1195, 238, 343, 235));
-        descr = 'Lui è Zefiro. Ed è la personificazione del vento dell’ovest. Nella mitologia greca è il dio ' +
+        descr = 'Lui è Zefiro, ed è la personificazione del vento dell’ovest. Nella mitologia greca è il dio ' +
             'del vento occidentale. Viene considerato un vento molto leggero ed apprezzato dalle persone, poiché ' +
             'con il suo “soffio” porta frutti sulla terra. Non c’è personaggio più indicato per il ruolo ' +
             'di messaggero della primavera.';
@@ -53,8 +53,7 @@ export class Point {
         rect = [];
         rect.push(new Rect(320, 202, 145, 331));
         descr = "Esattamente come tutti gli altri funerali a Ornans (e quelli cristiani, in generale), c’è un prete " +
-            "che sta celebrando il rito." + '\n' + "sta indossando un abito scuro per questo rito funebre e sta " +
-            "leggendo alcune frasi tratte dal suo breviario.";
+            "che sta celebrando il rito. Indossa un abito scuro e sta leggendo alcune frasi tratte dal suo breviario.";
         title = "Funerale a Ornans di Gustave Courbet"
         this.src.push(new img("f7.jpg", 1209, 556, rect, descr, title));
         this.length = this.src.length
