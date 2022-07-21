@@ -56,8 +56,8 @@ class RpsGame {
     }
 
     _sendWinMessage(winner, loser) {
-        winner.emit('message', 'You won!');
-        loser.emit('message', 'You lost.');
+        winner.emit('message', 'Hai vinto il round!');
+        loser.emit('message', 'Hai perso il round!');
     }
 }
 

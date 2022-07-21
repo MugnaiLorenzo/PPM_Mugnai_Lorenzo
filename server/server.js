@@ -22,7 +22,7 @@ io.on('connection', (sock) => {
         } else {
             waitingPlayerPrivate[cod] = sock;
             userNamePrivate[cod] = name;
-            waitingPlayerPrivate[cod].emit('message', 'Waiting for an opponent');
+            waitingPlayerPrivate[cod].emit('message', 'Aspettando un avversario');
         }
     });
 
@@ -34,7 +34,7 @@ io.on('connection', (sock) => {
         } else {
             waitingPlayerPublic = sock;
             userNamePublic = name;
-            waitingPlayerPublic.emit('message', 'Waiting for an opponent');
+            waitingPlayerPublic.emit('message', 'Aspettando un avversario');
         }
     });
 
