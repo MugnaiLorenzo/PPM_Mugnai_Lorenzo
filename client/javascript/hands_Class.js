@@ -35,7 +35,6 @@ export class Hands_Class {
             width: parseInt(getComputedStyle(e).width),
             height: parseInt(getComputedStyle(e).height)
         });
-        this.camera.start();
     }
 
     onResults(results) {
@@ -91,6 +90,7 @@ export class Hands_Class {
             this.h.push(this.point.ret[i].h * this.canvasElement.height / this.point.height);
         }
         this.ready = true;
+        this.camera.start();
     }
 
 }
