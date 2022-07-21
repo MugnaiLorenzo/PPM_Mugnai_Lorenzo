@@ -70,9 +70,10 @@ export class Hands_Class {
     }
 
     start(img, canvas, ctx) {
-        console.log(img)
-        console.log(canvas)
-        console.log(ctx)
+        this.x_c = [];
+        this.y_c = [];
+        this.w = [];
+        this.h = [];
         this.canvasElement = canvas;
         this.canvasCtx = ctx;
         this.ready = false;
