@@ -22,12 +22,14 @@ export class Point {
         this.src.push(new img("f2.jpg", 1587, 1057, rect, descr, title));
 
         rect = [];
-        rect.push(new Rect(289, 651, 194, 166));
-        rect.push(new Rect(452, 511, 100, 302));
-        rect.push(new Rect(356, 563, 100, 145));
-        descr = 'I Re Magi.'
-        title = 'Adorazione dei Magi di Gentile da Fabriano'
-        this.src.push(new img("f3.jpg", 945, 1000, rect, descr, title));
+        // rect.push(new Rect(289, 651, 194, 166));
+        // rect.push(new Rect(452, 511, 100, 302));
+        // rect.push(new Rect(356, 563, 100, 145));
+        rect.push(new Rect(452, 71, 100, 265));
+        descr = 'La vedi la donna che sta in alto al centro? Quella è Afrodite (o Venere), la dea della bellezza e ' +
+            'protagonista di altri immensi capolavori, come la scena della nascita di Venere del Botticelli.';
+        title = 'Parnaso di Andrea Mantegna'
+        this.src.push(new img("f8.jpg", 1034, 853, rect, descr, title));
 
         rect = [];
         rect.push(new Rect(580, 444, 72, 72));
