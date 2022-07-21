@@ -43,14 +43,12 @@ const addFinishTurnListeners = () => {
     sock.on('finishTurn', () => {
         document.getElementById("output").removeChild(element);
         point.setPoint();
-        console.log(point.turno)
         writeTurn();
         excute();
     })
 }
 
 function excute() {
-    console.log("BB")
     element = document.createElement("canvas");
     element.classList.add("can-img");
     element.id = "can_out";
@@ -73,7 +71,6 @@ function excute() {
         setTimeout(function () {
             m.style.display = "none";
             mess.style.display = "none";
-            console.log(point.turno)
             hands.start(point.src[point.turno], canvasElement, canvasCtx);
         }, 2000);
     }
