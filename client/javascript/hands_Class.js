@@ -1,6 +1,7 @@
 export class Hands_Class {
-    constructor(sock, camera) {
+    constructor(sock) {
         this.sock = sock;
+        this.videoElement = document.createElement('video');
         this.img = null;
         this.point = null;
         this.canvasElement = null;
@@ -27,7 +28,13 @@ export class Hands_Class {
         let e = document.createElement("canvas");
         e.classList.add("can-img");
         this.hands.onResults(this.onResults.bind(this));
-        this.camera = camera;
+        this.camera = new Camera(this.videoElement, {
+            onFrame: async () => {
+                await this.hands.send({image: this.videoElement});
+            },
+            width: parseInt(getComputedStyle(e).width),
+            height: parseInt(getComputedStyle(e).height)
+        });
         this.camera.start();
     }
 

@@ -23,17 +23,7 @@ let point = new Point()
 let turno_label = document.getElementById("turno");
 let descr_label = document.getElementById("descrizione");
 let element;
-let videoElement = document.createElement('video');
-let e = document.createElement("canvas");
-e.classList.add("can-img");
-let camera = new Camera(videoElement, {
-    onFrame: async () => {
-        await this.hands.send({image: videoElement});
-    },
-    width: parseInt(getComputedStyle(e).width),
-    height: parseInt(getComputedStyle(e).height)
-});
-let hands = new Hands_Class(sock, camera);
+let hands = new Hands_Class(sock);
 writeTurn();
 
 const writeEvent = (text) => {
@@ -53,6 +43,7 @@ const addFinishTurnListeners = () => {
     sock.on('finishTurn', () => {
         document.getElementById("output").removeChild(element);
         point.setPoint();
+        hands.camera.stop();
         writeTurn();
         excute();
     })
