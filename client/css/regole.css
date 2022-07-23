@@ -78,36 +78,19 @@
     width: 100%;
   }
 
-  .first-color:first-child{
-    background-color: #f04440;
+  .first-color-1 {
+    background-color: #f04440 !important;
   }
 
-  .first-color:last-child{
-    background-color: #c92941;
+  .second-color-1 {
+    background-color: #c92941 !important;
   }
 
-  .second-color:first-child{
-    background-color: #831236;
+  .third-color-1 {
+    background-color: #831236 !important;
   }
 
-  .second-color:last-child{
-    background-color: #510a32;
+  .fourth-color-1 {
+    background-color: #510a32 !important;
   }
-
-  .third-color:first-child{
-    background-color: #f04440;
-  }
-
-  .third-color:last-child{
-    background-color: #c92941;
-  }
-
-  .fourth-color:first-child{
-    background-color: #831236;
-  }
-
-  .fourth-color:last-child{
-    background-color: #510a32;
-  }
-
 }
