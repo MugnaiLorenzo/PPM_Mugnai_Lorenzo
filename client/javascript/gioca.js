@@ -6,7 +6,7 @@ export function start() {
     cod = sessionStorage.getItem("cod");
     document.getElementById("name1").innerHTML = user;
     if (cod === "") {
-        document.getElementById("title_cod").innerHTML = "Partita <span>Publica</span>";
+        document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
         conPublic();
     } else {
         document.getElementById("title_cod").innerHTML = "Codice: " + cod;
