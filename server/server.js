@@ -4,6 +4,7 @@ const socketio = require('socket.io');
 const game = require('./game');
 const app = express();
 const clientPath = `${__dirname}/../client`;
+const fs = require('fs');
 app.use(express.static(clientPath));
 let PORT = process.env.PORT || 3000;
 const server = http.createServer(app)
@@ -40,6 +41,12 @@ io.on('connection', (sock) => {
 
     sock.on('message', (text) => {
         io.emit('message', text);
+    });
+
+    sock.on('readJson', () => {
+        let rawdata = fs.readFileSync('client/quadri.json');
+        let quadri = JSON.parse(rawdata);
+        sock.emit('getData', quadri);
     });
 
     sock.on("disconnect", () => {

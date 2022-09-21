@@ -1,0 +1,37 @@
+export function start() {
+    let sock = io();
+    sock.emit('readJson');
+    sock.on('getData', (data) => {
+        let quadri = data.quadri;
+        for (let i = 0; i < quadri.length; i++) {
+            let elem = document.createElement("img");
+            elem.setAttribute("src", './image/opere/' + quadri[i].src);
+            elem.setAttribute("alt", quadri[i].title);
+            document.getElementById("placehere").appendChild(elem);
+            let btn = document.createElement("button");
+            btn.setAttribute("class", "btn_class");
+            let i_elem = document.createElement("i");
+            i_elem.setAttribute("class", "fa-sharp fa-solid fa-xmark");
+            btn.appendChild(i_elem);
+            btn.onclick = function () {
+                if (confirm('Sicuro di volere eliminare questa immagine?')) {
+                    // Save it!
+                    alert('Eliminata');
+                }
+            };
+            document.getElementById("placehere").appendChild(btn);
+        }
+        // let plus = document.createElement("img");
+        // plus.setAttribute("src", './image/plus.png');
+        // document.getElementById("placehere").appendChild(plus);
+        let btn = document.createElement("button");
+        btn.setAttribute("class", "btn_add");
+        let i_elem = document.createElement("i");
+        i_elem.setAttribute("class", "fa-solid fa-plus");
+        btn.appendChild(i_elem);
+        btn.onclick = function () {
+            alert('Aggiunta');
+        };
+        document.getElementById("placehere").appendChild(btn);
+    });
+}

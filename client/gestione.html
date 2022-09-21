@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Title -->
+	<title>PPM Mugnai Lorenzo</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="Description" content="Trova dettaglio">
+	<meta name="author" content="Lorenzo Mugnai">
+	<meta name="Keywords" content="Gioco Trova dettaglio in opera">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0">
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link href="fontawesome/css/all.css" rel="stylesheet">
+	<link rel="icon" href="image/logo2.png">
+	<!-- SCRIPT -->
+	<script type="text/javascript">
+      const module = {};
+	</script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="module">
+      import {start} from "./javascript/gestione.js";
+      module.start = start;
+	</script>
+</head>
+<body onload="module.start()">
+<nav class="navbar">
+	<div class="container-nav-bar">
+		<ul id="menu-primary">
+			<img id="logo" class="image">
+		</ul>
+		<ul id="menu-secondary">
+			<li><a href="./index.html" title="Home">Home</a></li>
+			<li><a href="./regole.html" title="Regolamento">Regolamento</a></li>
+			<li><a href="./gestione.html" title="Gestione">Gestione</a></li>
+		</ul>
+		<a href="./#" class="toggle-menu"><span></span></a>
+	</div>
+</nav>
+<div class="main">
+	<div class="contenuto">
+		<div class="title">Gestione <span>quadri</span></div>
+		<div id="placehere">
+		</div>
+
+	</div>
+</div>
+</body>
+</html>

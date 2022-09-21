@@ -1,0 +1,38 @@
+#placehere {
+  padding-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#placehere img {
+  position: relative;
+  width: 30%;
+  margin: 5% 1.665% 0 1.665%;
+}
+
+.btn_class {
+  position: relative;
+  width: 1px;
+  height: 1px;
+  margin-top: 5%;
+  margin-left: -5%;
+  margin-right: 3.3%;
+  background: none;
+  border: none;
+}
+
+.btn_class i {
+  font-size: 50px;
+  color: darkred;
+}
+
+.btn_add {
+  width: 30%;
+  margin: 5% 1.665% 0 1.665%;
+  background: none;
+  /*border: none;*/
+}
+
+.btn_add i {
+  font-size: 50px;
+}

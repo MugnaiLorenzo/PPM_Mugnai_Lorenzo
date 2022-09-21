@@ -1,0 +1,81 @@
+{
+  "quadri": [
+    {
+      "src": "f1.jpg",
+      "rect_x": 277,
+      "rect_y": 490,
+      "rect_w": 248,
+      "rect_h": 104,
+      "width": 1000,
+      "heigth": 802,
+      "descr": "Può essere un contadino o un lavoratore che cerca di farsi spazio tra le macerie per raggiungere, quasi ipnotizzato, la protagonista.",
+      "title": "La Libertà che guida il popolo di Eugène"
+    },
+    {
+      "src": "f2.jpg",
+      "rect_x": 1195,
+      "rect_y": 238,
+      "rect_w": 343,
+      "rect_h": 235,
+      "width": 1587,
+      "heigth": 1057,
+      "descr": "Lui è Zefiro, ed è la personificazione del vento dell’ovest. Nella mitologia greca è il dio del vento occidentale.Viene considerato un vento molto leggero ed apprezzato dalle persone, poiché con il suo “soffio” porta frutti sulla terra. Non c’è personaggio più indicato per il ruolo di messaggero della primavera.",
+      "title": "Primavera di Sandro Botticelli"
+    },
+    {
+      "src": "f8.jpg",
+      "rect_x": 452,
+      "rect_y": 71,
+      "rect_w": 100,
+      "rect_h": 265,
+      "width": 1034,
+      "heigth": 853,
+      "descr": "La vedi la donna che sta in alto al centro? Quella è Afrodite (o Venere), la dea della bellezza e protagonista di altri immensi capolavori, come la scena della nascita di Venere del Botticelli.",
+      "title": "Parnaso di Andrea Mantegna"
+    },
+    {
+      "src": "f4.jpg",
+      "rect_x": 580,
+      "rect_y": 444,
+      "rect_w": 72,
+      "rect_h": 72,
+      "width": 1000,
+      "heigth": 842,
+      "descr": "Si sta preparando per difendere il castello di Pontremoli. Come puoi vedere già indossa l’armatura ed è armato di spada, pronto a guidare l’esercito nella battaglia. Tra le mani stringe la lettera del Doge.",
+      "title": "Pietro Rossi prigioniero degli Scaligeri"
+    },
+    {
+      "src": "f5.jpg",
+      "rect_x": 0,
+      "rect_y": 728,
+      "rect_w": 69,
+      "rect_h": 404,
+      "width": 1500,
+      "heigth": 1147,
+      "descr": "L'uomo con la barba a destra potrebbe essere Tommaso Rangone. Si tratta di un grande e famoso mecenate del ‘500.",
+      "title": "Miracolo dello schiavo del Tintoretto"
+    },
+    {
+      "src": "f6.jpg",
+      "rect_x": 13,
+      "rect_y": 499,
+      "rect_w": 96,
+      "rect_h": 208,
+      "width": 1094,
+      "heigth": 749,
+      "descr": "Sai chi è l’uomo a cui viene offerto il vino? È lo sposo. Accanto a lui c’è sua moglie.",
+      "title": "Le nozze di Cana di Paolo Veronese"
+    },
+    {
+      "src": "f7.jpg",
+      "rect_x": 320,
+      "rect_y": 202,
+      "rect_w": 145,
+      "rect_h": 331,
+      "width": 1209,
+      "heigth": 556,
+      "descr": "Esattamente come tutti gli altri funerali a Ornans (e quelli cristiani, in generale), c’è un prete che sta celebrando il rito. Indossa un abito scuro e sta leggendo alcune frasi tratte dal suo breviario.",
+      "title": "Funerale a Ornans di Gustave Courbet"
+    }
+  ]
+}
