@@ -30,7 +30,7 @@ export function start() {
         i_elem.setAttribute("class", "fa-solid fa-plus");
         btn.appendChild(i_elem);
         btn.onclick = function () {
-            alert('Aggiunta');
+            window.location.href = './aggiungi.html'
         };
         document.getElementById("placehere").appendChild(btn);
     });

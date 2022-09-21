@@ -1,5 +1,6 @@
 #placehere {
   padding-top: 50px;
+  padding-bottom: 50px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -7,7 +8,7 @@
 #placehere img {
   position: relative;
   width: 30%;
-  margin: 5% 1.665% 0 1.665%;
+  margin: 5% 1.665% 0% 1.665%;
 }
 
 .btn_class {

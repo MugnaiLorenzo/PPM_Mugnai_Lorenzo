@@ -4,6 +4,7 @@
 @import url('gioca.css');
 @import url('regole.css');
 @import url('gestione.css');
+@import url('aggiungi.css');
 
 :root {
   /* COLOR */
@@ -17,7 +18,7 @@
   --dark-gray: #777777;
   --darkest-gray: #2A2A2A;
   --red-background: #f06a63;
-  --red-background-dis: #c81c12 ;
+  --red-background-dis: #c81c12;
   --red-board: #f06a63;
   --blue-board: #63e9f0;
 

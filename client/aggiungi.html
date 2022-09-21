@@ -15,17 +15,10 @@
 	<link href="fontawesome/css/all.css" rel="stylesheet">
 	<link rel="icon" href="image/logo2.png">
 	<!-- SCRIPT -->
-	<script type="text/javascript">
-      const module = {};
-	</script>
 	<script src="/socket.io/socket.io.js"></script>
-	<script type="module">
-      import {start} from "./javascript/gestione.js";
-
-      module.start = start;
-	</script>
+	<script src="javascript/aggiungi.js"></script>
 </head>
-<body onload="module.start()">
+<body>
 <nav class="navbar">
 	<div class="container-nav-bar">
 		<ul id="menu-primary">
@@ -41,10 +34,19 @@
 </nav>
 <div class="main">
 	<div class="contenuto">
-		<div class="title">Gestione <span>quadri</span></div>
-		<div id="placehere">
-		</div>
+		<div class="title">Aggiungi <span>quadro</span></div>
+		<form onsubmit="aggiungi();return false" class="form-aggiungi" id="my-form">
+			<label><b>Titolo</b></label>
+			<input type="text" placeholder="Inserisci titolo" required>
+			<label><b>Descrizione</b></label>
+			<input type="text" placeholder="Inserisci descrizione" required>
+			<label><b>Inserisci Immagine</b></label>
+			<input type="file" id="picture1" accept="image/png, image/gif, image/jpeg" required/>
+			<input type="submit">
+		</form>
+		<div id="place"></div>
 	</div>
 </div>
+
 </body>
 </html>

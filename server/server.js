@@ -49,6 +49,10 @@ io.on('connection', (sock) => {
         sock.emit('getData', quadri);
     });
 
+    sock.on('addJson', (data) => {
+        console.log(data);
+    });
+
     sock.on("disconnect", () => {
         if (sock === waitingPlayerPublic) {
             waitingPlayerPublic = null;
