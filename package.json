@@ -16,6 +16,7 @@
   "author": "Mugnai Lorenzo",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1221.0",
     "canvas": "^2.9.3",
     "express": "^4.18.1",
     "socket.io": "^2.5.0",

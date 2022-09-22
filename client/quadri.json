@@ -1,7 +1,7 @@
 {
   "quadri": [
     {
-      "src": "f1.jpg",
+      "src": "./image/opere/f1.jpg",
       "rect_x": 277,
       "rect_y": 490,
       "rect_w": 248,
@@ -12,7 +12,7 @@
       "title": "La Libertà che guida il popolo di Eugène"
     },
     {
-      "src": "f2.jpg",
+      "src": "./image/opere/f2.jpg",
       "rect_x": 1195,
       "rect_y": 238,
       "rect_w": 343,
@@ -23,7 +23,7 @@
       "title": "Primavera di Sandro Botticelli"
     },
     {
-      "src": "f8.jpg",
+      "src": "./image/opere/f8.jpg",
       "rect_x": 452,
       "rect_y": 71,
       "rect_w": 100,
@@ -34,7 +34,7 @@
       "title": "Parnaso di Andrea Mantegna"
     },
     {
-      "src": "f4.jpg",
+      "src": "./image/opere/f4.jpg",
       "rect_x": 580,
       "rect_y": 444,
       "rect_w": 72,
@@ -45,7 +45,7 @@
       "title": "Pietro Rossi prigioniero degli Scaligeri"
     },
     {
-      "src": "f5.jpg",
+      "src": "./image/opere/f5.jpg",
       "rect_x": 0,
       "rect_y": 728,
       "rect_w": 69,
@@ -56,7 +56,7 @@
       "title": "Miracolo dello schiavo del Tintoretto"
     },
     {
-      "src": "f6.jpg",
+      "src": "./image/opere/f6.jpg",
       "rect_x": 13,
       "rect_y": 499,
       "rect_w": 96,
@@ -67,7 +67,7 @@
       "title": "Le nozze di Cana di Paolo Veronese"
     },
     {
-      "src": "f7.jpg",
+      "src": "./image/opere/f7.jpg",
       "rect_x": 320,
       "rect_y": 202,
       "rect_w": 145,

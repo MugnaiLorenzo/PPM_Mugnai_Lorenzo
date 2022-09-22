@@ -14,6 +14,21 @@ let userNamePrivate = {};
 let waitingPlayerPublic = null;
 let userNamePublic = null;
 
+const AWS = require('aws-sdk');
+const ID = 'AKIAYWXBX2UPAF7WKRG3';
+const SECRET = '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';
+const BUCKET_NAME = 'ppm-mugnai-lorenzo';
+const s3 = new AWS.S3({
+    accessKeyId: ID,
+    secretAccessKey: SECRET
+});
+const params = {
+    Bucket: BUCKET_NAME,
+    CreateBucketConfiguration: {
+        LocationConstraint: "eu-central-1"
+    }
+};
+
 io.on('connection', (sock) => {
     sock.on('private', (cod, name, length) => {
         if (waitingPlayerPrivate[cod] != null) {
@@ -47,6 +62,25 @@ io.on('connection', (sock) => {
         let rawdata = fs.readFileSync('client/quadri.json');
         let quadri = JSON.parse(rawdata);
         sock.emit('getData', quadri);
+    });
+
+    sock.on('uploadFile', (fReader, name) => {
+        const base64Data = new Buffer.from(fReader.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+        const myBuffer = new Buffer(fReader, 'base64');
+
+        console.log(myBuffer)
+        const params = {
+            Bucket: BUCKET_NAME,
+            Key: name,
+            Body: base64Data,
+            ContentEncoding: 'base64'
+        };
+        s3.upload(params, function (err, data) {
+            if (err) {
+                throw err;
+            }
+            console.log(`File uploaded successfully. ${data.Location}`);
+        });
     });
 
     sock.on('addJson', (data) => {

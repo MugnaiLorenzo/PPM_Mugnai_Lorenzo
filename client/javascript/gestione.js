@@ -5,7 +5,7 @@ export function start() {
         let quadri = data.quadri;
         for (let i = 0; i < quadri.length; i++) {
             let elem = document.createElement("img");
-            elem.setAttribute("src", './image/opere/' + quadri[i].src);
+            elem.setAttribute("src", quadri[i].src);
             elem.setAttribute("alt", quadri[i].title);
             document.getElementById("placehere").appendChild(elem);
             let btn = document.createElement("button");

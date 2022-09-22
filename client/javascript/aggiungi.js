@@ -1,16 +1,21 @@
 function aggiungi() {
+    let sock = io();
     const inputs = document.getElementById("my-form").elements;
     let titolo = inputs[0].value;
     let descrizione = inputs[1].value;
-    let image = inputs[2].files[0];
-    // console.log(titolo, descrizione, image);
-    let data = inputs[2].files[0];
-    let entry = inputs[2].files[0];
-    // formData.append("photo", image);
-    // fetch('E:/WebStormProject/Sito PPM/ppm-mugnai-lorenzo/image/opere/' + encodeURIComponent(entry.name), {
-    fetch('./image/opere/' + encodeURIComponent(entry.name), {method: 'PUT', body: data});
-    alert('your file has been uploaded');
-    // let elem = document.createElement("img");
-    // elem.setAttribute("src", image);
-    // document.getElementById("place").appendChild(elem);
+    let input = document.getElementById("picture");
+    let url = "C:/Users/Lorenzo/Downloads/cat.jpg";
+    let fReader = new FileReader();
+    fReader.readAsDataURL(input.files[0]);
+    fReader.onloadend = async function (event) {
+        sock.emit('readJson');
+        let name
+        sock.on('getData', (data) => {
+            console.log(data);
+            name = "f" + (data.quadri.length + 1).toString() + "." + inputs[2].files[0].type.split("/")[1];
+
+            console.log(name)
+            // sock.emit('uploadFile', fReader.result, name);
+        });
+    }
 }
