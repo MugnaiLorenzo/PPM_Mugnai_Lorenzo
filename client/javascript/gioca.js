@@ -1,19 +1,7 @@
 import {Point} from "./point.js";
 import {Hands_Class} from "./hands_Class.js";
 
-export function start() {
-    user = sessionStorage.getItem("user");
-    cod = sessionStorage.getItem("cod");
-    document.getElementById("name1").innerHTML = user;
-    if (cod === "") {
-        document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
-        conPublic();
-    } else {
-        document.getElementById("title_cod").innerHTML = "Codice: " + cod;
-        conPrivate();
-    }
-}
-
+let quadri;
 let m = document.getElementById("mess1");
 let mess = document.getElementById("mess");
 let user;
@@ -27,10 +15,27 @@ let element;
 let hands = new Hands_Class(sock);
 writeTurn();
 
+
+export function start() {
+    user = sessionStorage.getItem("user");
+    cod = sessionStorage.getItem("cod");
+    document.getElementById("name1").innerHTML = user;
+    if (cod === "") {
+        document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
+        conPublic();
+    } else {
+        document.getElementById("title_cod").innerHTML = "Codice: " + cod;
+        conPrivate();
+    }
+}
+
 const writeEvent = (text) => {
     m.style.display = "flex"
     mess.style.display = "flex"
     mess.innerHTML = text;
+    sock.on('getData', (data) => {
+        quadri = data.quadri;
+    });
 };
 
 const addWinListeners = () => {
@@ -56,26 +61,30 @@ function excute() {
     element.id = "can_out";
     document.getElementById("output").appendChild(element);
     if (point.turno < point.length) {
-        let canvasElement = document.getElementById("can_out");
-        let canvasCtx = canvasElement.getContext('2d');
-        let img = new Image();
-        img.src = "./image/opere/" + point.src[point.turno].src;
-        canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
-        canvasElement.height = (parseInt(getComputedStyle(canvasElement).width) / point.src[point.turno].width) * point.src[point.turno].height;
-        canvasCtx.save();
-        canvasCtx.beginPath();
-        canvasCtx.translate(canvasElement.width, 0);
-        canvasCtx.scale(-1, 1);
-        img.onload = function () {
-            canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
-        }
-        descr_label.innerHTML = point.src[point.turno].descrizione;
-        title_label.innerHTML = "<span>" + point.src[point.turno].title + "</span>";
-        setTimeout(function () {
-            m.style.display = "none";
-            mess.style.display = "none";
-            hands.start(point.src[point.turno], canvasElement, canvasCtx);
-        }, 2000);
+        sock.emit('getImage', quadri[point.turno].src, point.turno);
+        sock.on('img' + point.turno.toString(), (img_src) => {
+            let img = document.createElement("img");
+            img.setAttribute("src", img_src);
+            img.setAttribute("alt", quadri[point.turno].title);
+            let canvasElement = document.getElementById("can_out");
+            let canvasCtx = canvasElement.getContext('2d');
+            canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
+            canvasElement.height = (parseInt(getComputedStyle(canvasElement).width) / point.src[point.turno].width) * point.src[point.turno].height;
+            canvasCtx.save();
+            canvasCtx.beginPath();
+            canvasCtx.translate(canvasElement.width, 0);
+            canvasCtx.scale(-1, 1);
+            img.onload = function () {
+                canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
+            }
+            descr_label.innerHTML = point.src[point.turno].descrizione;
+            title_label.innerHTML = "<span>" + point.src[point.turno].title + "</span>";
+            setTimeout(function () {
+                m.style.display = "none";
+                mess.style.display = "none";
+                hands.start(point.src[point.turno], canvasElement, canvasCtx);
+            }, 2000);
+        });
     }
 }
 
