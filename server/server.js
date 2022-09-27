@@ -64,28 +64,70 @@ io.on('connection', (sock) => {
         sock.emit('getData', quadri);
     });
 
-    sock.on('uploadFile', (fReader, name) => {
+    sock.on('uploadFile', (fReader, name, data, src, rect_x, rect_y, rect_w, rect_h, width, height, descr, title) => {
         const base64Data = new Buffer.from(fReader.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-        const myBuffer = new Buffer(fReader, 'base64');
-
-        console.log(myBuffer)
         const params = {
             Bucket: BUCKET_NAME,
             Key: name,
             Body: base64Data,
             ContentEncoding: 'base64'
         };
-        s3.upload(params, function (err, data) {
+        s3.upload(params, function (err, data1) {
             if (err) {
                 throw err;
+            } else {
+                data.quadri.push({src, rect_x, rect_y, rect_w, rect_h, width, height, descr, title});
+                let json = JSON.stringify(data);
+                fs.writeFile('client/quadri.json', json, 'utf8', function (err) {
+                    if (err) {
+                        throw err;
+                    } else {
+                        sock.emit('changePage');
+                    }
+                });
             }
-            console.log(`File uploaded successfully. ${data.Location}`);
         });
     });
 
-    sock.on('addJson', (data) => {
-        console.log(data);
-    });
+    sock.on('removeJson', (index) => {
+        fs.readFile('client/quadri.json', function readFileCallback(err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                let obj = JSON.parse(data);
+                console.log(obj.quadri[index].src)
+                const params = {
+                    Bucket: BUCKET_NAME,
+                    Key: obj.quadri[index].src
+                }
+                try {
+                    s3.deleteObject(params, function (err, data1) {
+                        if (err) console.log(err, err.stack);
+                        else console.log('delete', data1);
+                    });
+                    console.log("file deleted Successfully")
+                } catch (err) {
+                    console.log("ERROR in file Deleting : " + JSON.stringify(err))
+                }
+                obj.quadri.splice(index, 1);
+                let json = JSON.stringify(obj);
+                fs.writeFile('client/quadri.json', json, 'utf8', function (err) {
+                    if (err) throw err;
+                });
+            }
+        });
+    })
+
+    sock.on('getImage', (name, i) => {
+        s3.getObject({
+            Bucket: BUCKET_NAME,
+            Key: name // path to the object you're looking for
+        }).promise().then((img) => {
+            let buf = Buffer.from(img.Body);
+            let base64 = buf.toString('base64');
+            sock.emit('img' + i.toString(), 'data:image/jpeg;base64,' + base64);
+        });
+    })
 
     sock.on("disconnect", () => {
         if (sock === waitingPlayerPublic) {

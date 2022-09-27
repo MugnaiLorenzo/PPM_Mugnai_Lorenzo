@@ -17,6 +17,7 @@
 	<!--SCRIPT-->
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="javascript/aggiungi.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!--<script type="text/javascript">-->
 	<!--		const module = {};-->
 	<!--</script>-->
@@ -49,24 +50,13 @@
 			<label><b>Titolo</b></label>
 			<input type="text" placeholder="Inserisci titolo" required>
 			<label><b>Descrizione</b></label>
-			<input type="text" placeholder="Inserisci descrizione" required>
+			<input type="text" id="descrizione" placeholder="Inserisci descrizione" required>
 			<label><b>Inserisci Immagine</b></label>
-			<input type="file" id="picture" accept="image/png, image/gif, image/jpeg" required/>
+			<input type="file" id="picture" accept="image/png, image/gif, image/jpeg" onchange="change()" required/>
+			<canvas id="place" width="0" height="0"></canvas>
 			<input type="submit">
 		</form>
-		<div id="place"></div>
 	</div>
 </div>
-<script type="text/javascript">
-    function invio() {
-        console.log('A');
-        const inputs = document.getElementById("my-form").elements;
-        let titolo = inputs[0].value;
-        let descrizione = inputs[1].value;
-        let image = inputs[2].files[0];
-        console.log(image)
-    }
-</script>
-
 </body>
 </html>
