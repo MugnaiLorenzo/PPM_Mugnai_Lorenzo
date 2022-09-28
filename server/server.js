@@ -43,6 +43,7 @@ io.on('connection', (sock) => {
     });
 
     sock.on('public', (name, length) => {
+        console.log(name, length)
         if (waitingPlayerPublic != null && waitingPlayerPublic !== sock) {
             new game(waitingPlayerPublic, sock, userNamePublic, name, length);
             waitingPlayerPublic = null;
