@@ -1,6 +1,19 @@
 import {Point} from "./point.js";
 import {Hands_Class} from "./hands_Class.js";
 
+let quadri;
+let m = document.getElementById("mess1");
+let mess = document.getElementById("mess");
+let user;
+let cod;
+let point
+let sock = io();
+
+let turno_label = document.getElementById("turno");
+let descr_label = document.getElementById("descrizione");
+let title_label = document.getElementById("tit");
+let element;
+let hands = new Hands_Class(sock);
 
 export function start() {
     sock.on('getData', (data) => {
@@ -19,20 +32,6 @@ export function start() {
         }
     });
 }
-
-let quadri;
-let m = document.getElementById("mess1");
-let mess = document.getElementById("mess");
-let user;
-let cod;
-let point
-let sock = io();
-
-let turno_label = document.getElementById("turno");
-let descr_label = document.getElementById("descrizione");
-let title_label = document.getElementById("tit");
-let element;
-let hands = new Hands_Class(sock);
 
 const writeEvent = (text) => {
     m.style.display = "flex"
