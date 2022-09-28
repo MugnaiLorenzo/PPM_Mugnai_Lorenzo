@@ -17,6 +17,7 @@ let hands = new Hands_Class(sock);
 
 export function start() {
     console.log('start');
+    sock.emit('readJson')
     sock.on('getData', (data) => {
         console.log('getData')
         quadri = data.quadri;
