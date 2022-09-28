@@ -25,6 +25,7 @@ let sock = io();
 sock.on('getData', (data) => {
     quadri = data.quadri;
     point = new Point(data);
+    writeTurn();
 });
 
 let turno_label = document.getElementById("turno");
@@ -32,7 +33,6 @@ let descr_label = document.getElementById("descrizione");
 let title_label = document.getElementById("tit");
 let element;
 let hands = new Hands_Class(sock);
-writeTurn();
 
 const writeEvent = (text) => {
     m.style.display = "flex"
