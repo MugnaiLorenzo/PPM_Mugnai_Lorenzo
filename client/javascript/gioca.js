@@ -74,7 +74,7 @@ function excute() {
             setTimeout(function () {
                 m.style.display = "none";
                 mess.style.display = "none";
-                hands.start(point.src[point.turno], canvasElement, canvasCtx);
+                hands.start(point.src[point.turno], canvasElement, canvasCtx, img_src);
             }, 2000);
         });
     }

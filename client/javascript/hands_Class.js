@@ -68,7 +68,7 @@ export class Hands_Class {
         }
     }
 
-    start(img, canvas, ctx) {
+    start(img, canvas, ctx, img_src) {
         this.x_c = [];
         this.y_c = [];
         this.w = [];
@@ -79,7 +79,7 @@ export class Hands_Class {
         this.num_solution = 0;
         this.point = img;
         this.img = new Image();
-        this.img.src = "./image/opere/" + this.point.src;
+        this.img.src = img_src;
         this.canvasCtx.save();
         this.canvasCtx.beginPath();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
