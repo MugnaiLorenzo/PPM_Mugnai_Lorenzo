@@ -16,20 +16,12 @@ let element;
 let hands = new Hands_Class(sock);
 
 export function start() {
+    console.log('start');
     sock.on('getData', (data) => {
+        console.log('getData')
         quadri = data.quadri;
         point = new Point(data);
         writeTurn();
-        user = sessionStorage.getItem("user");
-        cod = sessionStorage.getItem("cod");
-        document.getElementById("name1").innerHTML = user;
-        if (cod === "") {
-            document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
-            conPublic();
-        } else {
-            document.getElementById("title_cod").innerHTML = "Codice: " + cod;
-            conPrivate();
-        }
     });
 }
 
@@ -110,7 +102,18 @@ const addPuntListeners = () => {
 }
 
 function writeTurn() {
+    console.log('writeTurn');
     turno_label.innerHTML = "Turno: " + point.turno;
+    user = sessionStorage.getItem("user");
+    cod = sessionStorage.getItem("cod");
+    document.getElementById("name1").innerHTML = user;
+    if (cod === "") {
+        document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
+        conPublic();
+    } else {
+        document.getElementById("title_cod").innerHTML = "Codice: " + cod;
+        conPrivate();
+    }
 }
 
 function conPublic() {
