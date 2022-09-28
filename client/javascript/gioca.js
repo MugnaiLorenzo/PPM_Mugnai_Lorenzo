@@ -118,6 +118,7 @@ function writeTurn() {
 }
 
 function conPublic() {
+    console.log('conPublic');
     sock.emit('public', user, point.length);
     sock.on('message', writeEvent);
     addUserListeners();
