@@ -1,6 +1,20 @@
 import {Point} from "./point.js";
 import {Hands_Class} from "./hands_Class.js";
 
+
+export function start() {
+    user = sessionStorage.getItem("user");
+    cod = sessionStorage.getItem("cod");
+    document.getElementById("name1").innerHTML = user;
+    if (cod === "") {
+        document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
+        conPublic();
+    } else {
+        document.getElementById("title_cod").innerHTML = "Codice: " + cod;
+        conPrivate();
+    }
+}
+
 let quadri;
 let m = document.getElementById("mess1");
 let mess = document.getElementById("mess");
@@ -19,20 +33,6 @@ let title_label = document.getElementById("tit");
 let element;
 let hands = new Hands_Class(sock);
 writeTurn();
-
-
-export function start() {
-    user = sessionStorage.getItem("user");
-    cod = sessionStorage.getItem("cod");
-    document.getElementById("name1").innerHTML = user;
-    if (cod === "") {
-        document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
-        conPublic();
-    } else {
-        document.getElementById("title_cod").innerHTML = "Codice: " + cod;
-        conPrivate();
-    }
-}
 
 const writeEvent = (text) => {
     m.style.display = "flex"
