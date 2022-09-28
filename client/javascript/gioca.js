@@ -17,7 +17,6 @@ writeTurn();
 
 
 export function start() {
-    console.log('start');
     user = sessionStorage.getItem("user");
     cod = sessionStorage.getItem("cod");
     document.getElementById("name1").innerHTML = user;
@@ -31,7 +30,6 @@ export function start() {
 }
 
 const writeEvent = (text) => {
-    console.log('writeEvent');
     m.style.display = "flex"
     mess.style.display = "flex"
     mess.innerHTML = text;
@@ -41,7 +39,6 @@ const writeEvent = (text) => {
 };
 
 const addWinListeners = () => {
-    console.log('addWinListeners');
     sock.on('win', (message) => {
         alert(message);
         window.location.href = '../index.html'
@@ -49,7 +46,6 @@ const addWinListeners = () => {
 }
 
 const addFinishTurnListeners = () => {
-    console.log('addFinishTurnListeners');
     sock.on('finishTurn', () => {
         document.getElementById("output").removeChild(element);
         point.setPoint();
@@ -60,7 +56,6 @@ const addFinishTurnListeners = () => {
 }
 
 function excute() {
-    console.log('excute');
     element = document.createElement("canvas");
     element.classList.add("can-img");
     element.id = "can_out";
@@ -94,21 +89,18 @@ function excute() {
 }
 
 const addStartListeners = () => {
-    console.log('addStartListeners');
     sock.on('start', () => {
         excute();
     });
 }
 
 const addUserListeners = () => {
-    console.log('addUserListeners');
     sock.on('user', (name) => {
         document.getElementById("name2").innerHTML = name;
     });
 }
 
 const addPuntListeners = () => {
-    console.log('addPuntListeners');
     sock.on('punt', (p1, p2) => {
         document.getElementById("punt1").innerHTML = p1;
         document.getElementById("punt2").innerHTML = p2;
@@ -117,12 +109,10 @@ const addPuntListeners = () => {
 }
 
 function writeTurn() {
-    console.log('writeTurn');
     turno_label.innerHTML = "Turno: " + point.turno;
 }
 
 function conPublic() {
-    console.log('conPublic');
     sock.emit('public', user, point.length);
     sock.on('message', writeEvent);
     addUserListeners();
@@ -133,7 +123,6 @@ function conPublic() {
 }
 
 function conPrivate() {
-    console.log('conPrivate');
     sock.emit('private', cod, user, point.length);
     sock.on('message', writeEvent);
     addUserListeners();
