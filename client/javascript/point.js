@@ -4,7 +4,7 @@ export class Point {
     constructor(data) {
         this.turno = 0;
         this.src = [];
-        this.lenght = data.quadri.length;
+        this.length = data.quadri.length;
         for (let i = 0; i < data.quadri.length; i++) {
             let rect = [];
             rect.push(new Rect(data.quadri[i].rect_x, data.quadri[i].rect_y, data.quadri[i].rect_w, data.quadri[i].rect_h));

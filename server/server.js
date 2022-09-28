@@ -43,7 +43,6 @@ io.on('connection', (sock) => {
     });
 
     sock.on('public', (name, length) => {
-        console.log(name, length)
         if (waitingPlayerPublic != null && waitingPlayerPublic !== sock) {
             new game(waitingPlayerPublic, sock, userNamePublic, name, length);
             waitingPlayerPublic = null;
@@ -96,7 +95,6 @@ io.on('connection', (sock) => {
                 console.log(err);
             } else {
                 let obj = JSON.parse(data);
-                console.log(obj.quadri[index].src)
                 const params = {
                     Bucket: BUCKET_NAME,
                     Key: obj.quadri[index].src

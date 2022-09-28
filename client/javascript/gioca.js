@@ -16,10 +16,8 @@ let element;
 let hands = new Hands_Class(sock);
 
 export function start() {
-    console.log('start');
     sock.emit('readJson')
     sock.on('getData', (data) => {
-        console.log('getData')
         quadri = data.quadri;
         point = new Point(data);
         writeTurn();
@@ -103,7 +101,6 @@ const addPuntListeners = () => {
 }
 
 function writeTurn() {
-    console.log('writeTurn');
     turno_label.innerHTML = "Turno: " + point.turno;
     user = sessionStorage.getItem("user");
     cod = sessionStorage.getItem("cod");
@@ -118,7 +115,6 @@ function writeTurn() {
 }
 
 function conPublic() {
-    console.log('conPublic');
     sock.emit('public', user, point.length);
     sock.on('message', writeEvent);
     addUserListeners();
