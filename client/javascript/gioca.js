@@ -3,16 +3,21 @@ import {Hands_Class} from "./hands_Class.js";
 
 
 export function start() {
-    user = sessionStorage.getItem("user");
-    cod = sessionStorage.getItem("cod");
-    document.getElementById("name1").innerHTML = user;
-    if (cod === "") {
-        document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
-        conPublic();
-    } else {
-        document.getElementById("title_cod").innerHTML = "Codice: " + cod;
-        conPrivate();
-    }
+    sock.on('getData', (data) => {
+        quadri = data.quadri;
+        point = new Point(data);
+        writeTurn();
+        user = sessionStorage.getItem("user");
+        cod = sessionStorage.getItem("cod");
+        document.getElementById("name1").innerHTML = user;
+        if (cod === "") {
+            document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
+            conPublic();
+        } else {
+            document.getElementById("title_cod").innerHTML = "Codice: " + cod;
+            conPrivate();
+        }
+    });
 }
 
 let quadri;
@@ -22,11 +27,6 @@ let user;
 let cod;
 let point
 let sock = io();
-sock.on('getData', (data) => {
-    quadri = data.quadri;
-    point = new Point(data);
-    writeTurn();
-});
 
 let turno_label = document.getElementById("turno");
 let descr_label = document.getElementById("descrizione");
