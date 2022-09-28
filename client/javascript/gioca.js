@@ -6,8 +6,13 @@ let m = document.getElementById("mess1");
 let mess = document.getElementById("mess");
 let user;
 let cod;
+let point
 let sock = io();
-let point = new Point()
+sock.on('getData', (data) => {
+    quadri = data.quadri;
+    point = new Point(data);
+});
+
 let turno_label = document.getElementById("turno");
 let descr_label = document.getElementById("descrizione");
 let title_label = document.getElementById("tit");
@@ -33,9 +38,6 @@ const writeEvent = (text) => {
     m.style.display = "flex"
     mess.style.display = "flex"
     mess.innerHTML = text;
-    sock.on('getData', (data) => {
-        quadri = data.quadri;
-    });
 };
 
 const addWinListeners = () => {

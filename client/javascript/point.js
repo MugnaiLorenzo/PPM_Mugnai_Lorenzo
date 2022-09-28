@@ -1,7 +1,7 @@
-import data from '../quadri.json' assert { type: "json"};
+// import data from '../quadri.json' assert { type: "json"};
 
 export class Point {
-    constructor() {
+    constructor(data) {
         this.turno = 0;
         this.src = [];
         this.lenght = data.quadri.length;
