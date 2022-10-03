@@ -53,30 +53,27 @@ function excute() {
     element.id = "can_out";
     document.getElementById("output").appendChild(element);
     if (point.turno < point.length) {
-        sock.emit('getImage', quadri[point.turno].src, point.turno);
-        sock.on('img' + point.turno.toString(), (img_src) => {
-            let img = document.createElement("img");
-            img.setAttribute("src", img_src);
-            img.setAttribute("alt", quadri[point.turno].title);
-            let canvasElement = document.getElementById("can_out");
-            let canvasCtx = canvasElement.getContext('2d');
-            canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
-            canvasElement.height = (parseInt(getComputedStyle(canvasElement).width) / point.src[point.turno].width) * point.src[point.turno].height;
-            canvasCtx.save();
-            canvasCtx.beginPath();
-            canvasCtx.translate(canvasElement.width, 0);
-            canvasCtx.scale(-1, 1);
-            img.onload = function () {
-                canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
-            }
-            descr_label.innerHTML = point.src[point.turno].descrizione;
-            title_label.innerHTML = "<span>" + point.src[point.turno].title + "</span>";
-            setTimeout(function () {
-                m.style.display = "none";
-                mess.style.display = "none";
-                hands.start(point.src[point.turno], canvasElement, canvasCtx, img_src);
-            }, 2000);
-        });
+        let img = document.createElement("img");
+        img.setAttribute("src", quadri[point.turno].src);
+        img.setAttribute("alt", quadri[point.turno].title);
+        let canvasElement = document.getElementById("can_out");
+        let canvasCtx = canvasElement.getContext('2d');
+        canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
+        canvasElement.height = (parseInt(getComputedStyle(canvasElement).width) / point.src[point.turno].width) * point.src[point.turno].height;
+        canvasCtx.save();
+        canvasCtx.beginPath();
+        canvasCtx.translate(canvasElement.width, 0);
+        canvasCtx.scale(-1, 1);
+        img.onload = function () {
+            canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
+        }
+        descr_label.innerHTML = point.src[point.turno].descrizione;
+        title_label.innerHTML = "<span>" + point.src[point.turno].title + "</span>";
+        setTimeout(function () {
+            m.style.display = "none";
+            mess.style.display = "none";
+            hands.start(point.src[point.turno], canvasElement, canvasCtx, quadri[point.turno].src);
+        }, 2000);
     }
 }
 

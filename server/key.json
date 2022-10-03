@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ppm-lorenzo-mugnai",
+  "private_key_id": "10316698fc5d721e7a1797dc5742d59986512164",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDhPhzshw9Ik/dS\nfmvixMO05FsELC141ulcLcurdG7sy0Puc3hHmOIxjBGVjCeb0rQ+jUOCi4kDEP1E\nowzUBIJ4it/JZDeoAtTg1A3Kgz1fw0bYmeQoV4GKbgJmBLE/jaWOlXxiVot6zx4Q\nnEmo8u1iJPoiPt4ARk14L0Gh8sEIefg9xIFRZU22enRxrlr4vgKmTKHKI52WxOrO\nlf8hNZinvZQHqiNvE0eaoOFg0OFwAugbOSdjZQUKt4Kpmm2dQNVVFH5Gc095QeXz\nHeYNZAMQt73F1eJ67BuwOYFtZ7+Zg6BMUMXZXQLLedtMCeZekLRpxqmEBU4GnFBT\norBBfmI1AgMBAAECggEAFgxlueyNnTHoxaE879WJf8lTtICbkebdsImGFJpA6nqK\nQ4r3lPCdAbMfnIc78Ferj6z11Q9SIeP1mtSoIo/vcpvLhLQD87UVQA3Z7L80kI11\nv6muyRkpw9J5dyGR9THpKSAubRTiMesY2xDlb/2ZqaALgTMsuZOoLTHZB6CS70CM\nOPVDlbf0HGfkP56kR+nuJzAyFZD8NQzhbJuf4q+X5zM6meAoutc3sVMAHuj+WnP+\n8N8VHl2obLE0E9C5fSXEGBoCPVh+eFMokfC9pTP+xuE8xENgmEOQfdgIZib2TzVw\nFVWfB119CWTSU00YS6Mq0qIPNC7hgmYH3ie8aUhDmQKBgQD3fYsp606PMwCIKaXC\n8p45QYnvRWrptHj2YMmxIH9nJeFFBUUxO8E2aSVoSoutIZVdiF0T8ncLXeLOgoLN\nKTK6wVdjGO51bk9H0tsnr3BM/6+ADghprdVrcnk6mZKSKkCKf52sFL1shmqWKJq1\nMYIiJNulWSyK+kPGlYO0e4CN6QKBgQDo/L2GU+F1PmklkwyZKLQM/N/G8wQSd5jx\nPzeUUBVaY1ukpq60xFEyqXBSX3D/2n18z9BBJ35W9XZykXd8dtaYrpIVxDsBS+XX\nopFaVmyftvx2mjelAphCbTJx5b7fRiZuhvzPfFCjl70B37Bfd2a5EJPUnvd2B9M0\ngiE8R2qGbQKBgDjiExVMbx78sveY0u+Owg0Y4jIre1pBz7eZIWJjvMShcThi8LdT\nK6Js4lspHxdo66K2z+XgybnEF3gtiRDMkktYWtR9C3nUI8a3UQW7Dg20isrc7tQT\nT0VF51UvrP+JVJJAqKW/kpYaAu+GX6Cbw3RDknRbnaBHy0IeZUobRL3ZAoGAGsbR\nUVrakor1sqfPztpqtwNpBIhxc13jafaGALmjepvosGentIbLfjMTAaSObBlESs/n\nc1WCo6PaVRh6zwcpaqrFh1LiJSf/5mR8qBE+sqxpH4hh1MkTjq7WGVj6MtbxG8rP\ny1jSO7r4sfpvXsluON663rjWX+5OS76Y60CZ8ZECgYBzvSw2VdPIiS8oL6F5trIn\nDyZ276hmoRCTY6MyS+FDbkU8zJsuyPaE4Xi97L7I9DZvUa6QK+EWw7Ga+HCymF4Y\nL3qoyBaZ5PkKCOItrKPNQSWm5TBvgjj5CGH2Kh3uBgiNsRe/Zzm2nwzw9c6bk1GT\n8PC3uPOKw5Dkh8ptA+9ncg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-9gs5k@ppm-lorenzo-mugnai.iam.gserviceaccount.com",
+  "client_id": "106769186445304053795",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-9gs5k%40ppm-lorenzo-mugnai.iam.gserviceaccount.com"
+}

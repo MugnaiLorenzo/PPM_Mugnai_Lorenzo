@@ -9,27 +9,52 @@ function aggiungi() {
     let titolo = inputs[0].value;
     let descrizione = inputs[1].value;
     let input = document.getElementById("picture");
+    console.log(input.files[0]);
     let fReader = new FileReader();
     let name;
-    fReader.readAsDataURL(input.files[0]);
-    fReader.onloadend = async function (event) {
-        sock.emit('readJson');
-        sock.on('getData', (data) => {
-            name = "f" + (data.quadri.length + 1).toString() + "." + inputs[2].files[0].type.split("/")[1];
-            if (height_canvas < 0) {
-                height_canvas = height_canvas * -1;
-                last_mousey = last_mousey - height_canvas;
-            }
-            if (width_canvas < 0) {
-                width_canvas = width_canvas * -1;
-                last_mousex = last_mousex - width_canvas;
-            }
-            sock.emit('uploadFile', fReader.result, name, data, name, last_mousex, last_mousey, width_canvas, height_canvas, width_image, height_image, descrizione, titolo);
-            sock.on('changePage', () => {
-                window.location.href = './gestione.html';
-            })
-        });
-    }
+    let url = window.URL.createObjectURL(input.files[0]);
+    console.log(url)
+    sock.emit('readJson');
+    sock.on('getData', (data) => {
+        name = "f" + (data.quadri.length + 1).toString() + "." + inputs[2].files[0].type.split("/")[1];
+        if (height_canvas < 0) {
+            height_canvas = height_canvas * -1;
+            last_mousey = last_mousey - height_canvas;
+        }
+        if (width_canvas < 0) {
+            width_canvas = width_canvas * -1;
+            last_mousex = last_mousex - width_canvas;
+        }
+        sock.emit('uploadFile', url, name, data, last_mousex, last_mousey, width_canvas, height_canvas, width_image, height_image, descrizione, titolo);
+        // sock.on('changePage', () => {
+        //     window.location.href = './gestione.html';
+        // })
+    });
+    // sock.emit('uploadFile', url, name, data, last_mousex, last_mousey, width_canvas, height_canvas, width_image, height_image, descrizione, titolo);
+    // sock.on('changePage', () => {
+    //     window.location.href = './gestione.html';
+    // })
+    // fReader.readAsDataURL(input.files[0]);
+    // fReader.onloadend = async function (event) {
+    //     sock.emit('readJson');
+    //     sock.on('getData', (data) => {
+    //         name = "f" + (data.quadri.length + 1).toString() + "." + inputs[2].files[0].type.split("/")[1];
+    //         if (height_canvas < 0) {
+    //             height_canvas = height_canvas * -1;
+    //             last_mousey = last_mousey - height_canvas;
+    //         }
+    //         if (width_canvas < 0) {
+    //             width_canvas = width_canvas * -1;
+    //             last_mousex = last_mousex - width_canvas;
+    //         }
+    //         const image = new Image();
+    //         image.src = fReader.result;
+    //         sock.emit('uploadFile', fReader.result, name, data, last_mousex, last_mousey, width_canvas, height_canvas, width_image, height_image, descrizione, titolo);
+    //         sock.on('changePage', () => {
+    //             window.location.href = './gestione.html';
+    //         })
+    //     });
+    // }
 }
 
 function change() {
