@@ -14,15 +14,6 @@ let waitingPlayerPrivate = {};
 let userNamePrivate = {};
 let waitingPlayerPublic = null;
 let userNamePublic = null;
-//FIREBASE
-const firebaseAdmin = require("firebase-admin");
-const {v4: uuidv4} = require('uuid');
-let serviceAccount = require('./key.json');
-const admin = firebaseAdmin.initializeApp({
-    credential: firebaseAdmin.credential.cert(serviceAccount)
-})
-const storageRef = admin.storage().bucket(`gs://ppm-lorenzo-mugnai.appspot.com`);
-
 
 io.on('connection', (sock) => {
     sock.on('private', (cod, name, length) => {
@@ -59,29 +50,15 @@ io.on('connection', (sock) => {
         sock.emit('getData', quadri);
     });
 
-    sock.on('uploadFile', (url, name, data, rect_x, rect_y, rect_w, rect_h, width, height, descr, title) => {
-        console.log(url)
-        let src
-        // const base64Data = new Buffer.from(fReader.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-        const storage = storageRef.upload(url, {
-            destination: name
-        }).then(() => {
-            const file = storageRef.file(name);
-            file.getSignedUrl({
-                action: 'read',
-                expires: '03-25-2023'
-            }).then(signedUrls => {
-                src = signedUrls[0];
-                data.quadri.push({src, rect_x, rect_y, rect_w, rect_h, width, height, descr, title});
-                let json = JSON.stringify(data);
-                fs.writeFile('client/quadri.json', json, 'utf8', function (err) {
-                    if (err) {
-                        throw err;
-                    } else {
-                        sock.emit('changePage');
-                    }
-                });
-            });
+    sock.on('uploadJson', (src, data, rect_x, rect_y, rect_w, rect_h, width, height, descr, title) => {
+        data.quadri.push({src, rect_x, rect_y, rect_w, rect_h, width, height, descr, title});
+        let json = JSON.stringify(data);
+        fs.writeFile('client/quadri.json', json, 'utf8', function (err) {
+            if (err) {
+                throw err;
+            } else {
+                sock.emit('changePage');
+            }
         });
     });
 

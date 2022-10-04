@@ -9,14 +9,9 @@ function aggiungi() {
     let titolo = inputs[0].value;
     let descrizione = inputs[1].value;
     let input = document.getElementById("picture");
-    console.log(input.files[0]);
-    let fReader = new FileReader();
-    let name;
-    let url = window.URL.createObjectURL(input.files[0]);
-    console.log(url)
     sock.emit('readJson');
     sock.on('getData', (data) => {
-        name = "f" + (data.quadri.length + 1).toString() + "." + inputs[2].files[0].type.split("/")[1];
+        let name = "f" + (data.quadri.length + 1).toString() + "." + inputs[2].files[0].type.split("/")[1];
         if (height_canvas < 0) {
             height_canvas = height_canvas * -1;
             last_mousey = last_mousey - height_canvas;
@@ -25,36 +20,29 @@ function aggiungi() {
             width_canvas = width_canvas * -1;
             last_mousex = last_mousex - width_canvas;
         }
-        sock.emit('uploadFile', url, name, data, last_mousex, last_mousey, width_canvas, height_canvas, width_image, height_image, descrizione, titolo);
-        // sock.on('changePage', () => {
-        //     window.location.href = './gestione.html';
-        // })
+        const firebaseConfig = {
+            apiKey: "AIzaSyCCJQoKp1zX9EybdgZKH2aufYYuYarF29k",
+            authDomain: "ppm-lorenzo-mugnai.firebaseapp.com",
+            projectId: "ppm-lorenzo-mugnai",
+            storageBucket: "ppm-lorenzo-mugnai.appspot.com",
+            messagingSenderId: "715545495743",
+            appId: "1:715545495743:web:bad5226af78183f5481e0a",
+            measurementId: "G-FJP0L3PXNX"
+        };
+        Object.defineProperty(input.files[0], 'name', {
+            writable: true,
+            value: name
+        });
+        firebase.initializeApp(firebaseConfig);
+        let storageRef = firebase.storage().ref(input.files[0].name);
+        storageRef.put(input.files[0]).then((snapshot) => {
+            let url = snapshot.downloadURL;
+            sock.emit('uploadJson', url, data, last_mousex, last_mousey, width_canvas, height_canvas, width_image, height_image, descrizione, titolo);
+            sock.on('changePage', () => {
+                window.location.href = './gestione.html';
+            })
+        });
     });
-    // sock.emit('uploadFile', url, name, data, last_mousex, last_mousey, width_canvas, height_canvas, width_image, height_image, descrizione, titolo);
-    // sock.on('changePage', () => {
-    //     window.location.href = './gestione.html';
-    // })
-    // fReader.readAsDataURL(input.files[0]);
-    // fReader.onloadend = async function (event) {
-    //     sock.emit('readJson');
-    //     sock.on('getData', (data) => {
-    //         name = "f" + (data.quadri.length + 1).toString() + "." + inputs[2].files[0].type.split("/")[1];
-    //         if (height_canvas < 0) {
-    //             height_canvas = height_canvas * -1;
-    //             last_mousey = last_mousey - height_canvas;
-    //         }
-    //         if (width_canvas < 0) {
-    //             width_canvas = width_canvas * -1;
-    //             last_mousex = last_mousex - width_canvas;
-    //         }
-    //         const image = new Image();
-    //         image.src = fReader.result;
-    //         sock.emit('uploadFile', fReader.result, name, data, last_mousex, last_mousey, width_canvas, height_canvas, width_image, height_image, descrizione, titolo);
-    //         sock.on('changePage', () => {
-    //             window.location.href = './gestione.html';
-    //         })
-    //     });
-    // }
 }
 
 function change() {

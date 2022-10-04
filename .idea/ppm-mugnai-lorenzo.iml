@@ -9,5 +9,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="@mediapipe/hands" level="application" />
+    <orderEntry type="library" name="firebase-app" level="application" />
+    <orderEntry type="library" name="firebase" level="application" />
   </component>
 </module>
