@@ -57,12 +57,12 @@ export class Hands_Class {
                         this.canvasCtx.strokeStyle = "#f06a63";
                         this.canvasCtx.lineWidth = 5;
                         this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
-                        this.ready = false;
-                        this.x_c = [];
-                        this.y_c = [];
-                        this.w = [];
-                        this.h = [];
                         this.sock.emit('point');
+                        this.ready = false;
+                        this.x_c = null;
+                        this.y_c = null;
+                        this.w = null;
+                        this.h = null;
                     }
                     // }
                 }
