@@ -180,6 +180,10 @@
 }
 
 @media only screen and (max-width: 715px) {
+  .main {
+    top: 8vh;
+  }
+
   #mess2 {
     width: 90%;
   }
@@ -221,7 +225,7 @@
 
 @media only screen and (max-width: 535px) {
   .title {
-    font-size: var(--font-size-medium-variant);
+    line-height: 110%;
   }
 
   .subtitle {
@@ -256,10 +260,6 @@
 }
 
 @media only screen and (max-width: 335px) {
-  .title {
-    font-size: var(--font-size-medium);
-  }
-
   .subtitle {
     font-size: var(--font-size-small);
   }

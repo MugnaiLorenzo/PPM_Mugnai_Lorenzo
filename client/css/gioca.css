@@ -1,4 +1,4 @@
-.message {
+#display_waiting {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +10,7 @@
   display: none;
 }
 
-#mess {
+#mess_waiting {
   display: none;
   position: fixed;
   top: 45%;
@@ -30,6 +30,74 @@
   font-size: var(--font-size-medium-variant);
   font-family: var(--font-family-franklin);
 }
+
+.text-win {
+  width: 85%;
+  text-align: justify;
+  padding-right: 5%;
+}
+
+.text-win span {
+  color: var(--red-background)
+}
+
+.win-button {
+  font-style: var(--font-family-franklin);
+  font-size: var(--font-size-medium);
+  background-color: white;
+  border-radius: 50%;
+  height: 50px;
+  width: 100px;
+  border: 1px solid var(--red-background);
+}
+
+#mess_win {
+  display: none;
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #c0d3f9;
+  opacity: 1;
+  width: 90%;
+  height: 230px;
+  border: 1px solid black;
+  z-index: 11;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: var(--font-size-medium-variant);
+  font-family: var(--font-family-franklin);
+}
+
+.text-finish{
+  width: 75%;
+  text-align: center;
+  padding-right: 5%;
+}
+
+#mess_finish {
+  display: none;
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #c0d3f9;
+  opacity: 1;
+  width: 50%;
+  height: 150px;
+  border: 1px solid black;
+  z-index: 11;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: var(--font-size-medium-variant);
+  font-family: var(--font-family-franklin);
+}
+
+/*.win-button{*/
+/*  margin-left: 25%;*/
+/*}*/
 
 .main-gioca {
   min-width: 95%;
@@ -65,8 +133,13 @@
 }
 
 .testo-descr {
+  text-align: justify;
   width: 830px;
   margin: 0 auto;
+}
+
+.testo-descr span {
+  color: var(--red-background);
 }
 
 /*PUNTEGGIO*/
@@ -156,6 +229,18 @@
 }
 
 @media only screen and (max-width: 830px) {
+  .text-win {
+    font-size: var(--font-size-small);
+  }
+
+  #mess_win {
+    height: 320px;
+  }
+
+  .win-button {
+    width: 100px;
+  }
+
   .can-img {
     width: 530px;
     height: auto;
@@ -183,6 +268,14 @@
 }
 
 @media only screen and (max-width: 560px) {
+  .text-win {
+    font-size: var(--font-size-xxs);
+  }
+
+  .win-button {
+    width: 75px;
+  }
+
   .can-img {
     width: 395px;
     height: auto;
@@ -206,6 +299,11 @@
 }
 
 @media only screen and (max-width: 415px) {
+
+  #mess_win {
+    height: 350px;
+  }
+
   .can-img {
     width: 100%;
   }

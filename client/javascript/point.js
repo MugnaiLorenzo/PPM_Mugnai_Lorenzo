@@ -8,7 +8,7 @@ export class Point {
         for (let i = 0; i < data.quadri.length; i++) {
             let rect = [];
             rect.push(new Rect(data.quadri[i].rect_x, data.quadri[i].rect_y, data.quadri[i].rect_w, data.quadri[i].rect_h));
-            this.src.push(new img(data.quadri[i].src, data.quadri[i].width, data.quadri[i].heigth, rect, data.quadri[i].descr, data.quadri[i].title));
+            this.src.push(new img(data.quadri[i].src, data.quadri[i].width, data.quadri[i].height, rect, data.quadri[i].descr, data.quadri[i].title));
         }
     }
 

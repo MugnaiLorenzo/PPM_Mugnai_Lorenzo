@@ -53,10 +53,24 @@
 
 @media only screen and (max-width: 600px) {
   #menu-secondary {
-    padding-left: 20%;
+    padding-left: 10%;
+  }
+
+  #menu-secondary a:first-child {
+    padding-right: 30px;
   }
 
   #logo {
     content: url("../image/logo2.png");
+  }
+
+  #menu-secondary a {
+    font-size: var(--font-size-small);
+  }
+}
+
+@media only screen and (max-width: 444px) {
+  #logo {
+    width: 60px;
   }
 }

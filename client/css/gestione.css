@@ -37,3 +37,38 @@
 .btn_add i {
   font-size: 50px;
 }
+
+@media only screen and (max-width: 1129px) {
+  #placehere {
+    padding-top: 25px;
+  }
+
+  #placehere img {
+    width: 47%;
+  }
+
+  .btn_class {
+    margin-left: -10%;
+    margin-right: 9%;
+  }
+}
+
+@media only screen and (max-width: 1129px) {
+  #placehere {
+    padding-top: 10px;
+  }
+
+  #placehere img {
+    width: 97%;
+    margin: 5% 1.665% 0% 1.665%;
+  }
+
+  .btn_class {
+    margin-left: -10%;
+    margin-right: 0%;
+  }
+
+  .btn_class i {
+    font-size: 40px;
+  }
+}

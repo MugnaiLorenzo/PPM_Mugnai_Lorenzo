@@ -14,35 +14,42 @@ let waitingPlayerPrivate = {};
 let userNamePrivate = {};
 let waitingPlayerPublic = null;
 let userNamePublic = null;
+let waiting = false;
+let g;
 
 io.on('connection', (sock) => {
     sock.on('private', (cod, name, length) => {
         if (waitingPlayerPrivate[cod] != null) {
-            new game(waitingPlayerPrivate[cod], sock, userNamePrivate[cod], name, length);
+            g = new game(waitingPlayerPrivate[cod], sock, userNamePrivate[cod], name, length);
             waitingPlayerPrivate[cod] = null;
             userNamePrivate[cod] = null;
         } else {
             waitingPlayerPrivate[cod] = sock;
             userNamePrivate[cod] = name;
-            waitingPlayerPrivate[cod].emit('message', 'Aspettando un avversario');
+            waitingPlayerPrivate[cod].emit('wait', 'Aspettando un avversario');
         }
     });
 
     sock.on('public', (name, length) => {
         if (waitingPlayerPublic != null && waitingPlayerPublic !== sock) {
-            new game(waitingPlayerPublic, sock, userNamePublic, name, length);
+            g = new game(waitingPlayerPublic, sock, userNamePublic, name, length);
             waitingPlayerPublic = null;
             userNamePublic = null;
         } else {
             waitingPlayerPublic = sock;
             userNamePublic = name;
-            waitingPlayerPublic.emit('message', 'Aspettando un avversario');
+            waitingPlayerPublic.emit('wait', 'Aspettando un avversario');
         }
     });
 
-    sock.on('message', (text) => {
-        io.emit('message', text);
-    });
+    sock.on('waitingFinish', () => {
+        if (waiting === false) {
+            waiting = true;
+        } else {
+            waiting = false;
+            g.sendready();
+        }
+    })
 
     sock.on('readJson', () => {
         let rawdata = fs.readFileSync('client/quadri.json');

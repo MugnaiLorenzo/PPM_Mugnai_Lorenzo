@@ -2,8 +2,10 @@ import {Point} from "./point.js";
 import {Hands_Class} from "./hands_Class.js";
 
 let quadri;
-let m = document.getElementById("mess1");
-let mess = document.getElementById("mess");
+let display_messaggio_waiting = document.getElementById("display_waiting");
+let mess_waiting = document.getElementById("mess_waiting");
+let mess_win = document.getElementById("mess_win");
+let mess_finish = document.getElementById("mess_finish");
 let user;
 let cod;
 let point
@@ -20,31 +22,30 @@ export function start() {
     sock.on('getData', (data) => {
         quadri = data.quadri;
         point = new Point(data);
+        user = sessionStorage.getItem("user");
+        cod = sessionStorage.getItem("cod");
+        document.getElementById("name1").innerHTML = user;
+        if (cod === "") {
+            document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
+            conPublic();
+        } else {
+            document.getElementById("title_cod").innerHTML = "Codice: " + cod;
+            conPrivate();
+        }
         writeTurn();
     });
 }
-
-const writeEvent = (text) => {
-    m.style.display = "flex"
-    mess.style.display = "flex"
-    mess.innerHTML = text;
-};
 
 const addWinListeners = () => {
     sock.on('win', (message) => {
-        alert(message);
-        window.location.href = '../index.html'
+        display_messaggio_waiting.style.display = "none";
+        mess_waiting.style.display = "none";
+        mess_win.style.display = "none";
+        mess_finish.style.display = "flex"
+        let html_mesage = "<div class='text-finish'>" + message + "</div>";
+        html_mesage += "<button class='win-button' onclick='module.fine()'>Avanti</button>";
+        mess_finish.innerHTML = html_mesage;
     });
-}
-
-const addFinishTurnListeners = () => {
-    sock.on('finishTurn', () => {
-        document.getElementById("output").removeChild(element);
-        point.setPoint();
-        hands.camera.stop();
-        writeTurn();
-        excute();
-    })
 }
 
 function excute() {
@@ -70,9 +71,10 @@ function excute() {
         descr_label.innerHTML = point.src[point.turno].descrizione;
         title_label.innerHTML = "<span>" + point.src[point.turno].title + "</span>";
         setTimeout(function () {
-            m.style.display = "none";
-            mess.style.display = "none";
-            hands.start(point.src[point.turno], canvasElement, canvasCtx, quadri[point.turno].src);
+            display_messaggio_waiting.style.display = "none";
+            mess_waiting.style.display = "none";
+            mess_win.style.display = "none";
+            hands.start(point.src[point.turno], canvasElement, canvasCtx, quadri[point.turno].src, point.turno);
         }, 2000);
     }
 }
@@ -97,36 +99,64 @@ const addPuntListeners = () => {
     });
 }
 
+const addWaitingListeners = () => {
+    sock.on('wait', (text) => {
+        display_messaggio_waiting.style.display = "flex"
+        mess_waiting.style.display = "flex"
+        mess_waiting.innerHTML = text;
+    });
+}
+
+const addMessageWinListeners = () => {
+    sock.on('message_win', (text) => {
+        hands.camera.stop();
+        mess_win.style.display = "flex"
+        let html_mesage = "<div class='text-win'><span>" + text + "</span><br><br>" + quadri[point.turno].descr_accurata + "</div>";
+        html_mesage += "<button class='win-button' onclick='module.avanti()'>Avanti</button>";
+        mess_win.innerHTML = html_mesage;
+        point.setPoint();
+        writeTurn();
+    });
+}
+
+export function avanti() {
+    display_messaggio_waiting.style.display = "flex";
+    mess_waiting.style.display = "flex";
+    mess_waiting.innerHTML = "Aspettando l'avversario";
+    mess_win.style.display = "none";
+    sock.emit('waitingFinish');
+    sock.on('ready', () => {
+        display_messaggio_waiting.style.display = "none";
+        mess_waiting.style.display = "none";
+        document.getElementById("output").removeChild(element);
+        excute();
+    });
+}
+
+export function fine(){
+    window.location.href = '../index.html'
+}
+
 function writeTurn() {
     turno_label.innerHTML = "Turno: " + point.turno;
-    user = sessionStorage.getItem("user");
-    cod = sessionStorage.getItem("cod");
-    document.getElementById("name1").innerHTML = user;
-    if (cod === "") {
-        document.getElementById("title_cod").innerHTML = "Partita <span>Pubblica</span>";
-        conPublic();
-    } else {
-        document.getElementById("title_cod").innerHTML = "Codice: " + cod;
-        conPrivate();
-    }
 }
 
 function conPublic() {
     sock.emit('public', user, point.length);
-    sock.on('message', writeEvent);
+    addWaitingListeners();
+    addMessageWinListeners();
     addUserListeners();
     addStartListeners();
     addPuntListeners();
     addWinListeners();
-    addFinishTurnListeners();
 }
 
 function conPrivate() {
     sock.emit('private', cod, user, point.length);
-    sock.on('message', writeEvent);
+    addWaitingListeners();
+    addMessageWinListeners();
     addUserListeners();
     addStartListeners();
     addPuntListeners();
     addWinListeners();
-    addFinishTurnListeners();
 }

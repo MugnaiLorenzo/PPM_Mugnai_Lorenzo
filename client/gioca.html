@@ -24,14 +24,19 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script type="module">
       import {start} from "./javascript/gioca.js";
+      import {avanti} from "./javascript/gioca.js";
+      import {fine} from "./javascript/gioca.js";
 
       module.start = start;
+      module.avanti = avanti;
+      module.fine = fine;
 	</script>
 </head>
 <body onload="module.start()">
-<div id="mess1" class="message">
-</div>
-<div id="mess"></div>
+<div id="display_waiting" class="message"></div>
+<div id="mess_waiting"></div>
+<div id="mess_win"></div>
+<div id="mess_finish"></div>
 <div class="navbar">
 	<div class="container-nav-bar">
 		<ul id="menu-primary">
