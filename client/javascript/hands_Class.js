@@ -70,6 +70,7 @@ export class Hands_Class {
 
     colora() {
         console.log('colora()', this.x_c, this.y_c, this.w, this.h);
+        this.canvasCtx.beginPath();
         this.canvasCtx.strokeStyle = "#f06a63";
         this.canvasCtx.lineWidth = 5;
         this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
@@ -99,8 +100,7 @@ export class Hands_Class {
         }
         this.ready = true;
         this.camera.start();
-        // this.colora();
-        //
+
         // setTimeout(() => {
         //     this.sock.emit('point', turno)
         // }, 3000);
