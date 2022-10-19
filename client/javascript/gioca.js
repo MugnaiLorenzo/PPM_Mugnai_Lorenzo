@@ -109,6 +109,7 @@ const addWaitingListeners = () => {
 
 const addMessageWinListeners = () => {
     sock.on('message_win', (text) => {
+        console.log('message_win')
         hands.camera.stop();
         hands.colora();
         mess_win.style.display = "flex"

@@ -69,6 +69,7 @@ export class Hands_Class {
     }
 
     colora() {
+        console.log('colora()');
         this.canvasCtx.strokeStyle = "#f06a63";
         this.canvasCtx.lineWidth = 5;
         this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
