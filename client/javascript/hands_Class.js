@@ -40,8 +40,8 @@ export class Hands_Class {
 
     onResults(results) {
         if (this.ready === true) {
-            // this.canvasCtx.save();
-            // this.canvasCtx.beginPath();
+            this.canvasCtx.save();
+            this.canvasCtx.beginPath();
             this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
             this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
             // for (let i = 0; i < this.point.ret.length; i++) {
