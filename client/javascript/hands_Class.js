@@ -55,21 +55,23 @@ export class Hands_Class {
                     this.canvasCtx.fill();
                     // for (let i = 0; i < this.point.ret.length; i++) {
                     if (x > this.x_c && x < (this.x_c + this.w) && y > this.y_c && y < (this.y_c + this.h)) {
-                        this.canvasCtx.strokeStyle = "#f06a63";
-                        this.canvasCtx.lineWidth = 5;
-                        this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
+                        // this.canvasCtx.strokeStyle = "#f06a63";
+                        // this.canvasCtx.lineWidth = 5;
+                        // this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
                         this.sock.emit('point', this.turno);
                         this.ready = false;
-                        this.x_c = null;
-                        this.y_c = null;
-                        this.w = null;
-                        this.h = null;
                     }
                     // }
                 }
             }
             this.canvasCtx.restore()
         }
+    }
+
+    colora() {
+        this.canvasCtx.strokeStyle = "#f06a63";
+        this.canvasCtx.lineWidth = 5;
+        this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
     }
 
     start(img, canvas, ctx, img_src, turno) {
@@ -96,11 +98,8 @@ export class Hands_Class {
         }
         this.ready = true;
         this.camera.start();
-
+        //
         // setTimeout(() => {
-        //     this.canvasCtx.strokeStyle = "#f06a63";
-        //     this.canvasCtx.lineWidth = 5;
-        //     this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
         //     this.sock.emit('point', turno)
         // }, 3000);
     }

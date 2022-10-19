@@ -57,8 +57,8 @@ io.on('connection', (sock) => {
         sock.emit('getData', quadri);
     });
 
-    sock.on('uploadJson', (src, data, rect_x, rect_y, rect_w, rect_h, width, height, descr, title) => {
-        data.quadri.push({src, rect_x, rect_y, rect_w, rect_h, width, height, descr, title});
+    sock.on('uploadJson', (src, data, rect_x, rect_y, rect_w, rect_h, width, height, descr, descr_accurata, title) => {
+        data.quadri.push({src, rect_x, rect_y, rect_w, rect_h, width, height, descr, descr_accurata, title});
         let json = JSON.stringify(data);
         fs.writeFile('client/quadri.json', json, 'utf8', function (err) {
             if (err) {

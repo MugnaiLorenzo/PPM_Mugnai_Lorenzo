@@ -110,6 +110,7 @@ const addWaitingListeners = () => {
 const addMessageWinListeners = () => {
     sock.on('message_win', (text) => {
         hands.camera.stop();
+        hands.colora();
         mess_win.style.display = "flex"
         let html_mesage = "<div class='text-win'><span>" + text + "</span><br><br>" + quadri[point.turno].descr_accurata + "</div>";
         html_mesage += "<button class='win-button' onclick='module.avanti()'>Avanti</button>";
@@ -133,7 +134,7 @@ export function avanti() {
     });
 }
 
-export function fine(){
+export function fine() {
     window.location.href = '../index.html'
 }
 

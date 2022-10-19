@@ -61,18 +61,6 @@
       "title": "Miracolo dello schiavo del Tintoretto"
     },
     {
-      "src": "https://firebasestorage.googleapis.com/v0/b/ppm-lorenzo-mugnai.appspot.com/o/f6.jpg?alt=media&token=92cb34ec-2422-4a3f-bc26-85cac8c8f380",
-      "rect_x": 449,
-      "rect_y": 375,
-      "rect_w": 219,
-      "rect_h": 461,
-      "width": 694,
-      "height": 1024,
-      "descr": "L'uomo con la cicratice è <span>san Pietro da Verona</span> (o san Pietro Martire). Questo piccolo particolare della ferita potrebbe riferirsi proprio a Caravaggio; in effetti, più di una volta Caravaggio ha inserito degli autoritratti nelle sue opere.",
-      "descr_accurata":"<span>Pietro da Verona</span>, o Pietro Martire, al secolo Pietro Rosini, è stato un predicatore appartenente all'Ordine dei domenicani ed è venerato come santo dalla Chiesa cattolica.",
-      "title": "Le nozze di Cana di Paolo Veronese"
-    },
-    {
       "src": "https://firebasestorage.googleapis.com/v0/b/ppm-lorenzo-mugnai.appspot.com/o/f7.jpg?alt=media&token=36484f27-89e5-4ee3-a019-9f996259bd8a",
       "rect_x": 320,
       "rect_y": 202,
@@ -81,8 +69,20 @@
       "width": 1209,
       "height": 556,
       "descr": "Esattamente come tutti gli altri funerali a Ornans (e quelli cristiani, in generale), c’è un <span>prete</span> che sta celebrando il rito. Indossa un abito scuro e sta leggendo alcune frasi tratte dal suo breviario.",
-      "descr_accurata":"Il <span>breviario</span> si tratta di un libretto che hanno tutti i sacerdoti e che contiene tutte le preghiere che recitano quotidianamente.",
+      "descr_accurata": "Il <span>breviario</span> si tratta di un libretto che hanno tutti i sacerdoti e che contiene tutte le preghiere che recitano quotidianamente.",
       "title": "Funerale a Ornans di Gustave Courbet"
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/ppm-lorenzo-mugnai.appspot.com/o/f7.jpeg?alt=media&token=8ecf19c2-e16b-4220-8f6d-1d73e8cdd38c",
+      "rect_x": 1482,
+      "rect_y": 120,
+      "rect_w": 900,
+      "rect_h": 1322,
+      "width": 2435,
+      "height": 1560,
+      "descr": "<span>Donna</span> che sta proprio sulla destra e che è leggermente sollevata da terra",
+      "descr_accurata": "Lei appartiene al mondo della mitologia greca: è una delle 3 Horae più precisamente la Sacerdotessa Hora della Primavera. È una sacerdotessa legata alla divinità minore delle stagioni ed a Venere.",
+      "title": "La nascita di Venere di Sandro Botticelli"
     }
   ]
 }

@@ -31,7 +31,8 @@
   width: 30%;
   margin: 5% 1.665% 0 1.665%;
   background: none;
-  /*border: none;*/
+  border: 3px solid var(--red-background);
+  color: var(--red-background);
 }
 
 .btn_add i {
