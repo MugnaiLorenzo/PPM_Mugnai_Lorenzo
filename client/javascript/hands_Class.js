@@ -69,23 +69,6 @@ export class Hands_Class {
         }
     }
 
-    colora() {
-        console.log('colora()', this.x_c, this.y_c, this.w, this.h);
-        console.log('colora()', this.canvasCtx);
-        this.img = new Image();
-        this.img.src = "https://firebasestorage.googleapis.com/v0/b/ppm-lorenzo-mugnai.appspot.com/o/f2.jpg?alt=media&token=96ca5a7e-a7b0-4a67-81e7-ad039b2ecb68";
-        this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
-        this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
-        this.canvasCtx.strokeRect(0, 0, 20 ,20);
-        this.canvasCtx.save();
-        this.canvasCtx.beginPath();
-        this.canvasCtx.strokeRect(40, 40, 20 ,20);
-
-        // this.canvasCtx.strokeStyle = "#f06a63";
-        // this.canvasCtx.lineWidth = 5;
-        // this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
-    }
-
     start(img, canvas, ctx, img_src, turno) {
         this.x_c = null;
         this.y_c = null;

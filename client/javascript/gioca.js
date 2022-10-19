@@ -75,7 +75,7 @@ function excute() {
             mess_waiting.style.display = "none";
             mess_win.style.display = "none";
             hands.start(point.src[point.turno], canvasElement, canvasCtx, quadri[point.turno].src, point.turno);
-        }, 2000);
+        }, 1000);
     }
 }
 
@@ -110,7 +110,25 @@ const addWaitingListeners = () => {
 const addMessageWinListeners = () => {
     sock.on('message_win', (text) => {
         hands.camera.stop();
-        hands.colora();
+        document.getElementById("output").removeChild(element);
+        element = document.createElement("canvas");
+        element.classList.add("can-img");
+        element.id = "can_out";
+        let img = document.createElement("img");
+        img.setAttribute("src", quadri[point.turno].src);
+        img.setAttribute("alt", quadri[point.turno].title);
+        let canvasElement = document.getElementById("can_out");
+        let canvasCtx = canvasElement.getContext('2d');
+        canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
+        canvasElement.height = (parseInt(getComputedStyle(canvasElement).width) / point.src[point.turno].width) * point.src[point.turno].height;
+        canvasCtx.save();
+        canvasCtx.beginPath();
+        canvasCtx.translate(canvasElement.width, 0);
+        canvasCtx.scale(-1, 1);
+        img.onload = function () {
+            canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
+            this.canvasCtx.strokeRect(0, 0, 50, 50);
+        }
         mess_win.style.display = "flex"
         let html_mesage = "<div class='text-win'><span>" + text + "</span><br><br>" + quadri[point.turno].descr_accurata + "</div>";
         html_mesage += "<button class='win-button' onclick='module.avanti()'>Avanti</button>";
