@@ -40,8 +40,8 @@ export class Hands_Class {
 
     onResults(results) {
         if (this.ready === true) {
-            this.canvasCtx.save();
-            this.canvasCtx.beginPath();
+            // this.canvasCtx.save();
+            // this.canvasCtx.beginPath();
             this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
             this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
             // for (let i = 0; i < this.point.ret.length; i++) {
@@ -70,8 +70,8 @@ export class Hands_Class {
 
     colora() {
         console.log('colora()', this.x_c, this.y_c, this.w, this.h);
-        this.canvasCtx.save();
-        this.canvasCtx.beginPath();
+        // this.canvasCtx.save();
+        // this.canvasCtx.beginPath();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
         // this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
         // this.canvasCtx.strokeStyle = "#f06a63";
@@ -92,8 +92,8 @@ export class Hands_Class {
         this.point = img;
         this.img = new Image();
         this.img.src = img_src;
-        this.canvasCtx.save();
-        this.canvasCtx.beginPath();
+        // this.canvasCtx.save();
+        // this.canvasCtx.beginPath();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
         for (let i = 0; i < this.point.ret.length; i++) {
             this.x_c = this.point.ret[i].x * this.canvasElement.width / this.point.width;
