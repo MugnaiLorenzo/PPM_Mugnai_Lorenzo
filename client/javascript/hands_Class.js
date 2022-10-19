@@ -71,6 +71,7 @@ export class Hands_Class {
 
     colora() {
         console.log('colora()', this.x_c, this.y_c, this.w, this.h);
+        console.log('colora()', this.canvasCtx);
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
         this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
         this.canvasCtx.strokeRect(0, 0, 20 ,20);
