@@ -10,6 +10,7 @@ let user;
 let cod;
 let point
 let sock = io();
+let index = 0;
 
 let turno_label = document.getElementById("turno");
 let descr_label = document.getElementById("descrizione");
@@ -68,6 +69,7 @@ function excute() {
         img.onload = function () {
             canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
         }
+        index = point.turno
         descr_label.innerHTML = point.src[point.turno].descrizione;
         title_label.innerHTML = "<span>" + point.src[point.turno].title + "</span>";
         setTimeout(function () {
@@ -114,20 +116,30 @@ const addMessageWinListeners = () => {
         element = document.createElement("canvas");
         element.classList.add("can-img");
         element.id = "can_out";
+        document.getElementById("output").appendChild(element);
         let img = document.createElement("img");
-        img.setAttribute("src", quadri[point.turno].src);
-        img.setAttribute("alt", quadri[point.turno].title);
+        img.setAttribute("src", quadri[index].src);
+        img.setAttribute("alt", quadri[index].title);
         let canvasElement = document.getElementById("can_out");
         let canvasCtx = canvasElement.getContext('2d');
         canvasElement.width = parseInt(getComputedStyle(canvasElement).width);
-        canvasElement.height = (parseInt(getComputedStyle(canvasElement).width) / point.src[point.turno].width) * point.src[point.turno].height;
+        canvasElement.height = (parseInt(getComputedStyle(canvasElement).width) / point.src[index].width) * point.src[index].height;
         canvasCtx.save();
         canvasCtx.beginPath();
         canvasCtx.translate(canvasElement.width, 0);
         canvasCtx.scale(-1, 1);
         img.onload = function () {
             canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
-            this.canvasCtx.strokeRect(0, 0, 50, 50);
+            let x_c,y_c, w,h;
+            for (let i = 0; i < point.src[point.turno].ret.length; i++) {
+                x_c = point.src[index].ret[i].x * canvasElement.width / point.src[index].width;
+                y_c = point.src[index].ret[i].y * canvasElement.height / point.src[index].height;
+                w = point.src[index].ret[i].w * canvasElement.width / point.src[index].width;
+                h = point.src[index].ret[i].h * canvasElement.height / point.src[index].height;
+            }
+            canvasCtx.strokeStyle = "#f06a63";
+            canvasCtx.lineWidth = 5;
+            canvasCtx.strokeRect(x_c, y_c, w, h);
         }
         mess_win.style.display = "flex"
         let html_mesage = "<div class='text-win'><span>" + text + "</span><br><br>" + quadri[point.turno].descr_accurata + "</div>";
