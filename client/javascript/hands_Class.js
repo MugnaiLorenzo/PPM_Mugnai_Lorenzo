@@ -73,10 +73,10 @@ export class Hands_Class {
         this.canvasCtx.save();
         this.canvasCtx.beginPath();
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
-        this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
-        this.canvasCtx.strokeStyle = "#f06a63";
-        this.canvasCtx.lineWidth = 5;
-        this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
+        // this.canvasCtx.drawImage(this.img, 0, 0, this.canvasElement.width, this.canvasElement.height);
+        // this.canvasCtx.strokeStyle = "#f06a63";
+        // this.canvasCtx.lineWidth = 5;
+        // this.canvasCtx.strokeRect(this.x_c, this.y_c, this.w, this.h);
     }
 
     start(img, canvas, ctx, img_src, turno) {
