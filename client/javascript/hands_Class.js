@@ -75,12 +75,10 @@ export class Hands_Class {
         this.img = new Image();
         this.img.src = img_src;
         this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
-        for (let i = 0; i < this.point.ret.length; i++) {
-            this.x_c = this.point.ret[i].x * this.canvasElement.width / this.point.width;
-            this.y_c = this.point.ret[i].y * this.canvasElement.height / this.point.height;
-            this.w = this.point.ret[i].w * this.canvasElement.width / this.point.width;
-            this.h = this.point.ret[i].h * this.canvasElement.height / this.point.height;
-        }
+        this.x_c = this.point.ret.x * this.canvasElement.width / this.point.width;
+        this.y_c = this.point.ret.y * this.canvasElement.height / this.point.height;
+        this.w = this.point.ret.w * this.canvasElement.width / this.point.width;
+        this.h = this.point.ret.h * this.canvasElement.height / this.point.height;
         this.ready = true;
         this.camera.start();
 

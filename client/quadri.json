@@ -2,14 +2,14 @@
   "quadri": [
     {
       "src": "https://firebasestorage.googleapis.com/v0/b/ppm-lorenzo-mugnai.appspot.com/o/f1.jpg?alt=media&token=e263a7d5-e4b4-41c1-bd59-88ddeb444b5e",
-      "rect_x": 240,
-      "rect_y": 356,
-      "rect_w": 309,
-      "rect_h": 294,
+      "rect_x": 480,
+      "rect_y": 69,
+      "rect_w": 195,
+      "rect_h": 491,
       "width": 1000,
       "height": 802,
-      "descr": "Lei è la <span> libertà guida il popolo</span>. Da perfetta condottiera, con una mano sventola l’asta della bandiera francese e con l’altra impugna una baionetta (un fucile del periodo)",
-      "descr_accurata": "Lei è la <span>libertà guida il popolo</span>. Sta spingendo le persone a combattere per mettere fine al dominio del re. Da perfetta condottiera, con una mano sventola l’asta della bandiera francese e con l’altra impugna una baionetta (un fucile del periodo).Mentre avanza tra le rovine, una spallina del vestito giallo de la Libertà Delacroix cade lasciandole il seno scoperto. I parigini la seguono alla conquista della vittoria.",
+      "descr": "Lei è la <span> libertà che guida il popolo</span>. Da perfetta condottiera, con una mano sventola l’asta della bandiera francese e con l’altra impugna una baionetta (un fucile del periodo).",
+      "descr_accurata": "Lei è la <span>libertà che guida il popolo</span>. Sta spingendo le persone a combattere per mettere fine al dominio del re. Da perfetta condottiera, con una mano sventola l’asta della bandiera francese e con l’altra impugna una baionetta (un fucile del periodo). Mentre avanza tra le rovine le cade una spallina del vestito giallo, lasciandole il seno scoperto. I parigini la seguono alla conquista della vittoria.",
       "title": "La Libertà che guida il popolo di Eugène"
     },
     {
@@ -21,7 +21,7 @@
       "width": 1587,
       "height": 1057,
       "descr": "Lui è <span>Zefiro</span>, ed è la personificazione del vento dell’ovest.",
-      "descr_accurata": "Lui è Zefiro, ed è la personificazione del vento dell’ovest. Nella mitologia greca è il dio del vento occidentale.Viene considerato un vento molto leggero ed apprezzato dalle persone, poiché con il suo “soffio” porta frutti sulla terra. Non c’è personaggio più indicato per il ruolo di messaggero della primavera.",
+      "descr_accurata": "Lui è <span>Zefiro</span>, ed è la personificazione del vento dell’ovest. Nella mitologia greca è il dio del vento occidentale. Viene considerato un vento molto leggero ed apprezzato dalle persone, poiché con il suo “soffio” porta frutti sulla terra. Non c’è personaggio più indicato per il ruolo di messaggero della primavera.",
       "title": "Primavera di Sandro Botticelli"
     },
     {
@@ -33,7 +33,7 @@
       "width": 1034,
       "height": 853,
       "descr": "Quella al centro è <span>Afrodite</span> (o Venere), la dea della bellezza e protagonista di altri immensi capolavori, come la scena della nascita di Venere del Botticelli.",
-      "descr_accurata": "<span>Afrodite</span> è, nella religione greca, la dea della bellezza, dell'amore, della generazione. Secondo una versione del mito, nacque da Urano e dalla schiuma del mare, oppure fu figlia di Zeus e Dione.",
+      "descr_accurata": "<span>Afrodite</span> è, nella religione greca, la dea della bellezza, dell'amore e della generazione. Secondo una versione del mito, nacque da Urano e dalla schiuma del mare, oppure fu figlia di Zeus e Dione.",
       "title": "Parnaso di Andrea Mantegna"
     },
     {
@@ -45,7 +45,7 @@
       "width": 1000,
       "height": 842,
       "descr": "Lui è <span>Pietro Rossi.</span> Si sta preparando per difendere il castello di Pontremoli. Come puoi vedere già indossa l’armatura ed è armato di spada, pronto a guidare l’esercito nella battaglia. Tra le mani stringe la lettera del Doge.",
-      "descr_accurata": "Il personaggio <span>Pietro Rossi</span> è protagonista nel Trecento di un eroico episodio di resistenza al dispotismo contro la città di Venezia: già impegnato nell'assedio al Castello di Pontremoli viene raggiunto da un messaggero del doge Dandolo ed invitato a prendere il comando della resistenza veneziana alle mire espansionistiche degli Scaligeri. ",
+      "descr_accurata": "Il personaggio <span>Pietro Rossi</span> è protagonista nel Trecento di un eroico episodio di resistenza al dispotismo contro la città di Venezia: già impegnato nell'assedio al Castello di Pontremoli viene raggiunto da un messaggero del Doge Dandolo ed invitato a prendere il comando della resistenza veneziana alle mire espansionistiche degli Scaligeri. ",
       "title": "Pietro Rossi prigioniero degli Scaligeri"
     },
     {
@@ -80,8 +80,8 @@
       "rect_h": 1322,
       "width": 2435,
       "height": 1560,
-      "descr": "<span>Donna</span> che sta proprio sulla destra e che è leggermente sollevata da terra",
-      "descr_accurata": "Lei appartiene al mondo della mitologia greca: è una delle 3 Horae più precisamente la Sacerdotessa Hora della Primavera. È una sacerdotessa legata alla divinità minore delle stagioni ed a Venere.",
+      "descr": "<span>Donna</span> posizionata sulla sinistra e che è leggermente sollevata da terra",
+      "descr_accurata": "Lei appartiene al mondo della mitologia greca: è una delle 3 Horae, più precisamente la Sacerdotessa Hora della Primavera. È una sacerdotessa legata alla divinità minore delle stagioni e la dea Venere.",
       "title": "La nascita di Venere di Sandro Botticelli"
     }
   ]

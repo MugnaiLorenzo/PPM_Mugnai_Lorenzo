@@ -131,12 +131,10 @@ const addMessageWinListeners = () => {
         img.onload = function () {
             canvasCtx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
             let x_c,y_c, w,h;
-            for (let i = 0; i < point.src[point.turno].ret.length; i++) {
-                x_c = point.src[index].ret[i].x * canvasElement.width / point.src[index].width;
-                y_c = point.src[index].ret[i].y * canvasElement.height / point.src[index].height;
-                w = point.src[index].ret[i].w * canvasElement.width / point.src[index].width;
-                h = point.src[index].ret[i].h * canvasElement.height / point.src[index].height;
-            }
+            x_c = point.src[index].ret.x * canvasElement.width / point.src[index].width;
+            y_c = point.src[index].ret.y * canvasElement.height / point.src[index].height;
+            w = point.src[index].ret.w * canvasElement.width / point.src[index].width;
+            h = point.src[index].ret.h * canvasElement.height / point.src[index].height;
             canvasCtx.strokeStyle = "#f06a63";
             canvasCtx.lineWidth = 5;
             canvasCtx.strokeRect(x_c, y_c, w, h);
