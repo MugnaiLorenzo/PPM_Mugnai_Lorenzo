@@ -2,6 +2,9 @@
   "name": "ppm.lorenzo.mugnai",
   "version": "1.0.0",
   "main": "server/server.js",
+  "engines": {
+    "node": "6.10.0"
+  },
   "description": "",
   "scripts": {
     "start": "node server/server.js",
