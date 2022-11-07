@@ -18,7 +18,7 @@
   "dependencies": {
     "@google-cloud/storage": "^6.5.2",
     "aws-sdk": "^2.1221.0",
-    "canvas": "^2.9.3",
+    "canvas": "^2.10.2",
     "express": "^4.18.1",
     "firebase": "^9.10.0",
     "firebase-admin": "^11.0.1",
