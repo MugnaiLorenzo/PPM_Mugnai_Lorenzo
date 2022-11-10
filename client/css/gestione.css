@@ -5,18 +5,25 @@
   flex-wrap: wrap;
 }
 
+.opera{
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2% 1.665% 0% 1.665%;
+}
+
 #placehere img {
   position: relative;
-  width: 30%;
-  margin: 5% 1.665% 0% 1.665%;
+  width: 100%;
+  height: calc(100% - 30px);
 }
 
 .btn_class {
   position: relative;
   width: 1px;
   height: 1px;
-  margin-top: 5%;
-  margin-left: -5%;
+  margin-top: 2%;
+  margin-left: -10%;
   margin-right: 3.3%;
   background: none;
   border: none;
@@ -29,7 +36,7 @@
 
 .btn_add {
   width: 30%;
-  margin: 5% 1.665% 0 1.665%;
+  margin: calc(2% + 30px) 1.665% 0 1.665%;
   background: none;
   border: 3px solid var(--red-background);
   color: var(--red-background);
@@ -39,19 +46,10 @@
   font-size: 50px;
 }
 
-@media only screen and (max-width: 1129px) {
-  #placehere {
-    padding-top: 25px;
-  }
-
-  #placehere img {
-    width: 47%;
-  }
-
-  .btn_class {
-    margin-left: -10%;
-    margin-right: 9%;
-  }
+.titoloOpera{
+  color: var(--red-background);
+  width: 100%;
+  height: 30px;
 }
 
 @media only screen and (max-width: 1129px) {
@@ -59,13 +57,14 @@
     padding-top: 10px;
   }
 
-  #placehere img {
+  .opera{
     width: 97%;
     margin: 5% 1.665% 0% 1.665%;
   }
 
   .btn_class {
-    margin-left: -10%;
+    margin-left: -14%;
+    margin-top: 5%;
     margin-right: 0%;
   }
 

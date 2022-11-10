@@ -42,12 +42,12 @@ io.on('connection', (sock) => {
         }
     });
 
-    sock.on('waitingFinish', () => {
+    sock.on('waitingFinish', (turno) => {
         if (waiting === false) {
             waiting = true;
         } else {
             waiting = false;
-            g.sendready();
+            g.sendready(turno);
         }
     })
 

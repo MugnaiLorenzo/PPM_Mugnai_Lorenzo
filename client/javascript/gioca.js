@@ -53,7 +53,11 @@ function excute() {
     element = document.createElement("canvas");
     element.classList.add("can-img");
     element.id = "can_out";
+    // let t  = document.createElement("div");
+    // let content = document.createTextNode("AA");
+    // t.appendChild(content);
     document.getElementById("output").appendChild(element);
+    // document.getElementById("output").appendChild(t);
     if (point.turno < point.length) {
         let img = document.createElement("img");
         img.setAttribute("src", quadri[point.turno].src);
@@ -153,7 +157,7 @@ export function avanti() {
     mess_waiting.style.display = "flex";
     mess_waiting.innerHTML = "Aspettando l'avversario";
     mess_win.style.display = "none";
-    sock.emit('waitingFinish');
+    sock.emit('waitingFinish',point.turno);
     sock.on('ready', () => {
         display_messaggio_waiting.style.display = "none";
         mess_waiting.style.display = "none";

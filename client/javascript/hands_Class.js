@@ -9,11 +9,14 @@ export class Hands_Class {
         this.hands = null;
         this.camera = null;
         this.turno = 0;
-        this.num_solution = 0;
+        this.startTime = null;
         this.x_c = null;
         this.y_c = null;
         this.w = null;
         this.h = null;
+        this.last_x = null;
+        this.last_y = null;
+        this.error = 5;
         this.ready = false;
         this.hands = new Hands({
             locateFile: (file) => {
@@ -38,8 +41,20 @@ export class Hands_Class {
         });
     }
 
+    getPoint(x, y) {
+        if (x > this.x_c && x < (this.x_c + this.w) && y > this.y_c && y < (this.y_c + this.h)) {
+            this.sock.emit('point');
+            this.ready = false;
+        } else {
+            this.sock.emit('e');
+            this.ready = false;
+        }
+    }
+
     onResults(results) {
         if (this.ready === true) {
+            let err_x = this.canvasElement.width * this.error / 100;
+            let err_y = this.canvasElement.height * this.error / 100;
             this.canvasCtx.save();
             this.canvasCtx.beginPath();
             this.canvasCtx.clearRect(0, 0, this.canvasElement.width * -1, this.canvasElement.height);
@@ -51,9 +66,27 @@ export class Hands_Class {
                     let y = landmarks[8].y * this.canvasElement.height;
                     this.canvasCtx.arc(x, y, 5, 0, 2 * Math.PI);
                     this.canvasCtx.fill();
-                    if (x > this.x_c && x < (this.x_c + this.w) && y > this.y_c && y < (this.y_c + this.h)) {
-                        this.sock.emit('point', this.turno);
-                        this.ready = false;
+                    if (this.last_x == null && this.last_y == null) {
+                        this.last_x = x;
+                        this.last_y = y;
+                        this.startTime = new Date().getTime();
+                    }
+                    if (x < this.last_x + err_x && x > this.last_x - err_x && y < this.last_y + err_y && y > this.last_y - err_y) {
+                        this.canvasCtx.font = "30px Arial";
+                        let end = new Date().getTime();
+                        let time = Math.round((this.startTime - end) * -1 / 1000);
+                        this.canvasCtx.save();
+                        this.canvasCtx.translate(this.canvasElement.width, 0);
+                        this.canvasCtx.scale(-1, 1);
+                        this.canvasCtx.fillText(time, this.canvasElement.width-x, y);
+                        this.canvasCtx.restore();
+                        if (end - this.startTime >= 3000) {
+                            this.getPoint(x, y);
+                        }
+                    } else {
+                        this.last_x = x;
+                        this.last_y = y;
+                        this.startTime = new Date().getTime();
                     }
                 }
             }
@@ -70,7 +103,6 @@ export class Hands_Class {
         this.canvasElement = canvas;
         this.canvasCtx = ctx;
         this.ready = false;
-        this.num_solution = 0;
         this.point = img;
         this.img = new Image();
         this.img.src = img_src;
@@ -81,10 +113,6 @@ export class Hands_Class {
         this.h = this.point.ret.h * this.canvasElement.height / this.point.height;
         this.ready = true;
         this.camera.start();
-
-        // setTimeout(() => {
-        //     this.sock.emit('point', turno)
-        // }, 3000);
     }
 
 }

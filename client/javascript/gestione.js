@@ -4,10 +4,15 @@ export function start() {
     sock.on('getData', (data) => {
         let quadri = data.quadri;
         for (let i = 0; i < quadri.length; i++) {
+            let div = document.createElement("div");
+            div.setAttribute("class","opera");
             let elem = document.createElement("img");
+            let text  = document.createElement("div");
+            let content = document.createTextNode(quadri[i].title);
+            text.appendChild(content);
+            text.setAttribute("class","titoloOpera");
             elem.setAttribute("src", quadri[i].src);
             elem.setAttribute("alt", quadri[i].title);
-            document.getElementById("placehere").appendChild(elem);
             let btn = document.createElement("button");
             btn.setAttribute("class", "btn_class");
             let i_elem = document.createElement("i");
@@ -20,7 +25,10 @@ export function start() {
                     location.reload();
                 }
             };
-            document.getElementById("placehere").appendChild(btn);
+            div.appendChild(text);
+            div.appendChild(elem);
+            div.appendChild(btn);
+            document.getElementById("placehere").appendChild(div);
         }
         let btn = document.createElement("button");
         btn.setAttribute("class", "btn_add");

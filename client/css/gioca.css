@@ -228,6 +228,10 @@
   height: auto;
 }
 
+/*#output{*/
+/*  display: flex;*/
+/*}*/
+
 @media only screen and (max-width: 830px) {
   .text-win {
     font-size: var(--font-size-small);
