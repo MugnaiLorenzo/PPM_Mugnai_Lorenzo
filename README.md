@@ -1,10 +1,14 @@
-# 🎯 PPM – Puntamento Particolare Multigiocatore  
-**Autore:** Lorenzo Mugnai – 2022
+# 🎯 Progetto PPM – Progettazione e Produzione Multimediale 
+
+<img src="logo.jpg" alt="Logo PPM" width="120"/>
+
+**Autore:** Lorenzo Mugnai – 2022  
 
 ## 📌 Informazioni sul progetto
 
-PPM è un'applicazione web multiplayer che propone un gioco a puntamento basato su iterazione naturale. Due utenti visualizzano la stessa opera d'arte e devono individuare un particolare specificato il più velocemente possibile.  
-Vince il round chi riesce a mantenere il puntamento sul dettaglio corretto per almeno 3 secondi.  
+PPM è un'applicazione multiplayer che propone un gioco a puntamento naturale.  
+Due utenti devono individuare il prima possibile un particolare presente in un'opera d'arte.  
+L’interazione è completamente gestita con i movimenti della mano.
 
 ---
 
@@ -12,76 +16,88 @@ Vince il round chi riesce a mantenere il puntamento sul dettaglio corretto per a
 
 - **Frontend**: HTML, CSS, JavaScript  
 - **Backend**: Node.js con Socket.IO  
-- **Interazione Naturale**: Mediapipe.js (in particolare Mediapipe Hands)
+- **Interazione Naturale**: [MediaPipe Hands](https://google.github.io/mediapipe/solutions/hands.html)
 
 ---
 
 ## 📅 Agenda
 
-- [Regolamento](#📋-regolamento)
-- [Implementazione](#⚙️-implementazione)
-- [Gestione dei Quadri](#🖼️-gestione-dei-quadri)
+- [📋 Regolamento](#📋-regolamento)
+- [⚙️ Implementazione](#⚙️-implementazione)
+- [🖼️ Gestione dei Quadri](#🖼️-gestione-dei-quadri)
+- [🎥 Demo](#🎥-demo)
 
 ---
 
 ## 📋 Regolamento
 
 ### 👤 Accesso  
-Per iniziare a giocare, l'utente deve inserire un nome utente.  
-Dopo l’accesso, può:
-- Unirsi ad una **partita pubblica**: l’app trova l’avversario casualmente.
-- Unirsi ad una **partita privata**: inserendo un codice condiviso con l’avversario.
+Dopo aver inserito l'**username**, l’utente può:
+- 🔓 **Unirsi a una partita pubblica** (l’app trova automaticamente un avversario)
+- 🔐 **Unirsi a una partita privata** (entrambi devono inserire lo stesso codice)
 
-### 🕹️ Modalità di Gioco  
-- Entrambi i giocatori visualizzano la stessa opera.
-- Il titolo del dettaglio da cercare è mostrato.
-- L’utente deve posizionare la mano sul particolare corretto.
-- Dopo 3 secondi di puntamento continuo, il sistema verifica la correttezza.
-- Il round si conclude con un vincitore (o pareggio).
-- Si avanza automaticamente al round successivo.
+### 🕹️ Modalità di gioco  
+- L'applicazione mostra la **stessa immagine** a entrambi i giocatori.
+- Il titolo suggerisce **quale particolare cercare**.
+- I giocatori devono **puntare con la mano** sulla zona giusta e mantenerla per 3 secondi.
+- Vince chi trova per primo il dettaglio corretto.
 
 ---
 
 ## ⚙️ Implementazione
 
 ### 🖥️ Frontend  
-- Responsabile dell'interfaccia utente.
-- Usa **Mediapipe Hands** per rilevare in tempo reale la posizione e la forma delle mani.
+Gestisce l’interazione con l’utente e il tracciamento della mano tramite:
+- **MediaPipe Hands**, libreria che riconosce in tempo reale la forma e i movimenti delle mani.
 
 ### 🌐 Backend  
-- Gestito tramite **Node.js** e **Socket.IO**.
-- Coordina la comunicazione tra due giocatori.
-- Controlla il flusso di gioco, i punteggi e la transizione tra i round.
-- Gestisce la lettura e modifica del file `quadri.json`.
+Basato su **Node.js**, consente:
+- Connessione simultanea di due giocatori.
+- Comunicazione in tempo reale con **Socket.IO**.
+- Gestione dei turni e dei punteggi.
+- Salvataggio e modifica del file `quadri.json`.
 
 ---
 
 ## 🖼️ Gestione dei Quadri
 
 ### ➕ Aggiunta  
-È possibile aggiungere un nuovo quadro tramite la sezione dedicata.  
-Ogni opera include:
+Ogni opera contiene:
 - Titolo  
-- Descrizione del particolare  
-- Descrizione accurata per il post-riconoscimento  
-- Coordinate del dettaglio da cercare  
-- Immagine dell’opera
+- Descrizione del personaggio da trovare  
+- Descrizione post-vittoria  
+- Coordinate del particolare  
+- Immagine dell’opera  
 
 ### 🗃️ Salvataggio  
-Le informazioni sono memorizzate nel file `quadri.json`.  
-Le immagini sono salvate su **Firebase Storage**.
+Tutti i dati sono salvati in `quadri.json`  
+Le immagini sono caricate su **Firebase Storage**.
 
 ### 🗑️ Rimozione  
-È possibile eliminare un quadro esistente dalla sezione “Gestione Quadri”.
+I quadri possono essere eliminati dalla sezione “Gestione”.
+
+---
+
+## 🎥 Demo
+
+### ▶️ Accesso Pubblico  
+[![Accesso Pubblico](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](Accesso%20Pubblico.mp4)
+
+### ▶️ Accesso Privato  
+[![Accesso Privato](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](Accesso%20Privato.mp4)
+
+### ▶️ Tracciamento mani con MediaPipe  
+[![MediaPipe](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](MediaPipe.mp4)
 
 ---
 
 ## 🚀 Avvio del progetto
 
-1. Installare le dipendenze:
+1. Clona il repository  
+2. Installa le dipendenze:
    ```bash
    npm install
-2. Avviare il server
+3. Avviare il server
      ```bash
       node server.js
-3. Aprire il browser su http://localhost:3000
+4. Aprire il browser su http://localhost:3000
