@@ -82,6 +82,6 @@ Le immagini sono salvate su **Firebase Storage**.
    ```bash
    npm install
 2. Avviare il server
-  ```bash
-    node server.js
+     ```bash
+      node server.js
 3. Aprire il browser su http://localhost:3000
